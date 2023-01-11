@@ -136,7 +136,8 @@ const LoanInfo = () => {
                             Pending
                           </span>
                         )} */}
-                        {loan.status === 'Approved' ? (
+                        {loan.status === 'Approved' &&
+                        loan.status === 'Fully Paid' ? (
                           <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
