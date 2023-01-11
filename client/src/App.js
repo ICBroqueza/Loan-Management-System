@@ -24,6 +24,7 @@ import Borrower from './components/dashboard/pages/borrowers/Borrower';
 import Borrowers from './components/dashboard/pages/borrowers/Borrowers';
 import EditLoan from './components/dashboard/pages/loans/EditLoan';
 import EditBorrower from './components/dashboard/pages/borrowers/EditBorrower';
+import AddLoans from './components/dashboard/pages/loans/AddLoans';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -157,13 +158,26 @@ function App() {
               {/* LOANS */}
               <Route exact path='/loans' element={<GetAllLoans />}></Route>
 
-              {/* ADD LOANS */}
+              {/* ADD LOAN (BORROWER PAGE)*/}
               <Route
                 exact
                 path='/addLoan/:id'
                 element={
                   isAuthenticated ? (
                     <AddLoan setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/loans' />
+                  )
+                }
+              ></Route>
+
+              {/* ADD LOANS (LOANS PAGE) */}
+              <Route
+                exact
+                path='/addLoan'
+                element={
+                  isAuthenticated ? (
+                    <AddLoans setAuth={setAuth} />
                   ) : (
                     <Navigate to='/loans' />
                   )

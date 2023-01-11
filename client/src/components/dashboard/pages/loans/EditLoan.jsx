@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
+import LoanInfo from './Loan';
 
 const EditLoan = () => {
   const [inputs, setInputs] = useState({
