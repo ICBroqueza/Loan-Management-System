@@ -84,7 +84,7 @@ const EditLoan = () => {
 
       <div className='w-full'>
         <div className='container ml-10 flex flex-col px-2'>
-          <h1 className='text-xl my-5'>Update Client</h1>
+          <h1 className='text-xl my-5'>Update Loan Voucher #{loanId}</h1>
           <form
             onSubmit={(e) => {
               onSubmit(e);

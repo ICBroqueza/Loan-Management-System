@@ -1,3 +1,4 @@
 
-client/node_modules/.cache/.eslintcache
-client/node_modules/.cache/babel-loader
+client/node_modules/.cache
+
+
