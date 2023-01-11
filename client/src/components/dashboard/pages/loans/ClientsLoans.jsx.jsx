@@ -190,12 +190,20 @@ const GetAllLoans = ({ setAuth }) => {
                           {loan.status}
                         </span> */}
                         {loan.status === 'Approved' ? (
-                          <span className=' bg-green-600 text-white px-5 py-1 rounded-md'>
+                          <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
+                          </span>
+                        ) : loan.status === 'Declined' ? (
+                          <span className=' bg-red-400 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
+                          </span>
+                        ) : loan.status === 'Pending' ? (
+                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
                         ) : (
-                          <span className='bg-yellow-300 text-white px-5 py-1 rounded-md'>
-                            Pending
+                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
                           </span>
                         )}
                       </td>

@@ -182,7 +182,7 @@ app.delete('/clients/:id', async (req, res) => {
 app.get('/allLoans', auth, async (req, res) => {
   try {
     const getLoans = await pool.query(
-      `SELECT c.firstname, c.lastname, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE c.id = l.client_id`
+      `SELECT c.firstname, c.lastname, c.id, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE c.id = l.client_id`
     );
 
     res.json(getLoans.rows);
@@ -220,7 +220,7 @@ app.get('/loans/:id', auth, async (req, res) => {
 //   }
 // });
 
-// Create loan
+// Create loan for borrower page
 app.post('/loans/:id', auth, async (req, res) => {
   try {
     const id = req.params['id'];
@@ -230,6 +230,29 @@ app.post('/loans/:id', auth, async (req, res) => {
 
     const newLoan = await pool.query(
       `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${id}, '${type}', 'Pending',${gross_loan}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
+    );
+
+    res.json(newLoan.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// Create loan for loans page
+app.post('/loans/', auth, async (req, res) => {
+  try {
+    const {
+      client_id,
+      type,
+      gross_loan,
+      amort,
+      terms,
+      date_released,
+      maturity_date,
+    } = req.body;
+
+    const newLoan = await pool.query(
+      `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${client_id}, '${type}', 'Pending',${gross_loan}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
     );
 
     res.json(newLoan.rows[0]);
