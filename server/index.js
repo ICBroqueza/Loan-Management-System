@@ -232,7 +232,7 @@ app.post('/loans/:id', auth, async (req, res) => {
       `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${id}, '${type}', 'Pending',${gross_loan}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
     );
 
-    res.json(newLoan.rows);
+    res.json(newLoan.rows[0]);
   } catch (error) {
     console.log(error.message);
   }
@@ -251,10 +251,11 @@ app.patch('/loans/:id', auth, async (req, res) => {
       terms,
       date_released,
       maturity_date,
+      status,
     } = req.body;
 
     const updateLoan = await pool.query(
-      `UPDATE loans SET type = '${type}', balance = '${balance}', gross_loan = ${gross_loan}, amort = ${amort}, terms = ${terms}, date_released = '${date_released}', maturity_date = '${maturity_date}' WHERE id = ${id} AND client_id = ${req.user.id} RETURNING *`
+      `UPDATE loans SET type = '${type}', balance = '${balance}', gross_loan = ${gross_loan}, amort = ${amort}, terms = ${terms}, date_released = '${date_released}', maturity_date = '${maturity_date}', status = '${status}' WHERE id = ${id} AND client_id = ${req.user.id} RETURNING *`
     );
 
     // If id is not the real user

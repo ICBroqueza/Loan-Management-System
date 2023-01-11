@@ -20,6 +20,7 @@ const LoanInfo = () => {
       const parseRes = await response.json();
 
       setLoans(parseRes);
+      console.log(loans);
       // console.log(parseRes);
     } catch (error) {
       console.log(error.message);
@@ -118,13 +119,38 @@ const LoanInfo = () => {
                         {new Date(loan.date_released).toDateString()}
                       </td>
                       <td className='border px-4 py-2 '>
-                        {loan.status === 'Pending' ? (
+                        {/* {loan.status === 'Approved' ? (
+                          <span className=' bg-green-300 text-white px-4 py-1 rounded-md'>
+                            Approved
+                          </span>
+                        ) : loan.status === 'Declined' ? (
+                          <span className=' bg-red-300 text-white px-4 py-1 rounded-md'>
+                            Declined
+                          </span>
+                        ) : loan.status === 'Disbursed' ? (
+                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                            Disbursed
+                          </span>
+                        ) : (
+                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
+                            Pending
+                          </span>
+                        )} */}
+                        {loan.status === 'Approved' ? (
+                          <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
+                          </span>
+                        ) : loan.status === 'Declined' ? (
+                          <span className=' bg-red-400 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
+                          </span>
+                        ) : loan.status === 'Pending' ? (
                           <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
                         ) : (
-                          <span className='bg-green-600 text-white px-4 py-1 rounded-md'>
-                            Approved
+                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                            {loan.status}
                           </span>
                         )}
                       </td>
@@ -137,8 +163,9 @@ const LoanInfo = () => {
                           <DeleteForever className='text-lg' />
                         </button>
                         <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
-                          <Edit className='text-sm' />
-                          <Link to={`/editLoan/${clientId}`}></Link>
+                          <Link to={`/editLoan/${loan.id}`}>
+                            <Edit className='text-sm' />
+                          </Link>
                         </button>
                       </td>
                     </tr>

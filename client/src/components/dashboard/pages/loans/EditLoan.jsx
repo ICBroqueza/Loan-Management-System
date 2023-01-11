@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 
 const EditLoan = () => {
@@ -90,9 +90,38 @@ const EditLoan = () => {
               onSubmit(e);
             }}
           >
+            <select
+              className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
+              name='type'
+              id='type'
+              value={type}
+              onChange={(e) => {
+                onChange(e);
+              }}
+            >
+              <option value='Personal Loan'>Personal Loan</option>
+              <option value='Salary Loan'>Salary Loan</option>
+              <option value='Business Loan'>Business Loan</option>
+            </select>
+
+            <select
+              className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
+              name='status'
+              id='status'
+              value={status}
+              onChange={(e) => {
+                onChange(e);
+              }}
+            >
+              <option value='Approved'>Approved</option>
+              <option value='Disbursed'>Disbursed</option>
+              <option value='Pending'>Pending</option>
+              <option value='Declined'>Declined</option>
+            </select>
+
             <input
               type='number'
-              className='block border border-grey-500 w-full p-3 rounded mb-4'
+              className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
               name='gross_loan'
               value={gross_loan}
               onChange={(e) => {
@@ -102,7 +131,7 @@ const EditLoan = () => {
             />
             <input
               type='number'
-              className='block border border-grey-500 w-full p-3 rounded mb-4'
+              className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
               name='balance'
               value={balance}
               onChange={(e) => {
@@ -112,7 +141,7 @@ const EditLoan = () => {
             />
             <input
               type='number'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='block border border-grey-500t w-1/2 p-3 rounded mb-4'
               name='amort'
               value={amort}
               onChange={(e) => {
@@ -120,19 +149,29 @@ const EditLoan = () => {
               }}
               placeholder='Monthly Amortization'
             />
-            <input
-              type='number'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+
+            {/*  */}
+            <select
+              className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
               name='terms'
+              id='terms'
               value={terms}
               onChange={(e) => {
                 onChange(e);
               }}
-              placeholder='Terms'
-            />
+            >
+              <option value='1'>1 Month</option>
+              <option value='2'>2 Months</option>
+              <option value='3'>3 Months</option>
+              <option value='4'>4 Months</option>
+              <option value='5'>5 Months</option>
+              <option value='6'>6 Months</option>
+              <option value='12'>12 Months</option>
+            </select>
+
             <input
               type='date'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='block border border-grey-500t w-1/2 p-3 rounded mb-4'
               name='date_released'
               value={date_released}
               onChange={(e) => {
@@ -142,7 +181,7 @@ const EditLoan = () => {
             />
             <input
               type='date'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='block border border-grey-500t w-1/2 p-3 rounded mb-4'
               name='maturity_date'
               value={maturity_date}
               onChange={(e) => {
@@ -156,11 +195,8 @@ const EditLoan = () => {
             >
               Update
             </button>
-            <button
-              type='submit'
-              className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'
-            >
-              Undo
+            <button className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'>
+              <Link to='/loans'>Cancel</Link>
             </button>
           </form>
         </div>
