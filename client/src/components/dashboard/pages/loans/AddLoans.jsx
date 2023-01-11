@@ -104,7 +104,8 @@ const AddLoans = () => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          {/*  */}
+
+          {/* TYPE  */}
           <div>
             <label htmlFor='type'>Type of Loan:</label>
             <select
@@ -121,7 +122,8 @@ const AddLoans = () => {
               <option value='Business Loan'>Business Loan</option>
             </select>
           </div>
-          {/*  */}
+
+          {/* STATUS */}
           <div>
             <label htmlFor='maturity_date'>Status:</label>
             <select
@@ -139,7 +141,8 @@ const AddLoans = () => {
               <option value='Declined'>Declined</option>
             </select>
           </div>
-          {/*  */}
+
+          {/* GROSS LOAN */}
           <div>
             <label htmlFor='gross_loan'>Gross Loan:</label>
             <input
@@ -151,7 +154,8 @@ const AddLoans = () => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          {/*  */}
+
+          {/* BALANCE */}
           <div>
             <label htmlFor='gross_loan'>Balance:</label>
             <input
@@ -163,7 +167,8 @@ const AddLoans = () => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          {/*  */}
+
+          {/* AMORTIZATION */}
           <div>
             <label htmlFor='amort'>Amortization:</label>
             <input
@@ -175,7 +180,8 @@ const AddLoans = () => {
               onChange={(e) => onChange(e)}
             />
           </div>
-          {/*  */}
+
+          {/* TERMS */}
           <div>
             <label htmlFor='terms'>Terms:</label>
             <select
@@ -196,7 +202,8 @@ const AddLoans = () => {
               <option value='12'>12 Months</option>
             </select>
           </div>
-          {/*  */}
+
+          {/* DATE RELEASED */}
           <div>
             <label htmlFor='date_released'>Date Released:</label>
             <input
@@ -209,7 +216,7 @@ const AddLoans = () => {
             />
           </div>
 
-          {/*  */}
+          {/* MATURITY DATE */}
           <div>
             <label htmlFor='maturity_date'>Maturity Date:</label>
             <input
