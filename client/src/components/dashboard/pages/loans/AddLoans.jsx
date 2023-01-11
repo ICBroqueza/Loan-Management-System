@@ -81,134 +81,159 @@ const AddLoans = () => {
       <div>
         <Sidebar />
       </div>
-      {/* Add Loan */}
+      {/* TITLE */}
       <div className='container ml-10 py-2 flex-1 flex flex-col px-2'>
-        <h1 className='text-xl my-5'>New Loan</h1>
-        <form className='d-flex' onSubmit={onSubmit}>
-          <label htmlFor='client_id'>Client ID:</label>
-          <input
-            type='number'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Client ID'
-            name='client_id'
-            value={client_id}
-            onChange={(e) => onChange(e)}
-          />
+        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
+          <h3 className='text-lg font-medium leading-6 text-white'>New Loan</h3>
+          <p className='mt-1 max-w-2xl text-sm text-white'>
+            Add a loan for a client
+          </p>
+        </div>
 
-          <label htmlFor='type'>Type of Loan:</label>
-          <select
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            name='type'
-            id='type'
-            value={type}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          >
-            <option value='Personal Loan'>Personal Loan</option>
-            <option value='Salary Loan'>Salary Loan</option>
-            <option value='Business Loan'>Business Loan</option>
-          </select>
+        {/* FORM */}
+        <form className='grid grid-cols-2 p-2' onSubmit={onSubmit}>
+          {/* CLIENT ID */}
+          <div>
+            <label htmlFor='client_id'>Client ID:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Client ID'
+              name='client_id'
+              value={client_id}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='type'>Type of Loan:</label>
+            <select
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              name='type'
+              id='type'
+              value={type}
+              onChange={(e) => {
+                onChange(e);
+              }}
+            >
+              <option value='Personal Loan'>Personal Loan</option>
+              <option value='Salary Loan'>Salary Loan</option>
+              <option value='Business Loan'>Business Loan</option>
+            </select>
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='maturity_date'>Status:</label>
+            <select
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              name='status'
+              id='status'
+              value={status}
+              onChange={(e) => {
+                onChange(e);
+              }}
+            >
+              <option value='Approved'>Approved</option>
+              <option value='Disbursed'>Disbursed</option>
+              <option value='Pending'>Pending</option>
+              <option value='Declined'>Declined</option>
+            </select>
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='gross_loan'>Gross Loan:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Gross Loan'
+              name='gross_loan'
+              value={gross_loan}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='gross_loan'>Balance:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Balance'
+              name='balance'
+              value={balance}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='amort'>Amortization:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Amortization'
+              name='amort'
+              value={amort}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='terms'>Terms:</label>
+            <select
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              name='terms'
+              id='terms'
+              value={terms}
+              onChange={(e) => {
+                onChange(e);
+              }}
+            >
+              <option value='1'>1 Month</option>
+              <option value='2'>2 Months</option>
+              <option value='3'>3 Months</option>
+              <option value='4'>4 Months</option>
+              <option value='5'>5 Months</option>
+              <option value='6'>6 Months</option>
+              <option value='12'>12 Months</option>
+            </select>
+          </div>
+          {/*  */}
+          <div>
+            <label htmlFor='date_released'>Date Released:</label>
+            <input
+              type='date'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Date Released'
+              name='date_released'
+              value={date_released}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
 
           {/*  */}
-          <label htmlFor='maturity_date'>Status:</label>
-          <select
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            name='status'
-            id='status'
-            value={status}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          >
-            <option value='Approved'>Approved</option>
-            <option value='Disbursed'>Disbursed</option>
-            <option value='Pending'>Pending</option>
-            <option value='Declined'>Declined</option>
-          </select>
+          <div>
+            <label htmlFor='maturity_date'>Maturity Date:</label>
+            <input
+              type='date'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='Maturity Date'
+              name='maturity_date'
+              value={maturity_date}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
 
-          <label htmlFor='gross_loan'>Gross Loan:</label>
-          <input
-            type='number'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Gross Loan'
-            name='gross_loan'
-            value={gross_loan}
-            onChange={(e) => onChange(e)}
-          />
-
-          {/*  */}
-          <label htmlFor='gross_loan'>Balance:</label>
-          <input
-            type='number'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Balance'
-            name='balance'
-            value={balance}
-            onChange={(e) => onChange(e)}
-          />
-
-          <label htmlFor='amort'>Amortization:</label>
-          <input
-            type='number'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Amortization'
-            name='amort'
-            value={amort}
-            onChange={(e) => onChange(e)}
-          />
-
-          <label htmlFor='terms'>Terms:</label>
-
-          <select
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            name='terms'
-            id='terms'
-            value={terms}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          >
-            <option value='1'>1 Month</option>
-            <option value='2'>2 Months</option>
-            <option value='3'>3 Months</option>
-            <option value='4'>4 Months</option>
-            <option value='5'>5 Months</option>
-            <option value='6'>6 Months</option>
-            <option value='12'>12 Months</option>
-          </select>
-
-          <label htmlFor='date_released'>Date Released:</label>
-          <input
-            type='date'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Date Released'
-            name='date_released'
-            value={date_released}
-            onChange={(e) => onChange(e)}
-          />
-
-          <label htmlFor='maturity_date'>Maturity Date:</label>
-          <input
-            type='date'
-            className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
-            placeholder='Maturity Date'
-            name='maturity_date'
-            value={maturity_date}
-            onChange={(e) => onChange(e)}
-          />
-          <br />
-
-          <button
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/6 ml-auto '
-            type='submit'
-          >
-            Add New Loan
-          </button>
-
-          <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/6 ml-10'>
-            <Link to={`/loans`}>Cancel</Link>
-          </button>
+          {/* BUTTONS */}
+          <div className='mt-10'>
+            <button
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto ml-auto '
+              type='submit'
+            >
+              Add New Loan
+            </button>
+            <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'>
+              <Link to={`/loans`}>Cancel</Link>
+            </button>
+          </div>
         </form>
       </div>
     </div>
