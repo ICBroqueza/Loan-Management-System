@@ -1,3 +1,4 @@
+import { ArrowBackIosNewOutlined } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
@@ -68,7 +69,14 @@ const EditBorrower = () => {
 
       <div className='w-full'>
         <div className='container ml-10 flex flex-col px-2'>
-          <h1 className='text-xl my-5'>Update Client</h1>
+          <span>
+            <Link to={`/borrower/${clientId}`}>
+              <ArrowBackIosNewOutlined />
+            </Link>
+          </span>
+          <h1 className='text-xl my-5'>Update Client #{clientId}</h1>
+
+          {/*  */}
           <form
             onSubmit={(e) => {
               onSubmit(e);
