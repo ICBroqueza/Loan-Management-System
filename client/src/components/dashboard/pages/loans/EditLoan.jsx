@@ -49,6 +49,8 @@ const EditLoan = () => {
         maturity_date,
       };
 
+      console.log(body);
+
       const response = await fetch(`http://localhost:8000/loans/${loanId}`, {
         method: 'PATCH',
         headers: {

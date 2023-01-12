@@ -75,15 +75,15 @@ const LoanInfo = () => {
             <thead>
               <tr>
                 <th className='w-1/1 px-1 py-2 text-gray-600'>Voucher</th>
-                <th className='w-1/5 px-1 py-2 text-gray-600'>Loan Type</th>
-                <th className='w-1/5 px-1 py-2 text-gray-600'>
+                <th className='w-1/6 px-1 py-2 text-gray-600'>Loan Type</th>
+                <th className='w-1/6 px-1 py-2 text-gray-600'>
                   Outstanding Balance
                 </th>
-                <th className='w-1/5 px-4 py-2 text-gray-600'>Gross Loan</th>
-                <th className='w-1/5 px-4 py-2 text-gray-600'>Amortization</th>
-                <th className='w-1/5 px-4 py-2 text-gray-600'>Terms</th>
-                <th className='w-1/5 px-4 py-2 text-gray-600'>Date Released</th>
-                <th className='w-1/5 px-4 py-2 text-gray-600'>Status</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Gross Loan</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Amortization</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Terms</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Date Released</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Status</th>
                 <th className='w-1/1 px-4 py-2 text-gray-600'>Actions</th>
               </tr>
             </thead>
@@ -119,23 +119,6 @@ const LoanInfo = () => {
                         {new Date(loan.date_released).toDateString()}
                       </td>
                       <td className='border px-4 py-2 '>
-                        {/* {loan.status === 'Approved' ? (
-                          <span className=' bg-green-300 text-white px-4 py-1 rounded-md'>
-                            Approved
-                          </span>
-                        ) : loan.status === 'Declined' ? (
-                          <span className=' bg-red-300 text-white px-4 py-1 rounded-md'>
-                            Declined
-                          </span>
-                        ) : loan.status === 'Disbursed' ? (
-                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
-                            Disbursed
-                          </span>
-                        ) : (
-                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
-                            Pending
-                          </span>
-                        )} */}
                         {loan.status === 'Approved' ||
                         loan.status === 'Fully Paid' ? (
                           <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>

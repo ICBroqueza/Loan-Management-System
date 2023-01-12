@@ -288,7 +288,7 @@ app.patch('/loans/:id', auth, async (req, res) => {
     } = req.body;
 
     const updateLoan = await pool.query(
-      `UPDATE loans SET type = '${type}', balance = '${balance}', gross_loan = ${gross_loan}, amort = ${amort}, terms = ${terms}, date_released = '${date_released}', maturity_date = '${maturity_date}', status = '${status}' WHERE id = ${id} AND client_id = ${req.user.id} RETURNING *`
+      `UPDATE loans SET type = '${type}', balance = '${balance}', gross_loan = ${gross_loan}, amort = ${amort}, terms = ${terms}, date_released = '${date_released}', maturity_date = '${maturity_date}', status = '${status}' WHERE id = ${id} RETURNING *`
     );
 
     // If id is not the real user
@@ -296,6 +296,7 @@ app.patch('/loans/:id', auth, async (req, res) => {
     //   return res.json('This loan is not yours');
     // }
 
+    console.log(updateLoan.rows);
     res.json(updateLoan.rows);
   } catch (error) {
     console.log(error.message);
