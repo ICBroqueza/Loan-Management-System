@@ -68,11 +68,11 @@ const PaymentsInfo = () => {
           <thead>
             <tr>
               <th className='w-1/1 px-1 py-2 text-gray-600'>Voucher</th>
-              <th className='w-1/4 px-1 py-2 text-gray-600'>Amount</th>
-              <th className='w-1/4 px-4 py-2 text-gray-600'>Collection Date</th>
-              <th className='w-1/4 px-1 py-2 text-gray-600'>New Balance</th>
-              <th className='w-1/4 px-4 py-2 text-gray-600'>Collected By:</th>
-              <th className='w-1/4 px-4 py-2 text-gray-600'>Method</th>
+              <th className='w-1/5 px-1 py-2 text-gray-600'>Amount</th>
+              <th className='w-1/5 px-4 py-2 text-gray-600'>Collection Date</th>
+              <th className='w-1/5 px-1 py-2 text-gray-600'>New Balance</th>
+              <th className='w-1/5 px-4 py-2 text-gray-600'>Collected By:</th>
+              <th className='w-1/5 px-4 py-2 text-gray-600'>Method</th>
             </tr>
           </thead>
           <tbody>
@@ -95,12 +95,33 @@ const PaymentsInfo = () => {
                     <td className='border px-4 py-2 bg-gray-50'>
                       {new Date(payment.collection_date).toDateString()}
                     </td>
-                    <td className='border px-4 py-2'>{payment.new_balance}</td>
+                    <td className='border px-4 py-2'>
+                      ₱ {payment.new_balance}
+                    </td>
                     <td className='border px-4 py-2 bg-gray-50'>
                       {payment.collected_by}
                     </td>
-                    <td className='border px-4 py-2 bg-gray-50'>
+                    {/* <td className='border px-4 py-2 bg-gray-50'>
                       {payment.method}
+                    </td> */}
+                    <td className='border px-4 py-2 '>
+                      {payment.method === 'ATM' ? (
+                        <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
+                          {payment.method}
+                        </span>
+                      ) : payment.method === 'OTC' ? (
+                        <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
+                          {payment.method}
+                        </span>
+                      ) : payment.method === 'ONLINE BANK' ? (
+                        <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                          {payment.method}
+                        </span>
+                      ) : (
+                        <span className=' bg-blue-500 text-white px-4 py-1 rounded-md'>
+                          {payment.method}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 );
