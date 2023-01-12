@@ -41,7 +41,7 @@ const GetAllLoans = ({ setAuth }) => {
   }, []);
 
   return (
-    <div className='flex flex-1 flex-column w-screen'>
+    <div className='flex w-full'>
       {/* Loans Information */}
       <div className='w-full mx-auto px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded '>
         <div className='px-4 py-5 sm:px-6 bg-red-500'>

@@ -296,7 +296,7 @@ app.patch('/loans/:id', auth, async (req, res) => {
     //   return res.json('This loan is not yours');
     // }
 
-    console.log(updateLoan.rows);
+    // console.log(updateLoan.rows);
     res.json(updateLoan.rows);
   } catch (error) {
     console.log(error.message);
