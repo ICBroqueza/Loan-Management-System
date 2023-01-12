@@ -364,7 +364,8 @@ app.get('/payments/:id', auth, async (req, res) => {
     const id = req.params['id'];
 
     const getPayments = await pool.query(
-      `SELECT p.loan_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, p.id, p.amount, p.collection_date, p.new_balance, p.collected_by, p.method FROM payments AS p INNER JOIN loans AS l ON p.loan_id = l.id WHERE l.id = ${id};`
+      // `SELECT p.loan_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, p.id, p.amount, p.collection_date, p.new_balance, p.collected_by, p.method FROM payments AS p INNER JOIN loans AS l ON p.loan_id = l.id WHERE l.id = ${id};`
+      `SELECT * FROM payments WHERE client_id = ${id};`
     );
 
     res.json(getPayments.rows);

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const PaymentsInfo = ({ loanId }) => {
+const PaymentsInfo = () => {
   const [payments, setPayments] = useState([]);
 
   const location = useLocation();
@@ -12,34 +12,37 @@ const PaymentsInfo = ({ loanId }) => {
 
   const GetPayments = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/payments/${loanId}`, {
-        method: 'GET',
-        headers: { Authorization: localStorage.getItem('token') },
-      });
+      const response = await fetch(
+        `http://localhost:8000/payments/${clientId}`,
+        {
+          method: 'GET',
+          headers: { Authorization: localStorage.getItem('token') },
+        }
+      );
 
       const parseRes = await response.json();
 
-      setLoans(parseRes);
-      console.log(loans);
+      setPayments(parseRes);
       // console.log(parseRes);
     } catch (error) {
       console.log(error.message);
     }
   };
+  console.log(payments);
 
   // Delete loan Function
-  async function deleteLoan(id) {
-    try {
-      await fetch(`http://localhost:8000/loans/${id}`, {
-        method: 'DELETE',
-        headers: { Authorization: localStorage.getItem('token') },
-      });
+  // async function deleteLoan(id) {
+  //   try {
+  //     await fetch(`http://localhost:8000/loans/${id}`, {
+  //       method: 'DELETE',
+  //       headers: { Authorization: localStorage.getItem('token') },
+  //     });
 
-      setLoans(loans.filter((loan) => loan.id !== id));
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  //     setLoans(loans.filter((loan) => loan.id !== id));
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   useEffect(() => {
     GetPayments();
@@ -48,7 +51,7 @@ const PaymentsInfo = ({ loanId }) => {
   return (
     <div>
       {/* Payment History */}
-      {/* <div>
+      <div>
         <div className='flex items-center justify-between border-y-2 mt-5'>
           <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
             Payment History
@@ -60,22 +63,20 @@ const PaymentsInfo = ({ loanId }) => {
             Add Payment
           </button>
         </div>
+        <div>{/* {payments.map} */}</div>
         <table className='table-fixed text-center '>
           <thead>
             <tr>
               <th className='w-1/1 px-1 py-2 text-gray-600'>Voucher</th>
-              <th className='w-1/4 px-1 py-2 text-gray-600'>
-                Outstanding Balance
-              </th>
-              <th className='w-1/4 px-4 py-2 text-gray-600'>Amortization</th>
-              <th className='w-1/4 px-1 py-2 text-gray-600'>Payment</th>
-              <th className='w-1/4 px-4 py-2 text-gray-600'>
-                Date of Transaction
-              </th>
+              <th className='w-1/4 px-1 py-2 text-gray-600'>Amount</th>
+              <th className='w-1/4 px-4 py-2 text-gray-600'>Collection Date</th>
+              <th className='w-1/4 px-1 py-2 text-gray-600'>New Balance</th>
+              <th className='w-1/4 px-4 py-2 text-gray-600'>Collected By:</th>
+              <th className='w-1/4 px-4 py-2 text-gray-600'>Method</th>
             </tr>
           </thead>
           <tbody>
-            {loans.length <= 0 ? (
+            {payments.length <= 0 ? (
               <tr className='border px-4 py-2 bg-red-50'>
                 <td></td>
                 <td></td>
@@ -84,17 +85,22 @@ const PaymentsInfo = ({ loanId }) => {
                 <td></td>
               </tr>
             ) : (
-              loans.map((loan, index) => {
+              payments.map((payment, index) => {
                 return (
                   <tr key={index}>
-                    <td className='border px-4 py-2 bg-gray-50'>{loan.id}</td>
-                    <td className='border px-4 py-2 '>₱ {loan.gross_loan}</td>
                     <td className='border px-4 py-2 bg-gray-50'>
-                      ₱ {loan.amort}
+                      {payment.loan_id}
                     </td>
-                    <td className='border px-4 py-2'>₱ 0</td>
+                    <td className='border px-4 py-2 '>₱ {payment.amount}</td>
                     <td className='border px-4 py-2 bg-gray-50'>
-                      {new Date(loan.date_released).toDateString()}
+                      {new Date(payment.collection_date).toDateString()}
+                    </td>
+                    <td className='border px-4 py-2'>{payment.new_balance}</td>
+                    <td className='border px-4 py-2 bg-gray-50'>
+                      {payment.collected_by}
+                    </td>
+                    <td className='border px-4 py-2 bg-gray-50'>
+                      {payment.method}
                     </td>
                   </tr>
                 );
@@ -102,7 +108,7 @@ const PaymentsInfo = ({ loanId }) => {
             )}
           </tbody>
         </table>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -2,9 +2,11 @@ import { DeleteForever, Edit, Update } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PaymentsInfo from '../payments/ListPayments';
 
 const LoanInfo = () => {
   const [loans, setLoans] = useState([]);
+  const [loanId, setLoanId] = useState();
 
   const location = useLocation();
 
@@ -21,11 +23,12 @@ const LoanInfo = () => {
 
       setLoans(parseRes);
       console.log(loans);
-      // console.log(parseRes);
+      console.log(loanId);
     } catch (error) {
       console.log(error.message);
     }
   };
+  console.log(loanId);
 
   // Delete loan Function
   async function deleteLoan(id) {
@@ -161,7 +164,7 @@ const LoanInfo = () => {
         </div>
 
         {/* Payment History */}
-        <div>
+        {/* <div>
           <div className='flex items-center justify-between border-y-2 mt-5'>
             <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
               Payment History
@@ -215,7 +218,9 @@ const LoanInfo = () => {
               )}
             </tbody>
           </table>
-        </div>
+        </div> */}
+
+        <PaymentsInfo />
       </div>
     </div>
   );
