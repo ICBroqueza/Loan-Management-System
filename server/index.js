@@ -346,6 +346,66 @@ app.delete('/loans/:id', auth, async (req, res) => {
   }
 });
 
+//* PAYMENTS
+// View all payments
+app.get('/allPayments', auth, async (req, res) => {
+  try {
+    const getPayments = await pool.query(`SELECT * FROM payments`);
+
+    res.json(getPayments.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// View all client payments to single loan
+app.get('/payments/:id', auth, async (req, res) => {
+  try {
+    const id = req.params['id'];
+
+    const getPayments = await pool.query(
+      `SELECT p.loan_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, p.id, p.amount, p.pay_date FROM payments AS p INNER JOIN loans AS l ON p.loan_id = l.id WHERE l.id = ${id};`
+    );
+
+    res.json(getPayments.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// Create payment for single loan
+app.post('/payments/:id', auth, async (req, res) => {
+  try {
+    const id = req.params['id'];
+
+    const { amount, pay_date, new_balance } = req.body;
+
+    const addPayment = await pool.query(
+      `INSERT INTO PAYMENTS (amount, pay_date, new_balance, loan_id) VALUES (${amount}, '${pay_date}', ${new_balance}, ${id}) RETURNING *`
+    );
+
+    res.json(addPayment.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.post('/loans/', auth, async (req, res) => {
+  try {
+    const { amount, pay_date, loan_id, new_balance } = req.body;
+
+    const addPayment = await pool.query(
+      `INSERT INTO PAYMENTS (amount, pay_date, new_balance, loan_id) VALUES (${amount}, '${pay_date}', ${new_balance}, ${loan_id} RETURNING *`
+    );
+
+    res.json(addPayment.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+//
+
 //* CLIENTS
 // app.get('/profile', auth, async (req, res) => {
 //   try {
