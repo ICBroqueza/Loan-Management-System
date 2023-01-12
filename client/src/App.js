@@ -26,6 +26,7 @@ import EditLoan from './components/dashboard/pages/loans/EditLoan';
 import EditBorrower from './components/dashboard/pages/borrowers/EditBorrower';
 import AddLoans from './components/dashboard/pages/loans/AddLoans';
 import AddPayments from './components/dashboard/pages/payments/AddPayments';
+import Payments from './components/dashboard/pages/payments/AllPayments';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -199,6 +200,9 @@ function App() {
               ></Route>
 
               {/* PAYMENTS */}
+              {/* ALL PAYMENTS */}
+              <Route exact path='/payments' element={<Payments />}></Route>
+
               {/* ADD PAYMENT (BORROWER PAGE)*/}
               <Route
                 exact

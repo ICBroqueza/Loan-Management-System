@@ -350,7 +350,9 @@ app.delete('/loans/:id', auth, async (req, res) => {
 // View all payments
 app.get('/allPayments', auth, async (req, res) => {
   try {
-    const getPayments = await pool.query(`SELECT * FROM payments`);
+    const getPayments = await pool.query(
+      `SELECT c.firstname, c.lastname, p.id, p.amount, p.collection_date, p.new_balance, p.collected_by, p.method, p.loan_id FROM payments AS p INNER JOIN clients AS c ON p.client_id = c.id WHERE c.id = p.client_id`
+    );
 
     res.json(getPayments.rows);
   } catch (error) {
