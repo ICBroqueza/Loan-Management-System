@@ -69,8 +69,19 @@ const AddLoan = () => {
       </div>
       {/* Add Loan */}
       <div className='container ml-10 py-2 flex-1 flex flex-col px-2'>
-        <h1 className='text-xl my-5'>New Loan</h1>
+        {/* TITLE */}
+        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
+          <h3 className='text-lg font-medium leading-6 text-white'>
+            New Loan for Client #{clientId}
+          </h3>
+          <p className='mt-1 max-w-2xl text-sm text-white'>
+            Add a loan for a client
+          </p>
+        </div>
+
+        {/* FORM */}
         <form className='d-flex' onSubmit={onSubmit}>
+          {/* TYPE */}
           <label htmlFor='type'>Type of Loan:</label>
           <select
             className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
@@ -86,6 +97,7 @@ const AddLoan = () => {
             <option value='Business Loan'>Business Loan</option>
           </select>
 
+          {/* GROSS LOAN */}
           <label htmlFor='gross_loan'>Gross Loan:</label>
           <input
             type='number'
@@ -96,6 +108,7 @@ const AddLoan = () => {
             onChange={(e) => onChange(e)}
           />
 
+          {/* AMORTIZATION */}
           <label htmlFor='amort'>Amortization:</label>
           <input
             type='number'
@@ -106,8 +119,8 @@ const AddLoan = () => {
             onChange={(e) => onChange(e)}
           />
 
+          {/* TERMS */}
           <label htmlFor='terms'>Terms:</label>
-
           <select
             className='block border border-grey-500 w-1/2 p-3 rounded mb-4'
             name='terms'
@@ -126,6 +139,7 @@ const AddLoan = () => {
             <option value='12'>12 Months</option>
           </select>
 
+          {/* DATE RELEASED */}
           <label htmlFor='date_released'>Date Released:</label>
           <input
             type='date'
@@ -136,6 +150,7 @@ const AddLoan = () => {
             onChange={(e) => onChange(e)}
           />
 
+          {/* MATURITY DATE */}
           <label htmlFor='maturity_date'>Maturity Date:</label>
           <input
             type='date'

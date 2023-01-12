@@ -17,7 +17,7 @@ const GetAllLoans = ({ setAuth }) => {
       const parseRes = await response.json();
 
       setLoans(parseRes);
-      // console.log(parseRes);
+      console.log(parseRes[0].id);
     } catch (error) {
       console.log(error.message);
     }
@@ -189,8 +189,9 @@ const GetAllLoans = ({ setAuth }) => {
                         {/* <span className='border bg-green-600 text-white px-5 py-1 rounded-md'>
                           {loan.status}
                         </span> */}
-                        {loan.status === 'Approved' &&
-                        loan.status === 'Fully Paid' ? (
+                        {loan.status === 'Approved' ||
+                        loan.status === 'Fully Paid' ||
+                        loan.status === 'Disbursed' ? (
                           <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
@@ -198,12 +199,8 @@ const GetAllLoans = ({ setAuth }) => {
                           <span className=' bg-red-400 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
-                        ) : loan.status === 'Pending' ? (
-                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
-                            {loan.status}
-                          </span>
                         ) : (
-                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
                             {loan.status}
                           </span>
                         )}

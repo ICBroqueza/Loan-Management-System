@@ -131,7 +131,7 @@ const EditLoan = () => {
                 }}
               >
                 <option value='Approved'>Approved</option>
-                <option value='Approved'>Fully Paid</option>
+                <option value='Fully Paid'>Fully Paid</option>
                 <option value='Disbursed'>Disbursed</option>
                 <option value='Pending'>Pending</option>
                 <option value='Declined'>Declined</option>
