@@ -364,7 +364,7 @@ app.get('/payments/:id', auth, async (req, res) => {
     const id = req.params['id'];
 
     const getPayments = await pool.query(
-      `SELECT p.loan_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, p.id, p.amount, p.pay_date FROM payments AS p INNER JOIN loans AS l ON p.loan_id = l.id WHERE l.id = ${id};`
+      `SELECT p.loan_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, p.id, p.amount, p.collection_date, p.new_balance, p.collected_by, p.method FROM payments AS p INNER JOIN loans AS l ON p.loan_id = l.id WHERE l.id = ${id};`
     );
 
     res.json(getPayments.rows);
@@ -378,10 +378,17 @@ app.post('/payments/:id', auth, async (req, res) => {
   try {
     const id = req.params['id'];
 
-    const { amount, pay_date, new_balance } = req.body;
+    const {
+      amount,
+      collection_date,
+      collected_by,
+      new_balance,
+      method,
+      loan_id,
+    } = req.body;
 
     const addPayment = await pool.query(
-      `INSERT INTO PAYMENTS (amount, pay_date, new_balance, loan_id) VALUES (${amount}, '${pay_date}', ${new_balance}, ${id}) RETURNING *`
+      `INSERT INTO PAYMENTS (amount, collection_date, collected_by, new_balance, method, loan_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}',  ${id}) RETURNING *`
     );
 
     res.json(addPayment.rows[0]);
@@ -392,10 +399,17 @@ app.post('/payments/:id', auth, async (req, res) => {
 
 app.post('/loans/', auth, async (req, res) => {
   try {
-    const { amount, pay_date, loan_id, new_balance } = req.body;
+    const {
+      amount,
+      collection_date,
+      collected_by,
+      new_balance,
+      method,
+      loan_id,
+    } = req.body;
 
     const addPayment = await pool.query(
-      `INSERT INTO PAYMENTS (amount, pay_date, new_balance, loan_id) VALUES (${amount}, '${pay_date}', ${new_balance}, ${loan_id} RETURNING *`
+      `INSERT INTO PAYMENTS (amount, collection_date, collected_by, new_balance, method, loan_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}', ${loan_id}) RETURNING *`
     );
 
     res.json(addPayment.rows[0]);
