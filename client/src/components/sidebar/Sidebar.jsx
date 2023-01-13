@@ -47,7 +47,7 @@ export default function Sidebar({ setAuth }) {
 
             <li className='text-sm font-medium text-gray-700 py-2 px-2 hover:bg-red-500 hover:text-white hover:text-base rounded-md transition duration-150 ease-in-out'>
               <MailOutline />
-              <Link to='/' className='ml-2.5'>
+              <Link to='/message' className='ml-2.5'>
                 Messages
               </Link>
             </li>
