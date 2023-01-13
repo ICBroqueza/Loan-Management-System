@@ -46,10 +46,10 @@ const GetAllLoans = ({ setAuth }) => {
       <div className='w-full mx-auto px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded '>
         <div className='px-4 py-5 sm:px-6 bg-red-500'>
           <h3 className='text-lg font-medium leading-6 text-white'>
-            Loan Information
+            Loans Report
           </h3>
           <p className='mt-1 max-w-2xl text-sm text-white'>
-            Loan transactions and payments.
+            Loans summary and informations.
           </p>
         </div>
 

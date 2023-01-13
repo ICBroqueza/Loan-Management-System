@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
+import UpdateBalance from './UpdateBalance';
 import PaymentLoansInfo from './ViewLoans';
 
 const AddPayments = () => {
@@ -58,22 +59,43 @@ const AddPayments = () => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
+      console.log(parseRes.loan_id);
+      console.log(parseRes.new_balance);
 
-      setInputs({
-        amount: '',
-        collection_date: '',
-        collected_by: '',
-        new_balance: '',
-        method: '',
-        loan_id: '',
-      });
+      // UPDATE BALANCE
+      // async function updateLoan(id) {
+      //   try {
+      //     await fetch(`http://localhost:8000/loans/${id}`, {
+      //       method: 'PATCH',
+      //       headers: { Authorization: localStorage.getItem('token') },
+      //     });
+
+      //     setInputs({
+      //       amount: '',
+      //       collection_date: '',
+      //       collected_by: '',
+      //       new_balance: '',
+      //       method: '',
+      //       loan_id: '',
+      //     });
+      //   } catch (error) {
+      //     console.log(error.message);
+      //   }
+      // }
+
+      // setInputs({
+      //   amount: '',
+      //   collection_date: '',
+      //   collected_by: '',
+      //   new_balance: '',
+      //   method: '',
+      //   loan_id: '',
+      // });
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  console.log();
   return (
     <div className='flex'>
       <div>
@@ -154,19 +176,6 @@ const AddPayments = () => {
             />
           </div>
 
-          {/* NEW BALANCE */}
-          <div>
-            <label htmlFor='gross_loan'>New Balance:</label>
-            <input
-              type='number'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
-              placeholder='New Balance'
-              name='new_balance'
-              value={new_balance}
-              onChange={(e) => onChange(e)}
-            />
-          </div>
-
           {/* METHOD */}
           <div>
             <label htmlFor='terms'>Method:</label>
@@ -186,6 +195,25 @@ const AddPayments = () => {
             </select>
           </div>
 
+          {/* NEW BALANCE */}
+          {/* <div>
+            <label htmlFor='new_balance'>New Balance:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              placeholder='New Balance'
+              disabled
+              name='new_balance'
+              value={16000 - amount}
+              onChange={(e) => onChange(e)}
+            />
+          </div> */}
+          <UpdateBalance
+            amount={1600 - amount}
+            loan_id={loan_id}
+            change={(e) => onChange(e)}
+          />
+
           {/* BUTTONS */}
           <div>
             <button
@@ -194,9 +222,16 @@ const AddPayments = () => {
             >
               Add Payment
             </button>
+            {/* <UpdateBalance balance={new_balance} loan_id={loan_id} /> */}
             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'>
               <Link to={`/borrower/${clientId}`}>Cancel</Link>
             </button>
+            {/* <button
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
+              onClick={() => updateLoan(loan_id)}
+            >
+              Update Balance
+            </button> */}
           </div>
 
           {/*  */}

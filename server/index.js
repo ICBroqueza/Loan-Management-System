@@ -421,6 +421,29 @@ app.post('/loans/', auth, async (req, res) => {
   }
 });
 
+// UPDATE BALANCE AFTER PAYMENT
+app.patch('/updateBalance/:id', auth, async (req, res) => {
+  try {
+    const id = req.params['id'];
+
+    const { new_balance } = req.body;
+
+    const updateLoan = await pool.query(
+      `UPDATE loans SET balance = ${new_balance} WHERE id = ${id} RETURNING *`
+    );
+
+    // If id is not the real user
+    // if (updateLoan.rows.length === 0) {
+    //   return res.json('This loan is not yours');
+    // }
+
+    console.log(updateLoan.rows);
+    res.json(updateLoan.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 //
 
 //* CLIENTS

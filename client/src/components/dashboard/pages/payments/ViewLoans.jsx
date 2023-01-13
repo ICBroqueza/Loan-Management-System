@@ -22,8 +22,6 @@ const PaymentLoansInfo = () => {
       const parseRes = await response.json();
 
       setLoans(parseRes);
-      console.log(loans);
-      console.log(loanId);
     } catch (error) {
       console.log(error.message);
     }
