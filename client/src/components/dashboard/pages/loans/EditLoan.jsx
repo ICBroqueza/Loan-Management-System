@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
-import LoanInfo from './Loan';
+import OneLoan from './OneLoan';
 
 const EditLoan = () => {
   const [inputs, setInputs] = useState({
@@ -87,7 +87,8 @@ const EditLoan = () => {
 
       <div className='w-full'>
         <div className='container ml-10 flex flex-col px-2'>
-          <div className='px-4 py-5 sm:px-6 bg-red-500 mb-10'>
+          {/* TITLE */}
+          <div className='px-4 py-5 sm:px-6 bg-red-500 '>
             <h3 className='text-lg font-medium leading-6 text-white'>
               <span className=''>Loan Voucher # {loanId}</span>
             </h3>
@@ -96,6 +97,10 @@ const EditLoan = () => {
             </p>
           </div>
 
+          <OneLoan />
+          <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-4 border-y-2 '>
+            Edit Form
+          </h3>
           <form
             onSubmit={(e) => {
               onSubmit(e);

@@ -220,19 +220,20 @@ app.get('/loans/:id', auth, async (req, res) => {
   }
 });
 
-// app.get('/loans/:id', auth, async (req, res) => {
-//   try {
-//     const { id } = req.params;
+// Get loan
+app.get('/loan/:id', auth, async (req, res) => {
+  try {
+    const id = req.params['id'];
 
-//     const getClient = await pool.query(
-//       `SELECT c.firstname, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE c.id = '${id}'`
-//     );
+    const getClient = await pool.query(
+      `SELECT c.firstname, c.lastname, c.id, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE l.id = '${id}'`
+    );
 
-//     res.json(getClient.rows);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
+    res.json(getClient.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 // Create loan for borrower page
 app.post('/loans/:id', auth, async (req, res) => {

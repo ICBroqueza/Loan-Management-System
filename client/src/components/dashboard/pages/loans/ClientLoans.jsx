@@ -32,7 +32,7 @@ const Loans = ({ setAuth }) => {
         <Sidebar />
       </div>
 
-      <div className=''>
+      <div className='w-full'>
         <GetAllLoans />
       </div>
     </div>
