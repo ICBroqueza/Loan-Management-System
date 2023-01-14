@@ -38,7 +38,7 @@ export default function Message({ email }) {
                   type='text'
                   id='subject'
                   class='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
-                  placeholder='Let us know how we can help you'
+                  placeholder='Type your subject here...'
                   required
                 />
               </div>
