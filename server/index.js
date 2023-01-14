@@ -225,11 +225,11 @@ app.get('/loan/:id', auth, async (req, res) => {
   try {
     const id = req.params['id'];
 
-    const getClient = await pool.query(
-      `SELECT c.firstname, c.lastname, c.id, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE l.id = '${id}'`
+    const getLoan = await pool.query(
+      `SELECT c.firstname, c.lastname, l.id, l.client_id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE l.id = '${id}'`
     );
 
-    res.json(getClient.rows);
+    res.json(getLoan.rows[0]);
   } catch (error) {
     console.log(error.message);
   }
@@ -402,11 +402,11 @@ app.post('/payments/:id', auth, async (req, res) => {
       collected_by,
       new_balance,
       method,
-      loan_id,
+      client_id,
     } = req.body;
 
     const addPayment = await pool.query(
-      `INSERT INTO PAYMENTS (amount, collection_date, collected_by, new_balance, method, loan_id, client_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}',  ${loan_id}, ${id}) RETURNING *`
+      `INSERT INTO PAYMENTS (amount, collection_date, collected_by, new_balance, method, client_id, loan_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}', ${client_id}, ${id}) RETURNING *`
     );
 
     res.json(addPayment.rows[0]);
@@ -427,7 +427,7 @@ app.post('/loans/', auth, async (req, res) => {
     } = req.body;
 
     const addPayment = await pool.query(
-      `INSERT INTO PAYMENTS (amount, collection_date, collected_by, new_balance, method, loan_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}', ${loan_id}) RETURNING *`
+      `INSERT INTO payments (amount, collection_date, collected_by, new_balance, method, loan_id) VALUES (${amount}, '${collection_date}', '${collected_by}', ${new_balance}, '${method}', ${loan_id}) RETURNING *`
     );
 
     res.json(addPayment.rows[0]);

@@ -1,4 +1,10 @@
-import { DeleteForever, Edit, Update } from '@mui/icons-material';
+import {
+  DeleteForever,
+  Edit,
+  Money,
+  Payments,
+  Update,
+} from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -142,17 +148,20 @@ const LoanInfo = () => {
                         )}
                       </td>
 
-                      <td className='border px-4 py-2'>
+                      <td className='border px-4 py-2 flex'>
                         <button
-                          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full text-sm'
+                          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 mb-2 rounded focus:outline-none focus:shadow-outline w-full text-sm'
                           onClick={() => deleteLoan(loan.id)}
                         >
                           <DeleteForever className='text-lg' />
                         </button>
-                        <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
+                        <button className='bg-red-500 hover:bg-red-700 text-white px-3 rounded focus:outline-none focus:shadow-outline h-10 ml-2 mr-2'>
                           <Link to={`/editLoan/${loan.id}`}>
                             <Edit className='text-sm' />
                           </Link>
+                        </button>
+                        <button className='bg-red-500 hover:bg-red-700 text-white font-bold h-10 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
+                          <Link to={`/addPayments/${loan.id}`}>₱</Link>
                         </button>
                       </td>
                     </tr>

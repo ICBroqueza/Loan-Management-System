@@ -23,7 +23,7 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
-import PaymentLoansInfo from './ViewLoans';
+import PaymentLoansInfo from './PaymentLoanInfo';
 
 const UpdateBalance = ({ amount, loan_id, change }) => {
   const [loans, setLoans] = useState([]);

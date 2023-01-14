@@ -72,47 +72,41 @@ const OneLoan = () => {
                   <td></td>
                 </tr>
               ) : (
-                loans.map((loan, index) => {
-                  return (
-                    <tr key={index}>
-                      <td className='border px-4 py-2 bg-gray-50'>{loan.id}</td>
-                      <td className='border px-4 py-2'>{loan.type}</td>
-                      <td className='border px-4 py-2 bg-gray-50'>
-                        ₱ {loan.balance}
-                      </td>
-                      <td className='border px-4 py-2 '>₱ {loan.gross_loan}</td>
-                      <td className='border px-4 py-2 bg-gray-50'>
-                        ₱ {loan.amort}
-                      </td>
-                      <td className='border px-4 py-2 '>
-                        {loan.terms} month/s
-                      </td>
-                      <td className='border px-4 py-2 bg-gray-50'>
-                        {new Date(loan.date_released).toDateString()}
-                      </td>
-                      <td className='border px-4 py-2 '>
-                        {loan.status === 'Approved' ||
-                        loan.status === 'Fully Paid' ? (
-                          <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
-                            {loan.status}
-                          </span>
-                        ) : loan.status === 'Declined' ? (
-                          <span className=' bg-red-400 text-white px-4 py-1 rounded-md'>
-                            {loan.status}
-                          </span>
-                        ) : loan.status === 'Pending' ? (
-                          <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
-                            {loan.status}
-                          </span>
-                        ) : (
-                          <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
-                            {loan.status}
-                          </span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })
+                <tr>
+                  <td className='border px-4 py-2 bg-gray-50'>{loans.id}</td>
+                  <td className='border px-4 py-2'>{loans.type}</td>
+                  <td className='border px-4 py-2 bg-gray-50'>
+                    ₱ {loans.balance}
+                  </td>
+                  <td className='border px-4 py-2 '>₱ {loans.gross_loan}</td>
+                  <td className='border px-4 py-2 bg-gray-50'>
+                    ₱ {loans.amort}
+                  </td>
+                  <td className='border px-4 py-2 '>{loans.terms} month/s</td>
+                  <td className='border px-4 py-2 bg-gray-50'>
+                    {new Date(loans.date_released).toDateString()}
+                  </td>
+                  <td className='border px-4 py-2 '>
+                    {loans.status === 'Approved' ||
+                    loans.status === 'Fully Paid' ? (
+                      <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
+                        {loans.status}
+                      </span>
+                    ) : loans.status === 'Declined' ? (
+                      <span className=' bg-red-400 text-white px-4 py-1 rounded-md'>
+                        {loans.status}
+                      </span>
+                    ) : loans.status === 'Pending' ? (
+                      <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
+                        {loans.status}
+                      </span>
+                    ) : (
+                      <span className=' bg-orange-300 text-white px-4 py-1 rounded-md'>
+                        {loans.status}
+                      </span>
+                    )}
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>

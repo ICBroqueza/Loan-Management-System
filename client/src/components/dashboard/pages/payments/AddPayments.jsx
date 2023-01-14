@@ -4,16 +4,18 @@ import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
 import UpdateBalance from './UpdateBalance';
-import PaymentLoansInfo from './ViewLoans';
+import PaymentLoansInfo from './PaymentLoanInfo';
 
-const AddPayments = () => {
+const AddPayments = ({ loanId, balance, clientId }) => {
+  console.log(clientId);
   const [inputs, setInputs] = useState({
     amount: '',
     collection_date: '',
     collected_by: '',
     new_balance: '',
     method: '',
-    loan_id: '',
+    client_id: clientId,
+    loan_id: loanId,
   });
 
   const onChange = (e) => {
@@ -26,12 +28,9 @@ const AddPayments = () => {
     collected_by,
     new_balance,
     method,
+    client_id,
     loan_id,
   } = inputs;
-
-  const location = useLocation();
-
-  const clientId = location.pathname.split('/')[2];
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -42,79 +41,37 @@ const AddPayments = () => {
         collected_by,
         new_balance,
         method,
+        client_id,
         loan_id,
       };
 
-      const response = await fetch(
-        `http://localhost:8000/payments/${clientId}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: localStorage.getItem('token'),
-          },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await fetch(`http://localhost:8000/payments/${loanId}`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: localStorage.getItem('token'),
+        },
+        body: JSON.stringify(body),
+      });
 
       const parseRes = await response.json();
 
-      console.log(parseRes.loan_id);
-      console.log(parseRes.new_balance);
-
-      // UPDATE BALANCE
-      // async function updateLoan(id) {
-      //   try {
-      //     await fetch(`http://localhost:8000/loans/${id}`, {
-      //       method: 'PATCH',
-      //       headers: { Authorization: localStorage.getItem('token') },
-      //     });
-
-      //     setInputs({
-      //       amount: '',
-      //       collection_date: '',
-      //       collected_by: '',
-      //       new_balance: '',
-      //       method: '',
-      //       loan_id: '',
-      //     });
-      //   } catch (error) {
-      //     console.log(error.message);
-      //   }
-      // }
-
-      // setInputs({
-      //   amount: '',
-      //   collection_date: '',
-      //   collected_by: '',
-      //   new_balance: '',
-      //   method: '',
-      //   loan_id: '',
-      // });
+      console.log(parseRes);
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  console.log(clientId);
+  const n_balance = balance - amount;
+  console.log(n_balance);
+
   return (
     <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
       {/* Add Loan */}
       <div className='container ml-10 py-2 flex-1 flex flex-col px-2'>
-        {/* TITLE */}
-        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
-          <h3 className='text-lg font-medium leading-6 text-white'>
-            Payment for Client #{clientId}
-          </h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Add a payment for a client
-          </p>
-        </div>
-
         {/* LOANS INFO */}
-        <PaymentLoansInfo />
+        {/* <PaymentLoansInfo /> */}
 
         <div className='flex items-center justify-between border-y-2 mt-5'>
           <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
@@ -125,14 +82,40 @@ const AddPayments = () => {
         {/* FORM */}
         <form className='grid grid-cols-2 p-2 mt-2zz' onSubmit={onSubmit}>
           {/* VOUCHER */}
+          <div className='flex'>
+            <div>
+              <label htmlFor='client_id'>Client ID:</label>
+              <input
+                type='number'
+                className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+                name='clientId'
+                value={clientId}
+                // disabled
+              />
+            </div>
+            <div>
+              <label htmlFor='loan_id'>Voucher:</label>
+              <input
+                type='number'
+                className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+                placeholder='Voucher #'
+                name='loan_id'
+                value={loanId}
+                disabled
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
+
+          {/* COLLECTION DATE */}
           <div>
-            <label htmlFor='amount'>Voucher:</label>
+            <label htmlFor='collection_date'>Collection Date:</label>
             <input
-              type='number'
+              type='date'
               className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
-              placeholder='Voucher #'
-              name='loan_id'
-              value={loan_id}
+              placeholder='Collection Date'
+              name='collection_date'
+              value={collection_date}
               onChange={(e) => onChange(e)}
             />
           </div>
@@ -150,19 +133,6 @@ const AddPayments = () => {
             />
           </div>
 
-          {/* COLLECTION DATE */}
-          <div>
-            <label htmlFor='collection_date'>Collection Date:</label>
-            <input
-              type='date'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
-              placeholder='Collection Date'
-              name='collection_date'
-              value={collection_date}
-              onChange={(e) => onChange(e)}
-            />
-          </div>
-
           {/* COLLECTED BY */}
           <div>
             <label htmlFor='collected_by'>Collected By:</label>
@@ -175,6 +145,24 @@ const AddPayments = () => {
               onChange={(e) => onChange(e)}
             />
           </div>
+
+          {/* NEW BALANCE */}
+          <div>
+            <label htmlFor='new_balance'>New Balances:</label>
+            <input
+              type='number'
+              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              name='new_balance'
+              value={n_balance}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+
+          {/* <UpdateBalance
+            amount={1600 - amount}
+            loan_id={loan_id}
+            change={(e) => onChange(e)}
+          /> */}
 
           {/* METHOD */}
           <div>
@@ -195,25 +183,6 @@ const AddPayments = () => {
             </select>
           </div>
 
-          {/* NEW BALANCE */}
-          {/* <div>
-            <label htmlFor='new_balance'>New Balance:</label>
-            <input
-              type='number'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
-              placeholder='New Balance'
-              disabled
-              name='new_balance'
-              value={16000 - amount}
-              onChange={(e) => onChange(e)}
-            />
-          </div> */}
-          <UpdateBalance
-            amount={1600 - amount}
-            loan_id={loan_id}
-            change={(e) => onChange(e)}
-          />
-
           {/* BUTTONS */}
           <div>
             <button
@@ -224,7 +193,7 @@ const AddPayments = () => {
             </button>
             {/* <UpdateBalance balance={new_balance} loan_id={loan_id} /> */}
             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'>
-              <Link to={`/borrower/${clientId}`}>Cancel</Link>
+              <Link to={`/borrowers`}>Cancel</Link>
             </button>
             {/* <button
               className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
