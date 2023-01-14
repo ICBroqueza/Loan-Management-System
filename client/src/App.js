@@ -28,6 +28,7 @@ import AddLoans from './components/dashboard/pages/loans/AddLoans';
 import AddPayments from './components/dashboard/pages/payments/AddPayments';
 import Payments from './components/dashboard/pages/payments/AllPayments';
 import Message from './components/dashboard/pages/messages/Message';
+import EmailPage from './components/dashboard/pages/messages/EmailPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -220,10 +221,10 @@ function App() {
               {/* MESSAGES */}
               <Route
                 exact
-                path='/message'
+                path='/emailClient'
                 element={
                   isAuthenticated ? (
-                    <Message setAuth={setAuth} />
+                    <EmailPage setAuth={setAuth} />
                   ) : (
                     <Navigate to='/home' />
                   )

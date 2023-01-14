@@ -125,6 +125,20 @@ app.get('/client/:id', auth, async (req, res) => {
   }
 });
 
+// Client Email
+app.get('/email/:email', auth, async (req, res) => {
+  try {
+    const email = req.params['email'];
+    const getClient = await pool.query(
+      `SELECT * FROM clients WHERE email = '${email}';`
+    );
+
+    res.json(getClient.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 app.patch('/clients/:id', async (req, res) => {
   try {
     const id = req.params['id'];

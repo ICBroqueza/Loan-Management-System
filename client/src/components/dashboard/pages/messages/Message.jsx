@@ -3,26 +3,12 @@ import Sidebar from '../../../sidebar/Sidebar';
 import Account from '../borrowers/Account';
 import GetBorrowers from './GetBorrowers';
 
-export default function Message() {
+export default function Message({ email }) {
   return (
     <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
-
       <div className='flex w-full'>
         <div class='w-full px-8  bg-white shadow-md rounded'>
-          <div class=' py-5 px-5'>
-            <div className='px-4 py-5 sm:px-6 bg-red-500'>
-              <h3 className='text-lg font-medium leading-6 text-white'>
-                Send Email
-              </h3>
-              <p className='mt-1 max-w-2xl text-sm text-white'>
-                Update your client with their loan.
-              </p>
-            </div>
-
-            <GetBorrowers />
+          <div class=' py-2.5 '>
             <form action='#' class='space-y-8'>
               <div>
                 <label
@@ -34,9 +20,11 @@ export default function Message() {
                 <input
                   type='email'
                   id='email'
+                  value={email}
                   class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 '
                   placeholder='Choose Email'
                   required
+                  // disabled
                 />
               </div>
               <div>
@@ -65,7 +53,7 @@ export default function Message() {
                   id='message'
                   rows='6'
                   class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500'
-                  placeholder='Leave a comment...'
+                  placeholder='Write your message...'
                 ></textarea>
               </div>
               <button

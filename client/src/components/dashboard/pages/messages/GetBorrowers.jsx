@@ -10,9 +10,11 @@ import {
   VisibilityOutlined,
 } from '@mui/icons-material';
 import Sidebar from '../../../sidebar/Sidebar';
+import Message from './Message';
 
 const GetBorrowers = ({ setAuth }) => {
   const [clients, setClients] = useState([]);
+  const [emails, setEmail] = useState('');
 
   const getClients = async () => {
     try {
@@ -30,17 +32,19 @@ const GetBorrowers = ({ setAuth }) => {
       console.log(error);
     }
   };
-  console.log(clients);
+  // console.log(clients[0].email);
+  // setEmail(clients.em)
 
-  // Delete CLIENT Function
-  async function deleteClient(id) {
+  // Select EMAIL CLIENT Function
+  async function selectClient(email) {
     try {
-      await fetch(`http://localhost:8000/clients/${id}`, {
-        method: 'DELETE',
+      await fetch(`http://localhost:8000/email/${email}`, {
+        method: 'GET',
         headers: { Authorization: localStorage.getItem('token') },
       });
 
-      setClients(clients.filter((loan) => loan.id !== id));
+      setEmail(clients.map((client) => email));
+      console.log(emails[0]);
     } catch (error) {
       console.log(error.message);
     }
@@ -50,18 +54,17 @@ const GetBorrowers = ({ setAuth }) => {
     getClients();
   }, []);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     getClients();
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
-
   return (
     <div className='text-gray-900 border-y-2 mt-5'>
+      <div className='px-4 py-5 sm:px-6 bg-red-500'>
+        <h3 className='text-lg font-medium leading-6 text-white'>Send Email</h3>
+        <p className='mt-1 max-w-2xl text-sm text-white'>
+          Update your client with their loan.
+        </p>
+      </div>
       {/* INFO */}
-      <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-2 '>
-        Loan Transactions
+      <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-2 border-y-2 mt-5'>
+        Clients Contact Info
       </h3>
       <table className='table-fixed text-center'>
         <thead className='border-y-2 mt-5'>
@@ -115,7 +118,10 @@ const GetBorrowers = ({ setAuth }) => {
                         </Link>
                         {/* <Borrower clientId={client.id} /> */}
                       </button>
-                      <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
+                      <button
+                        className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '
+                        onClick={() => selectClient(client.email)}
+                      >
                         <Check />
                       </button>
                     </div>
@@ -126,6 +132,11 @@ const GetBorrowers = ({ setAuth }) => {
           )}
         </tbody>
       </table>
+
+      <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-2 border-y-2 mt-5'>
+        Email Form
+      </h3>
+      <Message email={emails[0]} />
     </div>
   );
 };
