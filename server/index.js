@@ -235,6 +235,19 @@ app.get('/loan/:id', auth, async (req, res) => {
   }
 });
 
+// Get loan's maturity date
+app.get('/dates', auth, async (req, res) => {
+  try {
+    const id = req.params['id'];
+
+    const getLoan = await pool.query(`SELECT maturity_date FROM loans`);
+
+    res.json(getLoan.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 // Create loan for borrower page
 app.post('/loans/:id', auth, async (req, res) => {
   try {
