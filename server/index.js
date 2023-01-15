@@ -211,7 +211,7 @@ app.get('/loans/:id', auth, async (req, res) => {
     const id = req.params['id'];
 
     const getClient = await pool.query(
-      `SELECT c.firstname, c.id, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE c.id = '${id}'`
+      `SELECT c.firstname, c.id, l.id, l.type, l.gross_loan, l.amort, l.terms, l.date_released, l.maturity_date, l.balance, l.status, l.client_id FROM loans AS l INNER JOIN clients AS c ON l.client_id = c.id WHERE c.id = '${id}'`
     );
 
     res.json(getClient.rows);
@@ -304,6 +304,27 @@ app.patch('/loans/:id', auth, async (req, res) => {
 
     const updateLoan = await pool.query(
       `UPDATE loans SET type = '${type}', balance = '${balance}', gross_loan = ${gross_loan}, amort = ${amort}, terms = ${terms}, date_released = '${date_released}', maturity_date = '${maturity_date}', status = '${status}' WHERE id = ${id} RETURNING *`
+    );
+
+    // If id is not the real user
+    // if (updateLoan.rows.length === 0) {
+    //   return res.json('This loan is not yours');
+    // }
+
+    // console.log(updateLoan.rows);
+    res.json(updateLoan.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// UPDATE LOAN PAYMENT
+app.patch('/loan/:id', auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const updateLoan = await pool.query(
+      `UPDATE loans SET balance = payments.new_balance FROM payments WHERE payments.loan_id = ${id} RETURNING *`
     );
 
     // If id is not the real user
@@ -454,6 +475,22 @@ app.patch('/updateBalance/:id', auth, async (req, res) => {
 
     console.log(updateLoan.rows);
     res.json(updateLoan.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// PAYMENT W. CLIENT ID AND LOAN ID
+app.get('/payment/:client/:loan', auth, async (req, res) => {
+  try {
+    const client_id = req.params['client'];
+    const loan_id = req.params['loan'];
+
+    const getPayments = await pool.query(
+      `SELECT * FROM payments WHERE client_id = ${client_id} AND loan_id = ${loan_id};`
+    );
+
+    res.json(getPayments.rows);
   } catch (error) {
     console.log(error.message);
   }

@@ -11,8 +11,11 @@ const PaymentLoansInfo = () => {
 
   const location = useLocation();
 
-  const loanId = location.pathname.split('/')[2];
+  const clientId = location.pathname.split('/')[2];
+  const loanId = location.pathname.split('/')[3];
 
+  console.log(loanId);
+  console.log(clientId);
   const GetLoans = async () => {
     try {
       const response = await fetch(`http://localhost:8000/loan/${loanId}`, {
@@ -27,10 +30,21 @@ const PaymentLoansInfo = () => {
       console.log(error.message);
     }
   };
+
+  async function updateLoan() {
+    try {
+      await fetch(`http://localhost:8000/loan/${loanId}`, {
+        method: 'PATCH',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   // console.log(loanId);
 
   // setBalance(loans[0].balance);
-  console.log(loans.client_id);
+  // console.log(loans.client_id);
 
   useEffect(() => {
     GetLoans();
@@ -42,7 +56,7 @@ const PaymentLoansInfo = () => {
         <Sidebar />
       </div>
 
-      <div className='w-full  pb-8 mb-4 bg-white shadow-md rounded '>
+      <div className='w-full mx-auto px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded'>
         {/* TITLE */}
         <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
           <h3 className='text-lg font-medium leading-6 text-white'>
@@ -59,6 +73,12 @@ const PaymentLoansInfo = () => {
             <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
               Client's Loans
             </h3>
+            {/* <button
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto ml-auto '
+              onClick={() => updateLoan()}
+            >
+              Update Loan
+            </button> */}
           </div>
           <table className='table-fixed text-center '>
             <thead>
@@ -128,7 +148,7 @@ const PaymentLoansInfo = () => {
         <AddPayments
           loanId={loanId}
           balance={loans.balance}
-          clientId={loans.client_id}
+          clientId={clientId}
         />
       </div>
     </div>

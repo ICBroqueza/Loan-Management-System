@@ -219,6 +219,18 @@ function App() {
                 }
               ></Route>
 
+              <Route
+                exact
+                path='/payment/:client_id/:loan_id'
+                element={
+                  isAuthenticated ? (
+                    <PaymentLoansInfo setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/loans' />
+                  )
+                }
+              ></Route>
+
               {/* MESSAGES */}
               <Route
                 exact
