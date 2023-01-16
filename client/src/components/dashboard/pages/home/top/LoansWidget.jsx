@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 
 export default function LoansWidget() {
   const [loans, setLoans] = useState([]);
+  const [gross, setGross] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const getLoans = async () => {
     try {
@@ -16,15 +18,22 @@ export default function LoansWidget() {
       // console.log(parseRes);
 
       setLoans(parseRes);
-      console.log(loans);
+
+      setGross(
+        loans.map((loan) => {
+          return Number(loan.gross_loan);
+        })
+      );
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     getLoans();
-  }, []);
+    setTotal(gross.reduce((acc, val) => acc + val, 0));
+  }, [gross]);
 
+  console.log(total);
   // console.log(loans.length);
   return (
     <div className=''>
@@ -38,7 +47,8 @@ export default function LoansWidget() {
         <div className='my-3'>
           <span className='text-3xl'>
             <CreditScore className='mr-3' />
-            {loans.length}
+            {/* {loans.length} */}
+            {new Intl.NumberFormat().format(total)}
           </span>
         </div>
         <span className='text-base text-gray-500'>
