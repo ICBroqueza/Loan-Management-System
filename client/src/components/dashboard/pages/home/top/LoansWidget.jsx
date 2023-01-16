@@ -33,25 +33,25 @@ export default function LoansWidget() {
     setTotal(gross.reduce((acc, val) => acc + val, 0));
   }, [gross]);
 
-  // console.log(total);
   // console.log(loans.length);
   return (
     <div className=''>
       {/* Loans */}
       <div
-        className='w-full  mt-5 p-8 rounded-xl cursor-pointer border border-l-4 border-l-red-500 hover:bg-red-500
+        className='w-full  mt-5 p-8 rounded-xl cursor-pointer border border-t-4 border-t-red-500 hover:bg-red-500
         hover:text-white hover:text-base transition duration-150
-        ease-in-out'
+        ease-in-out shadow-md'
       >
         <span className='text-xl'>Loans</span>
         <div className='my-3'>
           <span className='text-3xl'>
             <CreditScore className='mr-3' />
-            {/* {loans.length} */}
-            {new Intl.NumberFormat().format(total)}
+            {/* {loans.length} */}₱ {new Intl.NumberFormat().format(total)}
           </span>
         </div>
-        <span className='text-base text-gray-500'>Total Loans Released</span>
+        <span className='text-base text-gray-500'>
+          Total Loans Transactions
+        </span>
       </div>
       {/*  */}
     </div>

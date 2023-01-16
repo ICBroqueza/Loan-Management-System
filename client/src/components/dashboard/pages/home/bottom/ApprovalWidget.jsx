@@ -33,13 +33,13 @@ export default function ApprovalWidget() {
   return (
     <div className=''>
       {/* CLIENTS */}
-      <div className='w-full  mt-5 p-8 rounded-xl border border-l-4 border-l-red-500 cursor-pointer'>
+      <div className='w-full  mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
         <div className='flex justify-between items-center'>
           <div className=''>
-            <h3 className='text-xl'>Loans For Approval</h3>
+            <h3 className='text-xl mb-5 border-b-2'>Loans For Approval</h3>
             <table className='w-full border-spacing-5'>
               <thead>
-                <tr className='widgetLgTr'>
+                <tr className=''>
                   <th className='text-left'>Gross Loan</th>
                   <th className='text-left'>Status</th>
                   <th className='text-left'>Actions</th>
