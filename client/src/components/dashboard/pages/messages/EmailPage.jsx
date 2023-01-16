@@ -7,7 +7,7 @@ export default function EmailPage() {
     <div className='flex'>
       <Sidebar />
 
-      <div className='w-full'>
+      <div className='w-full px-8 pt-6 pb-8 mb-4 bg-white rounded'>
         <GetBorrowers />
       </div>
     </div>

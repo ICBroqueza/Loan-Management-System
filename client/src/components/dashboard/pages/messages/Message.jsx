@@ -7,7 +7,7 @@ export default function Message({ email }) {
   return (
     <div className='flex'>
       <div className='flex w-full'>
-        <div class='w-full px-8  bg-white shadow-md rounded'>
+        <div class='w-full px-8  bg-white '>
           <div class=' py-2.5 '>
             <form action='#' class='space-y-8'>
               <div>
