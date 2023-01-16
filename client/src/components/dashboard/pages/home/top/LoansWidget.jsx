@@ -33,7 +33,7 @@ export default function LoansWidget() {
     setTotal(gross.reduce((acc, val) => acc + val, 0));
   }, [gross]);
 
-  console.log(total);
+  // console.log(total);
   // console.log(loans.length);
   return (
     <div className=''>
@@ -51,9 +51,7 @@ export default function LoansWidget() {
             {new Intl.NumberFormat().format(total)}
           </span>
         </div>
-        <span className='text-base text-gray-500'>
-          Total Loans Transactions
-        </span>
+        <span className='text-base text-gray-500'>Total Loans Released</span>
       </div>
       {/*  */}
     </div>

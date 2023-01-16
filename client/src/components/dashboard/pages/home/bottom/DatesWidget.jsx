@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 
 export default function DatesWidget() {
   const [dates, setDates] = useState([]);
+  const [sortedDates, setSortedDates] = useState([]);
 
   const getDates = async () => {
     try {
@@ -25,6 +26,17 @@ export default function DatesWidget() {
 
       setDates(parseRes);
       console.log(dates);
+
+      // const handleSort = () => {
+      //   const mat_dates = [
+      //     dates.map((date) => {
+      //       return Number(dates.maturity_date);
+      //     }),
+      //   ]; // copy of original array
+      //   const sorted = mat_dates.sort((a, b) => new Date(a) - new Date(b));
+      //   setSortedDates(sorted);
+      //   console.log(handleSort());
+      // };
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +45,13 @@ export default function DatesWidget() {
     getDates();
   }, []);
 
-  console.log(dates.sort((a, b) => a.maturity_date - b.maturity_date));
+  // console.log(dates.sort((a, b) => a.maturity_date - b.maturity_date));
+  // console.log(dates);
+  console.log(
+    dates.sort((a, b) => {
+      return new Date(a.maturity_date) - new Date(b.maturity_date);
+    })
+  );
 
   return (
     <div className=''>
