@@ -80,13 +80,23 @@ const AddBorrower = ({ setAuth }) => {
       </div>
 
       <div className='w-full'>
-        <div className='container ml-10 flex flex-col px-2'>
-          <h1 className='text-xl my-5'>Add Client</h1>
+        <div className='w-full px-8 pt-6 pb-8 mb-4 bg-white  rounded '>
+          <div className='px-4 py-5 sm:px-6 bg-red-500 '>
+            <h3 className='text-lg font-medium leading-6 text-white'>
+              <span className=''>Add Client</span>
+            </h3>
+            <p className='mt-1 max-w-2xl text-sm text-white'>
+              Fill up all required infos
+            </p>
+          </div>
           <form
             onSubmit={(e) => {
               onSubmit(e);
             }}
+            className='mt-5'
           >
+            {/* FIRST NAME */}
+            <label htmlFor='firstname'>First Name: </label>
             <input
               type='text'
               className='block border border-grey-500 w-full p-3 rounded mb-4'
@@ -98,6 +108,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='First Name'
               required
             />
+
+            {/* LAST NAME */}
+            <label htmlFor='lastname'>Last Name: </label>
             <input
               type='text'
               className='block border border-grey-500 w-full p-3 rounded mb-4'
@@ -109,6 +122,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Last Name'
               required
             />
+
+            {/* CONTACT NUMBER */}
+            <label htmlFor='contactNumber'>Contact Number: </label>
             <input
               type='number'
               className='block border border-grey-500t w-full p-3 rounded mb-4'
@@ -120,6 +136,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Contact Number'
               required
             />
+
+            {/* ADDRESS */}
+            <label htmlFor='address'>Address: </label>
             <input
               type='text'
               className='block border border-grey-500t w-full p-3 rounded mb-4'
@@ -131,6 +150,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Address'
               required
             />
+
+            {/* EMAIL ADDRESS */}
+            <label htmlFor='email'>Email Address: </label>
             <input
               type='email'
               className='block border border-grey-500t w-full p-3 rounded mb-4'
@@ -142,6 +164,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Email'
               required
             />
+
+            {/* USERNAME */}
+            <label htmlFor='username'>Username: </label>
             <input
               type='text'
               className='block border border-grey-500t w-full p-3 rounded mb-4'
@@ -153,6 +178,9 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Username'
               required
             />
+
+            {/* PASSWORD */}
+            <label htmlFor='password'>Password: </label>
             <input
               type='password'
               className='block border border-grey-500t w-full p-3 rounded mb-4'
@@ -165,6 +193,7 @@ const AddBorrower = ({ setAuth }) => {
               required
             />
 
+            {/* BUTTONS */}
             <button
               type='submit'
               className=' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/6'
