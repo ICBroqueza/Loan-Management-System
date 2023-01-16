@@ -31,18 +31,18 @@ export default function ApprovalWidget() {
   console.log(loans.sort((a, b) => a.maturity_date - b.maturity_date));
 
   return (
-    <div className=''>
+    <div className='w-full '>
       {/* CLIENTS */}
-      <div className='w-full  mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
+      <div className=' mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
         <div className='flex justify-between items-center'>
-          <div className=''>
+          <div className='w-full'>
             <h3 className='text-xl mb-5 border-b-2'>Loans For Approval</h3>
-            <table className='w-full border-spacing-5'>
+            <table className='table-fixed text-center w-full'>
               <thead>
-                <tr className=''>
-                  <th className='text-left'>Gross Loan</th>
-                  <th className='text-left'>Status</th>
-                  <th className='text-left'>Actions</th>
+                <tr className='w-full'>
+                  <th className='w-1/1 px-1 py-2'>Gross Loan</th>
+                  <th className='w-1/1 px-1 py-2'>Status</th>
+                  <th className='w-1/6 px-1 py-2'>Actions</th>
                 </tr>
               </thead>
               <tbody>

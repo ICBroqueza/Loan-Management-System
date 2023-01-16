@@ -28,10 +28,10 @@ export default function ClientsWidget() {
   console.log(clients.length);
 
   return (
-    <div className=''>
+    <div className='w-full'>
       {/* CLIENTS */}
       <div
-        className='w-full  mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer hover:bg-red-500
+        className='mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer hover:bg-red-500
         hover:text-white hover:text-base transition duration-150
         ease-in-out shadow-md'
       >

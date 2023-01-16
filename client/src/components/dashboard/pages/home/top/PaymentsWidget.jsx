@@ -82,7 +82,7 @@ export default function PaymentsWidget() {
   // );
 
   return (
-    <div className=''>
+    <div className='w-full'>
       {/* Payments */}
       <div
         className='w-full  mt-5 p-8 rounded-xl cursor-pointer border border-t-4 border-t-red-500 hover:bg-red-500

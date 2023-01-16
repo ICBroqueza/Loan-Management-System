@@ -54,19 +54,19 @@ export default function DatesWidget() {
   );
 
   return (
-    <div className=''>
+    <div className='w-full'>
       {/* CLIENTS */}
-      <div className='w-full  mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
+      <div className='mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
         <div className='flex justify-between items-center'>
-          <div className=''>
+          <div className='w-full'>
             <h3 className='text-xl mb-5 border-b-2'>Maturity Date</h3>
-            <table className='w-full border-spacing-5'>
+            <table className='table-fixed text-center w-full'>
               <thead className=''>
                 <tr className=''>
-                  <th className='text-left'>Customer</th>
-                  <th className='text-left'>Date</th>
-                  <th className='text-left'>Balance</th>
-                  <th className='text-left'>Email</th>
+                  <th className='w-1/1 px-1 py-2 '>Customer</th>
+                  <th className='w-1/1 px-1 py-2 '>Date</th>
+                  <th className='w-1/1 px-1 py-2 '>Balance</th>
+                  <th className='w-1/6 px-1 py-2 '>Email</th>
                 </tr>
               </thead>
               <tbody>

@@ -55,7 +55,7 @@ const GetBorrowers = ({ setAuth }) => {
   }, []);
 
   return (
-    <div className='text-gray-900 border-y-2 mt-5'>
+    <div className='text-gray-900'>
       <div className='px-4 py-5 sm:px-6 bg-red-500'>
         <h3 className='text-lg font-medium leading-6 text-white'>Send Email</h3>
         <p className='mt-1 max-w-2xl text-sm text-white'>

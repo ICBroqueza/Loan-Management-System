@@ -11,7 +11,7 @@ import {
 
 export default function Sidebar({ setAuth }) {
   return (
-    <div className='flex h-screen drop-shadow-[0_5px_5px_rgba(0,0,0,0.25)]'>
+    <div className='flex h-auto '>
       <div className='bg-white md:block px-5 py-5  w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out flex justify-between items-center '>
         {/* MENU */}
         <div className=''>
