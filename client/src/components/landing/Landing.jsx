@@ -260,26 +260,35 @@ const Landing = () => {
                     ></path>
                   </svg>
                   <span class='text-base font-medium leading-tight text-gray-900 '>
-                    Knowledge management
+                    Loan management
                   </span>
                 </li>
               </ul>
 
               {/* DESCRIPTION 2 */}
               <p class='mb-8 font-light lg:text-xl'>
-                Deliver great service experiences fast - without the complexity
-                of traditional ITSM solutions.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
+                dicta aut, quasi ullam aliquid sed nostrum nesciunt iusto quae
+                incidunt.
               </p>
+            </div>
 
-              {/* IMAGE */}
-              <img src='' alt='' />
+            {/* IMAGE */}
+            <div>
+              <img
+                src='https://i.pinimg.com/564x/bd/4f/32/bd4f32d8958199060ad5e4c04e892bce.jpg'
+                alt=''
+              />
             </div>
           </div>
 
           {/* ITEM 2 */}
           <div class='items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16'>
             {/* IMAGE */}
-            <img src='' alt='' />
+            <img
+              src='https://i.pinimg.com/564x/6f/e0/8f/6fe08f134f55d89ec81c0716c10c7ccf.jpg'
+              alt=''
+            />
 
             {/* TEXT */}
             <div class='text-gray-500 sm:text-lg'>
@@ -290,9 +299,9 @@ const Landing = () => {
 
               {/* DESCRIPTION 1 */}
               <p class='mb-8 font-light lg:text-xl'>
-                Deliver great service experiences fast - without the complexity
-                of traditional ITSM solutions. Accelerate critical development
-                work, eliminate toil, and deploy changes with ease.
+                Instantly notify your clients with their upcoming loan payments.
+                Update them with their balance or tell them that their loan has
+                been approved and ready for disbursement.
               </p>
 
               {/* FEATURES */}
@@ -314,7 +323,7 @@ const Landing = () => {
                     ></path>
                   </svg>
                   <span class='text-base font-medium leading-tight text-gray-900 '>
-                    Dynamic reports and dashboards
+                    Send Email
                   </span>
                 </li>
                 <li class='flex space-x-3'>
@@ -331,7 +340,7 @@ const Landing = () => {
                     ></path>
                   </svg>
                   <span class='text-base font-medium leading-tight text-gray-900 '>
-                    Templates for everyone
+                    Notify clients
                   </span>
                 </li>
                 <li class='flex space-x-3'>
@@ -348,15 +357,16 @@ const Landing = () => {
                     ></path>
                   </svg>
                   <span class='text-base font-medium leading-tight text-gray-900 '>
-                    Development workflow
+                    Send Loan Status / Approvals
                   </span>
                 </li>
               </ul>
 
               {/* DESCRIPTION 2 */}
               <p class='font-light lg:text-xl'>
-                Deliver great service experiences fast - without the complexity
-                of traditional ITSM solutions.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Facilis repudiandae quis commodi odio excepturi exercitationem
+                ipsum et sed nesciunt facere.
               </p>
             </div>
           </div>
