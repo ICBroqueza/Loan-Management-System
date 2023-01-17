@@ -636,6 +636,26 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      {/* BANNER 2 */}
+      <section>
+        <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6'>
+          <div className='max-w-screen-sm mx-auto text-center'>
+            <h2 class='mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 '>
+              Start your free trial today
+            </h2>
+            <p class='mb-6 font-light text-gray-500  md:text-lg'>
+              Try Maogma Platform for 30 days. No credit card required.
+            </p>
+            <a
+              href='#'
+              class='text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2  focus:outline-none '
+            >
+              Free trial for 30 days
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
