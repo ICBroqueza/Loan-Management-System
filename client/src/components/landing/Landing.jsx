@@ -33,9 +33,9 @@ const Landing = () => {
     // </div>
     <div className='py-20 px-20'>
       {/* HERO SECTION */}
-      <section className='flex gap-5 '>
+      <section className='flex gap-5 container py-10 px-10 mx-auto'>
         {/* HEADER */}
-        <div className='flex flex-col w-1/2 border border-red-500 py-5 px-5 gap-5'>
+        <div className='flex flex-col w-1/2 border border-red-500 py-5 px-5 gap-5 '>
           {/* TITLE */}
           <div>
             <h1 className='text-3xl font-bold mb-5 '>
@@ -64,7 +64,7 @@ const Landing = () => {
       </section>
 
       {/* FEATURED SECTION */}
-      <section>
+      <section className='mb-20'>
         <div className=''>
           {/* FEATURED TITLE */}
           <div className='flex flex-col my-20 py-10 w-1/2 mx-auto text-center'>
@@ -118,6 +118,25 @@ const Landing = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* BANNER SECTION */}
+      <section className='container py-32 px-10 border border-red-500 bg-red-500 mx-auto rounded-xl shadow-md'>
+        {/* BANNER TITLE */}
+        <div className='flex flex-col w-1/2 px-10 '>
+          <h4 className='text-2xl font-semibold text-white mb-16'>
+            We will never leave your side, <br /> but will leave you a <br />{' '}
+            smile.{' '}
+          </h4>
+          <div>
+            <button className='bg-gray-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        {/* BANNER IMAGE */}
+        <div>IMAGE HERE</div>
       </section>
     </div>
   );
