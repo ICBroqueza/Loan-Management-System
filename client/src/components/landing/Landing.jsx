@@ -87,7 +87,6 @@ const Landing = () => {
       </div>
 
       {/* HERO SECTION */}
-
       <section>
         <div className='grid max-w-screen-xl px-4 pt-32 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28'>
           <div className='mr-auto place-self-center lg:col-span-7'>
@@ -121,24 +120,24 @@ const Landing = () => {
 
       {/* FEATURED SECTION */}
       <section className='mb-20'>
-        <div className=''>
+        <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6'>
           {/* FEATURED TITLE */}
           <div className='flex flex-col my-20 py-10 w-1/2 mx-auto text-center'>
-            <h3 className='mb-4 text-3xl font-extrabold tracking-tight text-gray-900'>
+            <h2 class='mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 '>
               We Provide Quality Service
-            </h3>
-            <p className=''>
+            </h2>
+            <p class='mb-6 font-light text-gray-500  md:text-lg'>
               We will provide the best service to you so that you understand how
               to use and get to know the features that we provide
             </p>
           </div>
 
           {/* FEATURED ITEMS */}
-          <div className='flex gap-10 justify-center'>
+          <div className='flex gap-10 justify-between'>
             {/* FEATURE 1 : LOAN MGT */}
             <div className='flex flex-col w-80 p-10  border rounded-xl hover:shadow-xl hover:bg-red-500 hover:text-white cursor-pointer'>
               <div className=''>
-                <CreditScore className=' w-full text-red-500 rounded-full h-full text-2xl mb-2 ' />
+                <CreditScore className=' w-full text-red-500 rounded-full h-full text-2xl mb-2' />
               </div>
               <h4 className='text-md font-semibold mb-1'>Loan Management</h4>
               <p>
