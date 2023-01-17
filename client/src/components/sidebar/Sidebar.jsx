@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Location } from 'react-router-dom';
 
 import {
   PermIdentity,
@@ -56,17 +57,16 @@ export default function Sidebar({ setAuth }) {
 
         {/* BUTTONS */}
         <div className='flex gap-2 justify-center mt-10'>
-          <Link to='/login'>
-            <button
-              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '
-              type='submit'
-              onClick={(e) => {
-                setAuth(false);
-              }}
-            >
-              Log Out
-            </button>
-          </Link>
+          <button
+            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline '
+            // onClick={(e) => {
+            //   setAuth(false);
+            // }}
+            // onClick={window.location.reload()}
+          >
+            <Link to='/login'>Log Out</Link>
+          </button>
+          {/* <Link to='/login'>Log Out</Link> */}
 
           <Link to='/'>
             <button
