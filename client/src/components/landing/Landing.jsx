@@ -33,7 +33,7 @@ const Landing = () => {
     // </div>
     <div className=''>
       {/* NAVBAR */}
-      <div className='fixed w-full border border-red-500 bg-white'>
+      <div className='fixed w-full bg-white'>
         <nav className='flex justify-between max-w-screen-xl px-4 py-5 mx-auto'>
           <div className='flex items-center'>
             <h3 className='text-xl font-extrabold tracking-tight text-red-500 '>
@@ -87,33 +87,35 @@ const Landing = () => {
       </div>
 
       {/* HERO SECTION */}
-      <section className='flex gap-5 container py-10 px-10 mx-auto'>
-        {/* HEADER */}
-        <div className='flex flex-col w-1/2 border border-red-500 py-5 px-5 gap-5 '>
-          {/* TITLE */}
-          <div>
-            <h1 className='mb-4 text-7xl font-extrabold tracking-tight text-gray-900 '>
-              Simplify your <br /> <span>Loan Management</span>{' '}
+
+      <section>
+        <div className='grid max-w-screen-xl px-4 pt-32 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28'>
+          <div className='mr-auto place-self-center lg:col-span-7'>
+            <h1 className='max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl '>
+              Simplify your <br /> Loan <br /> Management
             </h1>
-            <p>
+            <p class='max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400'>
               Easily track your loans, manage clients and make smart financial
               decisions with our user-friendly app.
             </p>
+
+            {/* BUTTONS */}
+            <div class='space-y-4 sm:flex sm:space-y-0 sm:space-x-4'>
+              <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
+                Get Started
+              </button>
+              <button className='border border-gray-200 rounded sm:w-auto hover:bg-gray-100 focus:ring-4 focus:ring-gray-100  font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-5'>
+                How it works
+              </button>
+            </div>
           </div>
-          {/* Buttons */}
-          <div>
-            <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
-              Get Started
-            </button>
-            <button className=' hover:bg-red-700 hover:text-white  py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
-              How it Works
-            </button>
+
+          <div className='lg:mt-0 lg:col-span-5 lg:flex'>
+            <img
+              src='https://img.freepik.com/free-vector/revenue-concept-illustration_114360-1556.jpg?w=826&t=st=1673963777~exp=1673964377~hmac=ca7b707ad30a71107b485b530a4bb4f9620b6b0fdb6abfa61b0a5b3cabc1930e'
+              alt=''
+            />
           </div>
-        </div>
-        {/* HEADER IMG */}
-        <div className=''>
-          <img src='src/assets/debitcard.png' alt='' />
-          image here
         </div>
       </section>
 
