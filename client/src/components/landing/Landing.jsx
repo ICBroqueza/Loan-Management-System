@@ -176,22 +176,17 @@ const Landing = () => {
       </section>
 
       {/* BANNER SECTION */}
-      <section className='max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6 bg-red-500 rounded-xl flex'>
-        {/* BANNER TITLE */}
-        <div className='flex flex-col w-1/2 px-10 '>
-          <h4 className='text-2xl font-semibold text-white mb-16'>
-            We will never leave your side, <br /> but will leave you a <br />{' '}
-            smile.{' '}
-          </h4>
-          <div>
-            <button className='bg-gray-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
-              Get Started
-            </button>
-          </div>
+      <section className='max-w-screen-xl px-4 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6 bg-red-500 rounded-xl flex'>
+        {/* TEXT */}
+        <div className='text-gray-500 sm:text-lg text-center mx-auto'>
+          {/* TITLE */}
+          <h2 className='mb-5 text-3xl font-bold tracking-tight text-white'>
+            We will never leave your side, <br /> but will leave you a smile.{' '}
+          </h2>
+          <button className='bg-gray-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
+            Get Started
+          </button>
         </div>
-
-        {/* BANNER IMAGE */}
-        <div>IMAGE HERE</div>
       </section>
 
       {/* ABOUT SECTION */}
