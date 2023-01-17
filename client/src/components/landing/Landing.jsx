@@ -31,7 +31,61 @@ const Landing = () => {
     //     </button>
     //   </Link>
     // </div>
-    <div className='py-20 px-20'>
+    <div className=''>
+      {/* NAVBAR */}
+      <div className='fixed w-full border border-red-500 bg-white'>
+        <nav className='flex justify-between max-w-screen-xl px-4 py-5 mx-auto'>
+          <div className='flex items-center'>
+            <h3 className='text-xl font-extrabold tracking-tight text-red-500 '>
+              Maogma<span className='text-gray-900'>.</span>
+            </h3>
+          </div>
+          <div>
+            <ul class='flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0 items-center'>
+              {/* HOME */}
+              <li>
+                <a
+                  href='#'
+                  class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
+                >
+                  Home
+                </a>
+              </li>
+
+              {/* ABOUT */}
+              <li>
+                <a
+                  href='#'
+                  class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
+                >
+                  About
+                </a>
+              </li>
+
+              {/* PRICING */}
+              <li>
+                <a
+                  href='#'
+                  class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
+                >
+                  Pricing
+                </a>
+              </li>
+
+              {/* CONTACT */}
+              <li>
+                <a
+                  href='#'
+                  class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
       {/* HERO SECTION */}
       <section className='flex gap-5 container py-10 px-10 mx-auto'>
         {/* HEADER */}
@@ -62,6 +116,7 @@ const Landing = () => {
           image here
         </div>
       </section>
+
       {/* FEATURED SECTION */}
       <section className='mb-20'>
         <div className=''>
@@ -118,6 +173,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       {/* BANNER SECTION */}
       <section className='max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6 bg-red-500 rounded-xl flex'>
         {/* BANNER TITLE */}
@@ -136,6 +192,7 @@ const Landing = () => {
         {/* BANNER IMAGE */}
         <div>IMAGE HERE</div>
       </section>
+
       {/* ABOUT SECTION */}
       <section>
         <div className='max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6'>
@@ -309,6 +366,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       {/* PRICING SECTION */}
       <section>
         <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6'>
@@ -632,6 +690,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       {/* BANNER 2 */}
       <section>
         <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6'>
@@ -651,6 +710,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       {/* FOOTER */}
       <footer>
         <div class='max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10'>
