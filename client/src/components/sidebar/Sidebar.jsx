@@ -18,6 +18,7 @@ export default function Sidebar() {
         <p className='text-center text-sm'>Lending Application</p>
       </div>
 
+      <hr className='h-px bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent' />
       {/* MENU */}
       <div className='my-10'>
         <ul>
