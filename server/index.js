@@ -22,7 +22,7 @@ app.post('/login', async (req, res) => {
 
     // console.log(req.body);
     const user = await pool.query(
-      `SELECT * FROM clients WHERE username = '${username}'`
+      `SELECT * FROM admin WHERE username = '${username}'`
     );
 
     if (user.rows.length <= 0) {
@@ -55,7 +55,7 @@ app.post('/register', async (req, res) => {
     } = req.body;
 
     const user = await pool.query(
-      `SELECT * FROM clients WHERE username = '${username}'`
+      `SELECT * FROM admin WHERE username = '${username}'`
     );
 
     if (user.rows.length > 0) {
@@ -68,11 +68,11 @@ app.post('/register', async (req, res) => {
 
     const bcryptPassword = await bcrypt.hash(password, salt);
 
-    const newUser = await pool.query(
-      `INSERT INTO clients(firstname, lastname, contactnumber, address, email, password, username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${bcryptPassword}', '${username}') RETURNING *`
+    const newAdmin = await pool.query(
+      `INSERT INTO admin(firstname, lastname, contactnumber, address, email, password, username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${bcryptPassword}', '${username}') RETURNING *`
     );
 
-    const token = generateJWT(newUser.rows[0]);
+    const token = generateJWT(newAdmin.rows[0]);
 
     res.json({ token });
   } catch (error) {
