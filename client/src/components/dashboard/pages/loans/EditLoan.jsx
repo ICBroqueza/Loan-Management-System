@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import OneLoan from './OneLoan';
+import { Logout } from '@mui/icons-material';
 
-const EditLoan = () => {
+const EditLoan = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     type: '',
     balance: '',
@@ -80,24 +81,41 @@ const EditLoan = () => {
   };
 
   return (
-    <div className='flex '>
-      <div>
-        <Sidebar />
-      </div>
+    <div className='flex h-[900px]'>
+      <Sidebar />
 
-      <div className='w-full'>
-        <div className='container ml-10 flex flex-col px-2'>
+      <div className='w-full  h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
+        {/* HEADER */}
+        <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
           {/* TITLE */}
-          <div className='px-4 py-5 sm:px-6 bg-red-500 '>
+          <div>
             <h3 className='text-lg font-medium leading-6 text-white'>
-              <span className=''>Loan Voucher # {loanId}</span>
+              Update Loan Voucher # {loanId}
             </h3>
             <p className='mt-1 max-w-2xl text-sm text-white'>
               Edit and update your loan
             </p>
           </div>
 
-          <OneLoan />
+          <div className='text-white'>
+            <button
+              className=''
+              onClick={(e) => {
+                setAuth(false);
+              }}
+            >
+              <Link to='/login'>
+                <Logout />
+              </Link>
+            </button>
+          </div>
+        </div>
+
+        {/* LOAN INFO */}
+        <OneLoan />
+
+        {/* EDIT FORM */}
+        <div className='mt-5 px-4 py-2 h-[530px] rounded border shadow-md'>
           <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-4 border-y-2 '>
             Edit Form
           </h3>
@@ -124,7 +142,6 @@ const EditLoan = () => {
                 <option value='Business Loan'>Business Loan</option>
               </select>
             </div>
-
             {/* LOAN STATUS */}
             <div>
               <label htmlFor='status'>Status: </label>
@@ -144,7 +161,6 @@ const EditLoan = () => {
                 <option value='Declined'>Declined</option>
               </select>
             </div>
-
             {/* GROSS LOAN */}
             <div>
               <label htmlFor='gross_loan'>Gross Loan: </label>
@@ -159,7 +175,6 @@ const EditLoan = () => {
                 placeholder='Gross Loan'
               />
             </div>
-
             {/* BALANCE */}
             <div>
               <label htmlFor='balance'>Balance: </label>
@@ -174,7 +189,6 @@ const EditLoan = () => {
                 placeholder='Balance'
               />
             </div>
-
             {/* AMORTIZATION */}
             <div>
               <label htmlFor='amort'>Amortization: </label>
@@ -189,7 +203,6 @@ const EditLoan = () => {
                 placeholder='Monthly Amortization'
               />
             </div>
-
             {/* TERMS */}
             <div>
               <label htmlFor='terms'>Terms: </label>
@@ -211,7 +224,6 @@ const EditLoan = () => {
                 <option value='12'>12 Months</option>
               </select>
             </div>
-
             {/* DATE RELEASED */}
             <div>
               <label htmlFor='date_released'>Date Released: </label>
@@ -226,7 +238,6 @@ const EditLoan = () => {
                 placeholder='Date Released'
               />
             </div>
-
             {/* MATURITY DATE */}
             <div>
               <label htmlFor='maturity_date'>Maturity Date: </label>
@@ -241,7 +252,6 @@ const EditLoan = () => {
                 placeholder='Maturity Date'
               />
             </div>
-
             {/* BUTTONS */}
             <div>
               <button

@@ -36,7 +36,7 @@ const OneLoan = () => {
   return (
     <div>
       {/* Loans Information */}
-      <div className='w-full pt-6 pb-8 mb-4 bg-white shadow-md rounded '>
+      <div className='mt-5 px-4 py-2 h-[180px] rounded border shadow-md'>
         {/* Active Loans */}
         <div>
           <div className='flex items-center justify-between border-y-2'>

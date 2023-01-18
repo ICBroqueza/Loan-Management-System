@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import AddPayments from './AddPayments';
-import PaymentsInfo from './ListPayments';
+import { Logout } from '@mui/icons-material';
 
-const PaymentLoansInfo = () => {
+const PaymentLoansInfo = ({ setAuth }) => {
   const [loans, setLoans] = useState([]);
 
   const location = useLocation();
@@ -51,34 +51,46 @@ const PaymentLoansInfo = () => {
   }, []);
 
   return (
-    <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
+    <div className='flex h-[900px]'>
+      <Sidebar />
 
-      <div className='w-full mx-auto px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded'>
-        {/* TITLE */}
-        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
-          <h3 className='text-lg font-medium leading-6 text-white'>
-            Payment for Loan Voucher #{loanId}
-          </h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Add a payment for a client
-          </p>
+      <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
+        {/* HEADER */}
+
+        <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
+          {/* TITLE */}
+          <div>
+            <h3 className='text-lg font-medium leading-6 text-white'>
+              Payment for Loan Voucher #{loanId}
+            </h3>
+            <p className='mt-1 max-w-2xl text-sm text-white'>
+              Add a payment for a client
+            </p>
+          </div>
+          {/* <ToastContainer /> */}
+
+          {/* BUTTON */}
+
+          <div className='text-white'>
+            <button
+              className=''
+              onClick={(e) => {
+                setAuth(false);
+              }}
+            >
+              <Link to='/login'>
+                <Logout />
+              </Link>
+            </button>
+          </div>
         </div>
 
         {/* Loans Information */}
-        <div>
+        <div className='mt-5 px-4 h-[180px] rounded border shadow-md'>
           <div className='flex items-center justify-between border-y-2 mt-5'>
             <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
-              Client's Loans
+              Client's Loan
             </h3>
-            {/* <button
-              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto ml-auto '
-              onClick={() => updateLoan()}
-            >
-              Update Loan
-            </button> */}
           </div>
           <table className='table-fixed text-center '>
             <thead>

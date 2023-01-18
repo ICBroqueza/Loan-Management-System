@@ -70,20 +70,17 @@ const AddPayments = ({ loanId, balance, clientId }) => {
   console.log(n_balance);
 
   return (
-    <div className='flex'>
+    <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md'>
       {/* Add Loan */}
-      <div className='  py-2 flex-1 flex flex-col px-2'>
-        {/* LOANS INFO */}
-        {/* <PaymentLoansInfo /> */}
-
-        <div className='flex items-center justify-between border-y-2 mt-5'>
+      <div className='w-full'>
+        <div className='flex w-full items-center justify-between border-y-2 mt-5'>
           <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
             Loan Payment
           </h3>
         </div>
 
         {/* FORM */}
-        <form className='grid grid-cols-2 p-2 mt-2' onSubmit={onSubmit}>
+        <form className='grid grid-cols-2 p-2 mt-2 ' onSubmit={onSubmit}>
           <div className='flex w-full '>
             {/* CLIENT ID */}
 

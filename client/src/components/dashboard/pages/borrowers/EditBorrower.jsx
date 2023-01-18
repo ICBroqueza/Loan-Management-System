@@ -1,10 +1,10 @@
-import { ArrowBackIosNewOutlined } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
+import { Logout } from '@mui/icons-material';
 
-const EditBorrower = () => {
+const EditBorrower = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     firstname: '',
     lastname: '',
@@ -62,25 +62,47 @@ const EditBorrower = () => {
   };
 
   return (
-    <div className='flex '>
-      <div>
-        <Sidebar />
-      </div>
+    <div className='flex h-[900px]'>
+      <Sidebar />
 
-      <div className='w-full'>
-        <div className='container ml-10 flex flex-col px-2'>
-          <span>
-            <Link to={`/borrower/${clientId}`}>
-              <ArrowBackIosNewOutlined />
-            </Link>
-          </span>
-          <h1 className='text-xl my-5'>Update Client #{clientId}</h1>
+      <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
+        <div className='w-full px-8 pt-6 pb-8 mb-4 bg-white  rounded'>
+          {/* HEADER */}
 
-          {/*  */}
+          <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
+            {/* TITLE */}
+            <div>
+              <h3 className='text-lg font-medium leading-6 text-white'>
+                Update Borrower #{clientId}
+              </h3>
+              <p className='mt-1 max-w-2xl text-sm text-white'>
+                Update all the required fields.
+              </p>
+            </div>
+            {/* <ToastContainer /> */}
+
+            {/* BUTTON */}
+
+            <div className='text-white'>
+              <button
+                className=''
+                onClick={(e) => {
+                  setAuth(false);
+                }}
+              >
+                <Link to='/login'>
+                  <Logout />
+                </Link>
+              </button>
+            </div>
+          </div>
+
+          {/* FORM */}
           <form
             onSubmit={(e) => {
               onSubmit(e);
             }}
+            className='mt-5 p-8 h-[650px] rounded border shadow-md'
           >
             <input
               type='text'

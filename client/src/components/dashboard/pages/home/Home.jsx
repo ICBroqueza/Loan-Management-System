@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 
 import Sidebar from '../../../sidebar/Sidebar';
 import BotWidget from './bottom/BotWidget';
@@ -10,7 +9,7 @@ import { Logout } from '@mui/icons-material';
 
 export default function Home({ setAuth }) {
   return (
-    <div className='flex   h-[900px]'>
+    <div className='flex h-[900px]'>
       <Sidebar />
       <div className='w-full px-8 py-8 pb-8 mb-4 bg-white border rounded shadow-md h-[900px] '>
         {/* HOME ITEMS */}

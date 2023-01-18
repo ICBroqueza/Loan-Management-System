@@ -106,20 +106,6 @@ function App() {
                 }
               ></Route>
 
-              {/*  */}
-              <Route
-                exact
-                path='/dash'
-                element={<Dash />}
-                // element={
-                //   !isAuthenticated ? (
-                //     <Dash setAuth={setAuth} />
-                //   ) : (
-                //     <Navigate to='/login' />
-                //   )
-                // }
-              ></Route>
-
               {/* BORROWERS */}
               {/* <Route exact path='/borrowers' element={<Borrowers />}></Route> */}
 

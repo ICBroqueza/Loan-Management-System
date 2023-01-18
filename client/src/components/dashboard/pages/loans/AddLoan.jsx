@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
+import { Logout } from '@mui/icons-material';
 
-const AddLoan = () => {
+const AddLoan = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     status: '',
     type: '',
@@ -77,29 +78,48 @@ const AddLoan = () => {
   };
 
   return (
-    <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
+    <div className='flex h-[900px]'>
+      <Sidebar />
       {/* Add Loan */}
-      <div className='container ml-10 py-2 flex-1 flex flex-col px-2'>
+      <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
         {/* TITLE */}
-        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
-          <h3 className='text-lg font-medium leading-6 text-white'>
-            New Loan for Client #{clientId}
-          </h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Add a loan for a client
-          </p>
+        <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
+          <div>
+            <h3 className='text-lg font-medium leading-6 text-white'>
+              Add Loan for Client #{clientId}
+            </h3>
+            <p className='mt-1 max-w-2xl text-sm text-white'>
+              Fill all the required fields.
+            </p>
+          </div>
+          {/* <ToastContainer /> */}
+
+          {/* BUTTON */}
+
+          <div className='text-white'>
+            <button
+              className=''
+              onClick={(e) => {
+                setAuth(false);
+              }}
+            >
+              <Link to='/login'>
+                <Logout />
+              </Link>
+            </button>
+          </div>
         </div>
 
         {/* FORM */}
-        <form className='grid grid-cols-2 p-2' onSubmit={onSubmit}>
+        <form
+          className='grid grid-cols-2 mt-5 p-8 h-[650px] rounded border shadow-md'
+          onSubmit={onSubmit}
+        >
           {/* TYPE */}
           <div>
             <label htmlFor='type'>Type of Loan:</label>
             <select
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded'
               name='type'
               id='type'
               value={type}
@@ -117,7 +137,7 @@ const AddLoan = () => {
           <div>
             <label htmlFor='maturity_date'>Status:</label>
             <select
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded'
               name='status'
               id='status'
               value={status}
@@ -138,7 +158,7 @@ const AddLoan = () => {
             <label htmlFor='gross_loan'>Gross Loan:</label>
             <input
               type='number'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded'
               placeholder='Gross Loan'
               name='gross_loan'
               value={gross_loan}
@@ -151,7 +171,7 @@ const AddLoan = () => {
             <label htmlFor='gross_loan'>Balance:</label>
             <input
               type='number'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded'
               placeholder='Balance'
               name='balance'
               value={balance}
@@ -164,7 +184,7 @@ const AddLoan = () => {
             <label htmlFor='amort'>Amortization:</label>
             <input
               type='number'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded '
               placeholder='Amortization'
               name='amort'
               value={amort}
@@ -176,7 +196,7 @@ const AddLoan = () => {
           <div>
             <label htmlFor='terms'>Terms:</label>
             <select
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded '
               name='terms'
               id='terms'
               value={terms}
@@ -199,7 +219,7 @@ const AddLoan = () => {
             <label htmlFor='date_released'>Date Released:</label>
             <input
               type='date'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded '
               placeholder='Date Released'
               name='date_released'
               value={date_released}
@@ -212,7 +232,7 @@ const AddLoan = () => {
             <label htmlFor='maturity_date'>Maturity Date:</label>
             <input
               type='date'
-              className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
+              className='block border border-grey-500 w-10/12 p-3 rounded '
               placeholder='Maturity Date'
               name='maturity_date'
               value={maturity_date}
