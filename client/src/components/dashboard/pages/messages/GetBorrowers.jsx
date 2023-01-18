@@ -49,34 +49,6 @@ const GetBorrowers = ({ setAuth }) => {
 
   return (
     <div className='text-gray-900'>
-      {/* HEADER */}
-      <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
-        {/* TITLE */}
-        <div>
-          <h3 className='text-lg font-medium leading-6 text-white'>
-            Send Email
-          </h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Update your client with their loan.
-          </p>
-        </div>
-
-        {/* BUTTON */}
-
-        <div className='text-white'>
-          <button
-            className=''
-            onClick={(e) => {
-              setAuth(false);
-            }}
-          >
-            <Link to='/login'>
-              <Logout />
-            </Link>
-          </button>
-        </div>
-      </div>
-
       {/* EMAIL PAGE ITEMS */}
       <div className='flex gap-5'>
         {/* ALL CLIENT CONTACT INFO */}

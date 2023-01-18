@@ -162,8 +162,18 @@ function App() {
               ></Route>
 
               {/* LOANS */}
-              <Route exact path='/loans' element={<GetAllLoans />}></Route>
 
+              <Route
+                exact
+                path='/loans'
+                element={
+                  isAuthenticated ? (
+                    <GetAllLoans setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/login' />
+                  )
+                }
+              ></Route>
               {/* ADD LOAN (BORROWER PAGE)*/}
               <Route
                 exact
@@ -205,7 +215,18 @@ function App() {
 
               {/* PAYMENTS */}
               {/* ALL PAYMENTS */}
-              <Route exact path='/payments' element={<Payments />}></Route>
+
+              <Route
+                exact
+                path='/payments'
+                element={
+                  isAuthenticated ? (
+                    <Payments setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/login' />
+                  )
+                }
+              ></Route>
 
               {/* ADD PAYMENT (BORROWER PAGE)*/}
               <Route
