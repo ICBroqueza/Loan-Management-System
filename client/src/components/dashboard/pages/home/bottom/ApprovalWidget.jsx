@@ -31,15 +31,15 @@ export default function ApprovalWidget() {
   console.log(loans.sort((a, b) => a.maturity_date - b.maturity_date));
 
   return (
-    <div className='w-full '>
+    <div className='w-full h-[450px] '>
       {/* CLIENTS */}
       <div className=' mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
+        <h3 className='text-xl mb-5 border-b-2'>Loans For Approval</h3>
         <div className='flex justify-between items-center'>
-          <div className='w-full'>
-            <h3 className='text-xl mb-5 border-b-2'>Loans For Approval</h3>
+          <div className='w-full h-[350px] overflow-auto hover:overflow-scroll'>
             <table className='table-fixed text-center w-full'>
               <thead>
-                <tr className='w-full'>
+                <tr className=''>
                   <th className='w-1/1 px-1 py-2'>Gross Loan</th>
                   <th className='w-1/1 px-1 py-2'>Status</th>
                   <th className='w-1/6 px-1 py-2'>Actions</th>
@@ -47,14 +47,14 @@ export default function ApprovalWidget() {
               </thead>
               <tbody>
                 {/* {loans.map((loan, index) => {
-                  <tr className='widgetLgTr'>
-                    <td className='flex items-center font-semibold'>
-                      <span className='widgetLgName'></span>
-                    </td>
-                    <td className='widgetLgDate'>{loan.maturity_date}</td>
-                    <td className='widgetLgAmount'>{loan.balance}</td>
-                    <td className='widgetLgStatus'>{loan.status}</td>
-                  </tr>; */}
+                    <tr className='widgetLgTr'>
+                      <td className='flex items-center font-semibold'>
+                        <span className='widgetLgName'></span>
+                      </td>
+                      <td className='widgetLgDate'>{loan.maturity_date}</td>
+                      <td className='widgetLgAmount'>{loan.balance}</td>
+                      <td className='widgetLgStatus'>{loan.status}</td>
+                    </tr>; */}
                 {loans.length <= 0 ? (
                   <tr className='border px-4 py-2 bg-red-50'>
                     <td></td>

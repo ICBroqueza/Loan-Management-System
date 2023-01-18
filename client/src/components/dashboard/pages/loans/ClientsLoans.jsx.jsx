@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { DeleteForever, Edit, Update } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import Sidebar from '../../../sidebar/Sidebar';
 
 const GetAllLoans = ({ setAuth }) => {
   const [loans, setLoans] = useState([]);

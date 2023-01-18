@@ -28,10 +28,7 @@ const Loans = ({ setAuth }) => {
 
   return (
     <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
-
+      <Sidebar />
       <div className='w-full'>
         <GetAllLoans />
       </div>

@@ -81,14 +81,15 @@ export default function Borrower({ setAuth }) {
         </div>
 
         {/* ACCOUNT INFO */}
-        <div className='flex container mt-5 w-full shadow-md'>
+        <div className='flex container mt-5 w-full shadow-md mb-5 rounded'>
           <div className='py-5 px-5 '>
             <div className='flex items-center  py-5 px-5'>
-              <img
+              {/* <img
                 src='https://cdn3.iconfinder.com/data/icons/red-icons-1/512/Male-profile-icon-512.png'
                 alt=''
                 className='w-2/5 h-2/5'
-              />
+              /> */}
+              <div></div>
               <div className='ml-20 w-96'>
                 <span className='text-base font-semibold mt-10 text-gray-500 '>
                   Account Details

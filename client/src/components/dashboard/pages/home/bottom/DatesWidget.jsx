@@ -54,13 +54,13 @@ export default function DatesWidget() {
   );
 
   return (
-    <div className='w-full'>
+    <div className='w-full h-[450px]  '>
       {/* CLIENTS */}
       <div className='mt-5 p-8 rounded-xl border border-t-4 border-t-red-500 cursor-pointer shadow-md'>
+        <h3 className='text-xl mb-5 border-b-2'>Maturity Date</h3>
         <div className='flex justify-between items-center'>
-          <div className='w-full'>
-            <h3 className='text-xl mb-5 border-b-2'>Maturity Date</h3>
-            <table className='table-fixed text-center w-full'>
+          <div className='w-full h-[350px]  overflow-auto hover:overflow-scroll'>
+            <table className='table-fixed text-center w-full  '>
               <thead className=''>
                 <tr className=''>
                   <th className='w-1/1 px-1 py-2 '>Customer</th>
@@ -69,16 +69,16 @@ export default function DatesWidget() {
                   <th className='w-1/6 px-1 py-2 '>Email</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className='w-full'>
                 {/* {dates.map((date, index) => {
-                  <tr className='widgetLgTr'>
-                    <td className='flex items-center font-semibold'>
-                      <span className='widgetLgName'></span>
-                    </td>
-                    <td className='widgetLgDate'>{date.maturity_date}</td>
-                    <td className='widgetLgAmount'>{date.balance}</td>
-                    <td className='widgetLgStatus'>{date.status}</td>
-                  </tr>; */}
+                    <tr className='widgetLgTr'>
+                      <td className='flex items-center font-semibold'>
+                        <span className='widgetLgName'></span>
+                      </td>
+                      <td className='widgetLgDate'>{date.maturity_date}</td>
+                      <td className='widgetLgAmount'>{date.balance}</td>
+                      <td className='widgetLgStatus'>{date.status}</td>
+                    </tr>; */}
                 {dates.length <= 0 ? (
                   <tr className='border px-4 py-2 bg-red-50'>
                     <td></td>
@@ -93,11 +93,10 @@ export default function DatesWidget() {
                 ) : (
                   dates.map((date, index) => {
                     return (
-                      <tr key={index}>
+                      <tr key={index} className>
                         <td className='border px-4 py-2'>
                           {date.firstname + ' ' + date.lastname}
                         </td>
-
                         <td className='border px-4 py-2 bg-gray-50'>
                           {new Date(date.maturity_date).toDateString()}
                         </td>

@@ -30,6 +30,7 @@ import Payments from './components/dashboard/pages/payments/AllPayments';
 import Message from './components/dashboard/pages/messages/Message';
 import EmailPage from './components/dashboard/pages/messages/EmailPage';
 import PaymentLoansInfo from './components/dashboard/pages/payments/PaymentLoanInfo';
+import Dash from './components/dash/Dash';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +40,7 @@ function App() {
   };
   return (
     <Router>
-      <div className='App'>
+      <div className='App py-10 px-10 '>
         {/* <Topbar /> */}
         <div>
           <Fragment>
@@ -103,6 +104,20 @@ function App() {
                     <Navigate to='/login' />
                   )
                 }
+              ></Route>
+
+              {/*  */}
+              <Route
+                exact
+                path='/dash'
+                element={<Dash />}
+                // element={
+                //   !isAuthenticated ? (
+                //     <Dash setAuth={setAuth} />
+                //   ) : (
+                //     <Navigate to='/login' />
+                //   )
+                // }
               ></Route>
 
               {/* BORROWERS */}
