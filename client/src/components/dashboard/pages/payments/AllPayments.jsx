@@ -43,9 +43,6 @@ const Payments = ({ setAuth }) => {
               Summary of Collections and information.
             </p>
           </div>
-
-          {/* TITLE */}
-
           {/* BUTTON */}
 
           <div className='text-white'>
@@ -62,15 +59,17 @@ const Payments = ({ setAuth }) => {
           </div>
         </div>
 
-        <div>
-          <div className='flex items-center justify-between border-y-2 mt-5'>
-            <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
-              Payment Transactions
-            </h3>
-            <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2'>
-              <Link to='/borrowers'>Add Payment</Link>
-            </button>
-          </div>
+        {/* TITLE */}
+        <div className='flex items-center justify-between border-y-2 mt-5'>
+          <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
+            Payment Transactions
+          </h3>
+          <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2'>
+            <Link to='/borrowers'>Add Payment</Link>
+          </button>
+        </div>
+
+        <div className='w-full h-[650px] px-4 overflow-auto hover:overflow-scroll mt-5 border rounded shadow-md border-t-4 border-t-red-500'>
           <table className='table-fixed text-center '>
             <thead>
               <tr>
