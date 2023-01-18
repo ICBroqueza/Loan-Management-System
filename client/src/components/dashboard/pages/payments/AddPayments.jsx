@@ -70,9 +70,9 @@ const AddPayments = ({ loanId, balance, clientId }) => {
   console.log(n_balance);
 
   return (
-    <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md'>
+    <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md border-t-4 border-t-red-500 '>
       {/* Add Loan */}
-      <div className='w-full'>
+      <div className='w-full '>
         <div className='flex w-full items-center justify-between border-y-2 mt-5'>
           <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
             Loan Payment

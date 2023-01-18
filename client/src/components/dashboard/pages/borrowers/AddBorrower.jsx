@@ -130,7 +130,7 @@ const AddBorrower = ({ setAuth }) => {
             onSubmit={(e) => {
               onSubmit(e);
             }}
-            className='mt-5 p-8 rounded border shadow-md'
+            className='mt-5 p-8 rounded border shadow-md border-t-4 border-t-red-500 '
           >
             {/* FIRST NAME */}
             <label htmlFor='firstname'>First Name: </label>

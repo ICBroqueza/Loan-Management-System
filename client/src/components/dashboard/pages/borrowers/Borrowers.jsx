@@ -83,7 +83,7 @@ const Borrowers = ({ setAuth }) => {
         </div>
 
         {/* INFO */}
-        <div className='w-full h-[700px]  overflow-auto hover:overflow-scroll mt-5 border rounded shadow-md'>
+        <div className='w-full h-[700px]  overflow-auto hover:overflow-scroll mt-5 border rounded shadow-md border-t-4 border-t-red-500 '>
           <table className='table-fixed text-center'>
             <thead className=' mt-5'>
               <tr className=' mt-10'>

@@ -36,10 +36,10 @@ const OneLoan = () => {
   return (
     <div>
       {/* Loans Information */}
-      <div className='mt-5 px-4 py-2 h-[180px] rounded border shadow-md'>
+      <div className='mt-5 px-4 py-2 h-[180px] rounded border shadow-md border-t-4 border-t-red-500 '>
         {/* Active Loans */}
         <div>
-          <div className='flex items-center justify-between border-y-2'>
+          <div className='flex items-center justify-between border-y-2 '>
             <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
               Loan Info
             </h3>

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
+import { Logout } from '@mui/icons-material';
 
-const AddLoans = () => {
+const AddLoans = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     client_id: '',
     status: '',
@@ -77,21 +78,42 @@ const AddLoans = () => {
   };
 
   return (
-    <div className='flex'>
-      <div>
-        <Sidebar />
-      </div>
-      {/* TITLE */}
-      <div className='container ml-10 py-2 flex-1 flex flex-col px-2'>
-        <div className='px-4 py-5 sm:px-6 bg-red-500 mb-5'>
-          <h3 className='text-lg font-medium leading-6 text-white'>New Loan</h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Add a loan for a client
-          </p>
+    <div className='h-[900px] flex'>
+      <Sidebar />
+      <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded '>
+        {/* HEADER */}
+        <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md  '>
+          <div>
+            <h3 className='text-lg font-medium leading-6 text-white'>
+              Add New Loan
+            </h3>
+            <p className='mt-1 max-w-2xl text-sm text-white'>
+              Add a loan for a client
+            </p>
+          </div>
+          {/* <ToastContainer /> */}
+
+          {/* BUTTON */}
+
+          <div className='text-white'>
+            <button
+              className=''
+              onClick={(e) => {
+                setAuth(false);
+              }}
+            >
+              <Link to='/login'>
+                <Logout />
+              </Link>
+            </button>
+          </div>
         </div>
 
         {/* FORM */}
-        <form className='grid grid-cols-2 p-2' onSubmit={onSubmit}>
+        <form
+          className='mt-5 p-8 rounded border shadow-md grid grid-cols-2 border-t-4 border-t-red-500 '
+          onSubmit={onSubmit}
+        >
           {/* CLIENT ID */}
           <div>
             <label htmlFor='client_id'>Client ID:</label>

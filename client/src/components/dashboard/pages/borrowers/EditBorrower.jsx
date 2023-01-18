@@ -102,7 +102,7 @@ const EditBorrower = ({ setAuth }) => {
             onSubmit={(e) => {
               onSubmit(e);
             }}
-            className='mt-5 p-8 h-[650px] rounded border shadow-md'
+            className='mt-5 p-8 h-[650px] rounded border shadow-md border-t-4 border-t-red-500 '
           >
             <input
               type='text'

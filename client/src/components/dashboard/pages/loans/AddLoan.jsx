@@ -112,7 +112,7 @@ const AddLoan = ({ setAuth }) => {
 
         {/* FORM */}
         <form
-          className='grid grid-cols-2 mt-5 p-8 h-[650px] rounded border shadow-md'
+          className='grid grid-cols-2 mt-5 p-8 h-[650px] rounded border shadow-md border-t-4 border-t-red-500 '
           onSubmit={onSubmit}
         >
           {/* TYPE */}

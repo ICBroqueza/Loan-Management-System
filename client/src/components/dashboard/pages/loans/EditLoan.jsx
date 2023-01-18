@@ -115,7 +115,7 @@ const EditLoan = ({ setAuth }) => {
         <OneLoan />
 
         {/* EDIT FORM */}
-        <div className='mt-5 px-4 py-2 h-[530px] rounded border shadow-md'>
+        <div className='mt-5 px-4 py-2 h-[530px] rounded border shadow-md border-t-4 border-t-red-500 '>
           <h3 className='text-lg font-medium leading-6 text-gray my-2 px-1 py-4 border-y-2 '>
             Edit Form
           </h3>
@@ -123,7 +123,7 @@ const EditLoan = ({ setAuth }) => {
             onSubmit={(e) => {
               onSubmit(e);
             }}
-            className='grid grid-cols-2 p-2'
+            className='grid grid-cols-2 p-2 '
           >
             {/* LOAN TYPE */}
             <div>

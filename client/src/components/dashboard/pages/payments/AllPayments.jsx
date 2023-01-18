@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-import { DeleteForever, Edit, Update } from '@mui/icons-material';
+import { DeleteForever, Edit, Update, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 
@@ -24,35 +24,42 @@ const Payments = ({ setAuth }) => {
     }
   };
 
-  // async function deleteLoan(id) {
-  //   try {
-  //     await fetch(`http://localhost:8000/loans/${id}`, {
-  //       method: 'DELETE',
-  //       headers: { Authorization: localStorage.getItem('token') },
-  //     });
-
-  //     setLoans(loans.filter((loan) => loan.id !== id));
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // }
-
   useEffect(() => {
     GetPayments();
   }, []);
 
   return (
-    <div className='flex w-full'>
+    <div className='flex  h-[900px]'>
       <Sidebar />
-      {/* Loans Information */}
-      <div className='w-full mx-auto px-8 pt-6 pb-8 mb-4 bg-white shadow-md rounded '>
-        <div className='px-4 py-5 sm:px-6 bg-red-500'>
-          <h3 className='text-lg font-medium leading-6 text-white'>
-            Payments Report
-          </h3>
-          <p className='mt-1 max-w-2xl text-sm text-white'>
-            Summary of Collections and information.
-          </p>
+      {/* PAYMENTS */}
+      <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
+        {/* HEADER */}
+        <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
+          <div>
+            <h3 className='text-lg font-medium leading-6 text-white'>
+              Payments Report
+            </h3>
+            <p className='mt-1 max-w-2xl text-sm text-white'>
+              Summary of Collections and information.
+            </p>
+          </div>
+
+          {/* TITLE */}
+
+          {/* BUTTON */}
+
+          <div className='text-white'>
+            <button
+              className=''
+              onClick={(e) => {
+                setAuth(false);
+              }}
+            >
+              <Link to='/login'>
+                <Logout />
+              </Link>
+            </button>
+          </div>
         </div>
 
         <div>
