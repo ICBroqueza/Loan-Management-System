@@ -50,7 +50,6 @@ const Borrowers = ({ setAuth }) => {
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded '>
         {/* HEADER */}
         <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md '>
-          {/* TITLE */}
           <div>
             <h3 className='text-lg font-medium leading-6 text-white'>
               Borrowers
@@ -64,12 +63,6 @@ const Borrowers = ({ setAuth }) => {
 
           <div className='text-white'>
             <button
-              className='border hover:bg-red-900 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2 mr-5'
-              // onClick={() => deleteLoan(loan.id)}
-            >
-              <Link to='/addBorrower'>Add Borrower</Link>
-            </button>
-            <button
               className=''
               onClick={(e) => {
                 setAuth(false);
@@ -82,8 +75,21 @@ const Borrowers = ({ setAuth }) => {
           </div>
         </div>
 
+        {/* TITLE */}
+        <div className='flex items-center justify-between border-y-2 mt-5'>
+          <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
+            Borrowers' List
+          </h3>
+          <button
+            className='border hover:bg-red-700 bg-red-500 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2 mr-5'
+            // onClick={() => deleteLoan(loan.id)}
+          >
+            <Link to='/addBorrower'>Add Borrower</Link>
+          </button>
+        </div>
+
         {/* INFO */}
-        <div className='w-full h-[700px]  overflow-auto hover:overflow-scroll mt-5 border rounded shadow-md border-t-4 border-t-red-500 '>
+        <div className='w-full h-[640px] px-4   mt-5 overflow-auto hover:overflow-scroll border rounded shadow-md border-t-4 border-t-red-500 '>
           <table className='table-fixed text-center'>
             <thead className=' mt-5'>
               <tr className=' mt-10'>
