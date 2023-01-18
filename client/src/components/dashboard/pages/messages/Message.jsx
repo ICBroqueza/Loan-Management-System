@@ -28,7 +28,7 @@ export default function Message({ email }) {
 
   return (
     <div className='flex'>
-      <div className='flex w-full'>
+      <div className='w-full h-[650px] px-4 mt-5 border rounded shadow-md border-t-4 border-t-red-500 '>
         <div class='w-full px-8  bg-white '>
           <div class=' py-2.5 '>
             <form onSubmit={sendEmail} class='space-y-8'>
@@ -76,7 +76,7 @@ export default function Message({ email }) {
                 <textarea
                   name='message'
                   id='message'
-                  rows='6'
+                  rows='12'
                   class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                   placeholder='Write your message...'
                 ></textarea>
