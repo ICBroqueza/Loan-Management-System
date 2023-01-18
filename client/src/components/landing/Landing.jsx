@@ -101,7 +101,7 @@ const Landing = () => {
             {/* BUTTONS */}
             <div class='space-y-4 sm:flex sm:space-y-0 sm:space-x-4'>
               <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
-                Get Started
+                <Link to='/register'>Get Started</Link>
               </button>
               <button className='border border-gray-200 rounded sm:w-auto hover:bg-gray-100 focus:ring-4 focus:ring-gray-100  font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-5'>
                 How it works
@@ -184,7 +184,7 @@ const Landing = () => {
             We will never leave your side, <br /> but will leave you a smile.{' '}
           </h2>
           <button className='bg-gray-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
-            Get Started
+            <Link to='/register'>Get Started</Link>
           </button>
         </div>
       </section>
@@ -468,7 +468,7 @@ const Landing = () => {
               </ul>
               <a
                 href='#'
-                class='text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                class='text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
               >
                 Get started
               </a>
@@ -553,7 +553,7 @@ const Landing = () => {
               </ul>
               <a
                 href='#'
-                class='text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                class='text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
               >
                 Get started
               </a>
@@ -638,7 +638,7 @@ const Landing = () => {
               </ul>
               <a
                 href='#'
-                class='text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
+                class='text-white bg-red-500 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center '
               >
                 Get started
               </a>
@@ -648,22 +648,19 @@ const Landing = () => {
       </section>
 
       {/* BANNER 2 */}
-      <section>
-        <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6'>
-          <div className='max-w-screen-sm mx-auto text-center'>
-            <h2 class='mb-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 '>
-              Start your free trial today
-            </h2>
-            <p class='mb-6 font-light text-gray-500  md:text-lg'>
-              Try Maogma Platform for 30 days. No credit card required.
-            </p>
-            <a
-              href='#'
-              class='text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2  focus:outline-none '
-            >
-              Free trial for 30 days
-            </a>
-          </div>
+      <section className='max-w-screen-xl px-4 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6 bg-red-500 rounded-xl flex'>
+        {/* TEXT */}
+        <div className=' sm:text-lg text-center mx-auto'>
+          {/* TITLE */}
+          <h2 className='mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white'>
+            Start your free trial today
+          </h2>
+          <p class='mb-6 font-light text-white md:text-lg'>
+            Try Maogma Platform for 30 days. No credit card required.
+          </p>
+          <button className='bg-gray-800 hover:bg-red-900 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-5'>
+            <Link to='/register'>Free Trial for 30 days</Link>
+          </button>
         </div>
       </section>
 
@@ -689,7 +686,7 @@ const Landing = () => {
                 type='email'
                 id='email'
                 class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5'
-                placeholder='name@flowbite.com'
+                placeholder='maogma@gmail.com'
                 required
               />
             </div>

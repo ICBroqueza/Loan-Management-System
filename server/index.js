@@ -20,6 +20,7 @@ app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    // console.log(req.body);
     const user = await pool.query(
       `SELECT * FROM clients WHERE username = '${username}'`
     );
