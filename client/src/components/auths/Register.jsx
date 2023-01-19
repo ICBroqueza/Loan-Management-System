@@ -60,41 +60,76 @@ const Register = ({ setAuth }) => {
     }
   };
   return (
-    <div className='bg-grey-lighter min-h-screen flex flex-col'>
-      <div className='container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2'>
-        <div className='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
-          <h1 className='lock uppercase tracking-wide  text-black-500 text-3xl font-bold my-16 text-center'>
-            Welcome to <span className='text-red-500'>Maogma</span>
-          </h1>
-          <form
-            onSubmit={(e) => {
-              onSubmit(e);
-            }}
-          >
-            <input
-              type='text'
-              className='block border border-grey-500 w-full p-3 rounded mb-4'
-              name='firstname'
-              value={firstname}
-              onChange={(e) => {
-                onChange(e);
-              }}
-              placeholder='First Name'
-            />
+    <div className='flex flex-col h-[750px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
+      {/* BG */}
+      <div className='bg-red-500 h-full rounded-md w-1/2 py-20 px-20'></div>
 
-            <input
-              type='text'
-              className='block border border-grey-500 w-full p-3 rounded mb-4'
-              name='lastname'
-              value={lastname}
-              onChange={(e) => {
-                onChange(e);
-              }}
-              placeholder='Last Name'
-            />
+      {/* FORM */}
+      <div className='w-1/2'>
+        <div className='px-8 pt-8 pb-2'>
+          <h1 className='text-xl font-semibold '>
+            Welcome to <span className='text-red-500'>Maogma</span>.
+          </h1>
+          <small className='text-gray-400'>Please enter your details</small>
+        </div>
+        <form
+          onSubmit={(e) => {
+            onSubmit(e);
+          }}
+          className='bg-white px-8 pt-6 pb-8 mb-4'
+        >
+          <div className='flex w-full gap-5'>
+            {/* FIRSTNAME */}
+            <div className='mb-4 w-full'>
+              <label
+                className='block text-gray-700 text-sm font-bold mb-2'
+                htmlFor='firstname'
+              >
+                First Name:
+              </label>
+              <input
+                type='text'
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                name='firstname'
+                value={firstname}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+                placeholder='Enter your first name'
+              />
+            </div>
+            {/* LASTNAME */}
+            <div className='mb-4 w-full'>
+              <label
+                className='block text-gray-700 text-sm font-bold mb-2'
+                htmlFor='lastname'
+              >
+                Lastname:
+              </label>
+              <input
+                type='text'
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                name='lastname'
+                value={lastname}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+                placeholder='Enter your last name'
+              />
+            </div>
+          </div>
+
+          {/* CONTACT NUMBER */}
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='contactNumber'
+            >
+              Contact Number
+            </label>
             <input
               type='number'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               name='contactNumber'
               value={contactNumber}
               onChange={(e) => {
@@ -102,40 +137,79 @@ const Register = ({ setAuth }) => {
               }}
               placeholder='Contact Number'
             />
+          </div>
+
+          {/* ADDRESS */}
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='address'
+            >
+              Address:
+            </label>
             <input
               type='text'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               name='address'
               value={address}
               onChange={(e) => {
                 onChange(e);
               }}
-              placeholder='Address'
+              placeholder='Input your full address'
             />
+          </div>
+
+          {/* EMAIL */}
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='email'
+            >
+              Email:
+            </label>
             <input
               type='email'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               name='email'
               value={email}
               onChange={(e) => {
                 onChange(e);
               }}
-              placeholder='Email'
+              placeholder='Input your email address'
             />
+          </div>
 
+          {/* USERNAME */}
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='username'
+            >
+              Username
+            </label>
             <input
               type='text'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               name='username'
               value={username}
               onChange={(e) => {
                 onChange(e);
               }}
-              placeholder='Username'
+              placeholder='Choose a username you want'
             />
+          </div>
+
+          {/* PASSWORD */}
+          <div className='mb-4'>
+            <label
+              className='block text-gray-700 text-sm font-bold mb-2'
+              htmlFor='password'
+            >
+              Password
+            </label>
             <input
               type='password'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               name='password'
               value={password}
               onChange={(e) => {
@@ -143,42 +217,26 @@ const Register = ({ setAuth }) => {
               }}
               placeholder='Password'
             />
-            <button
-              type='submit'
-              className='w-full text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1'
-            >
-              Create Account
-            </button>
-          </form>
+          </div>
+          <button
+            type='submit'
+            className='w-full text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1'
+          >
+            Create Account
+          </button>
 
-          <div className='text-center text-sm text-grey-500 mt-4'>
-            By signing up, you agree to the
+          <div className='text-center'>
+            <span className='text-xs text-gray-400 font-semibold'>
+              Don't have account?
+            </span>
             <a
-              className='no-underline border-b border-grey-500 text-grey-500'
-              href='#'
+              href='http://localhost:3000/login'
+              className='text-xs font-semibold text-red-700'
             >
-              Terms of Service
-            </a>{' '}
-            and
-            <a
-              className='no-underline border-b border-grey-500 text-grey-500'
-              href='#'
-            >
-              Privacy Policy
+              Sign in
             </a>
           </div>
-        </div>
-
-        <div className='text-grey-dark mt-6'>
-          Already have an account?
-          <a
-            className='no-underline border-b border-blue text-blue'
-            href='../login/'
-          >
-            Log in
-          </a>
-          .
-        </div>
+        </form>
       </div>
     </div>
   );

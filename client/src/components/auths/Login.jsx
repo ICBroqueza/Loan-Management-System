@@ -45,7 +45,7 @@ const Login = ({ setAuth }) => {
   };
 
   return (
-    <div className='flex flex-col h-[700px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
+    <div className='flex flex-col h-[750px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
       <div className='w-1/2'>
         <div className='px-8 pt-6 pb-2'>
           <h1 className='text-xl font-semibold '>Welcome back</h1>
