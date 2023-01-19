@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import { ArrowBackIosNew } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const Login = ({ setAuth }) => {
@@ -47,11 +49,21 @@ const Login = ({ setAuth }) => {
   return (
     <div className='flex flex-col h-[750px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
       <div className='w-1/2'>
-        <div className='px-8 pt-6 pb-2'>
-          <h1 className='text-xl font-semibold '>Welcome back</h1>
-          <small className='text-gray-400'>
-            Welcome back! Please enter your details
-          </small>
+        <div className='flex justify-between px-8 pt-6 pb-2'>
+          {/* GREETINGS */}
+          <div>
+            <h1 className='text-xl font-semibold '>Welcome back</h1>
+            <small className='text-gray-400'>
+              Welcome back! Please enter your details
+            </small>
+          </div>
+
+          {/* BACK ARROW */}
+          <div className='ml-8'>
+            <Link to='/'>
+              <ArrowBackIosNew />
+            </Link>
+          </div>
         </div>
 
         <form

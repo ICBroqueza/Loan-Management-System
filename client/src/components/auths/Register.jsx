@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { ArrowBackIosNew } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+
 const Register = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     firstname: '',
@@ -66,11 +69,21 @@ const Register = ({ setAuth }) => {
 
       {/* FORM */}
       <div className='w-1/2'>
-        <div className='px-8 pt-8 pb-2'>
-          <h1 className='text-xl font-semibold '>
-            Welcome to <span className='text-red-500'>Maogma</span>.
-          </h1>
-          <small className='text-gray-400'>Please enter your details</small>
+        <div className='flex justify-between px-8 pt-8 pb-2'>
+          {/* GREETINGS */}
+          <div className=''>
+            <h1 className='text-xl font-semibold '>
+              Welcome to <span className='text-red-500'>Maogma</span>.
+            </h1>
+            <small className='text-gray-400'>Please enter your details</small>
+          </div>
+
+          {/* BACK ARROW */}
+          <div className=' mb-2'>
+            <Link to='/'>
+              <ArrowBackIosNew />
+            </Link>
+          </div>
         </div>
         <form
           onSubmit={(e) => {
