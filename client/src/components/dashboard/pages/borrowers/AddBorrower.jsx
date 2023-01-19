@@ -13,22 +13,14 @@ const AddBorrower = ({ setAuth }) => {
     email: '',
     address: '',
     username: '',
-    password: '',
   });
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const {
-    firstname,
-    lastname,
-    contactNumber,
-    address,
-    email,
-    username,
-    password,
-  } = inputs;
+  const { firstname, lastname, contactNumber, address, email, username } =
+    inputs;
 
   // const addSuccessful = () => {
   //   toast('New borrower added successfully!', {
@@ -48,27 +40,27 @@ const AddBorrower = ({ setAuth }) => {
         address,
         email,
         username,
-        password,
       };
 
-      const response = await fetch('http://localhost:8000/register', {
+      const response = await fetch('http://localhost:8000/addClient', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
+          Authorization: localStorage.getItem('token'),
         },
         body: JSON.stringify(body),
       });
 
       const parseRes = await response.json();
 
-      if (parseRes.token) {
-        localStorage.setItem('token', parseRes.token);
-        console.log(parseRes.token);
-        setAuth(true);
-      } else {
-        setAuth(false);
-        console.log('Something wrong');
-      }
+      // if (parseRes.token) {
+      //   localStorage.setItem('token', parseRes.token);
+      //   console.log(parseRes.token);
+      //   setAuth(true);
+      // } else {
+      //   setAuth(false);
+      //   console.log('Something wrong');
+      // }
 
       setInputs({
         firstname: '',
@@ -77,7 +69,6 @@ const AddBorrower = ({ setAuth }) => {
         address: '',
         email: '',
         username: '',
-        password: '',
       });
     } catch (error) {
       console.log(error.message);
@@ -210,19 +201,7 @@ const AddBorrower = ({ setAuth }) => {
               placeholder='Username'
               required
             />
-            {/* PASSWORD */}
-            <label htmlFor='password'>Password: </label>
-            <input
-              type='password'
-              className='block border border-grey-500t w-full p-3 rounded mb-4'
-              name='password'
-              value={password}
-              onChange={(e) => {
-                onChange(e);
-              }}
-              placeholder='Password'
-              required
-            />
+
             {/* BUTTONS */}
             <button
               // onClick={addSuccessful}

@@ -140,6 +140,30 @@ app.get('/email/:email', auth, async (req, res) => {
   }
 });
 
+// New Client
+app.post('/addClient', async (req, res) => {
+  try {
+    const { firstname, lastname, contactNumber, address, email, username } =
+      req.body;
+
+    const user = await pool.query(
+      `SELECT * FROM clients WHERE username = '${username}'`
+    );
+
+    if (user.rows.length > 0) {
+      res.status(401).send('User already exist');
+    }
+
+    const newClient = await pool.query(
+      `INSERT INTO clients(firstname, lastname, contactnumber, address, email,  username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${username}') RETURNING *`
+    );
+
+    res.json(newClient);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.patch('/clients/:id', async (req, res) => {
   try {
     const id = req.params['id'];

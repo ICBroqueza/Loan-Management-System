@@ -8,9 +8,6 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import Topbar from './components/topbar/Topbar';
-import Sidebar from './components/sidebar/Sidebar';
-import Dashboard from './components/dashboard/Dashboard';
 import Home from './components/dashboard/pages/home/Home';
 import Login from './components/auths/Login';
 import Landing from './components/landing/Landing';
@@ -30,7 +27,6 @@ import Payments from './components/dashboard/pages/payments/AllPayments';
 import Message from './components/dashboard/pages/messages/Message';
 import EmailPage from './components/dashboard/pages/messages/EmailPage';
 import PaymentLoansInfo from './components/dashboard/pages/payments/PaymentLoanInfo';
-import Dash from './components/dash/Dash';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -87,19 +83,6 @@ function App() {
                 element={
                   isAuthenticated ? (
                     <Home setAuth={setAuth} />
-                  ) : (
-                    <Navigate to='/login' />
-                  )
-                }
-              ></Route>
-
-              {/* DASHBOARD */}
-              <Route
-                exact
-                path='/dashboard'
-                element={
-                  !isAuthenticated ? (
-                    <Dashboard setAuth={setAuth} />
                   ) : (
                     <Navigate to='/login' />
                   )
@@ -265,6 +248,9 @@ function App() {
                   )
                 }
               ></Route>
+
+              {/* BORROWERS */}
+              {/* <Route exact path='/modal' element={<Modal />}></Route> */}
             </Routes>
           </Fragment>
         </div>

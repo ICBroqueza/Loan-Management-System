@@ -33,7 +33,7 @@ const Landing = () => {
     // </div>
     <div className=''>
       {/* NAVBAR */}
-      <div className='fixed w-full bg-white'>
+      <div className='sticky top-0 w-full bg-white'>
         <nav className='flex justify-between max-w-screen-xl px-4 py-5 mx-auto'>
           <div className='flex items-center'>
             <h3 className='text-xl font-extrabold tracking-tight text-red-500 '>
