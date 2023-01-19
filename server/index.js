@@ -22,7 +22,7 @@ app.post('/login', async (req, res) => {
 
     // console.log(req.body);
     const user = await pool.query(
-      `SELECT * FROM admin WHERE username = '${username}'`
+      `SELECT * FROM admins WHERE username = '${username}'`
     );
 
     if (user.rows.length <= 0) {
@@ -55,7 +55,7 @@ app.post('/register', async (req, res) => {
     } = req.body;
 
     const user = await pool.query(
-      `SELECT * FROM admin WHERE username = '${username}'`
+      `SELECT * FROM admins WHERE username = '${username}'`
     );
 
     if (user.rows.length > 0) {
@@ -69,7 +69,7 @@ app.post('/register', async (req, res) => {
     const bcryptPassword = await bcrypt.hash(password, salt);
 
     const newAdmin = await pool.query(
-      `INSERT INTO admin(firstname, lastname, contactnumber, address, email, password, username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${bcryptPassword}', '${username}') RETURNING *`
+      `INSERT INTO admins (firstname, lastname, contactnumber, address, email, password, username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${bcryptPassword}', '${username}') RETURNING *`
     );
 
     const token = generateJWT(newAdmin.rows[0]);
@@ -407,7 +407,7 @@ app.delete('/loans/:id', auth, async (req, res) => {
     // console.log(id);
     // console.log(req.user.id);
     const deleteLoan = await pool.query(
-      `DELETE FROM loans WHERE id = ${id} AND client_id = ${req.user.id} RETURNING * `
+      `DELETE FROM loans WHERE id = ${id} RETURNING * `
     );
 
     if (deleteLoan.rows.length === 0) {
@@ -490,29 +490,6 @@ app.post('/loans/', auth, async (req, res) => {
     );
 
     res.json(addPayment.rows[0]);
-  } catch (error) {
-    console.log(error.message);
-  }
-});
-
-// UPDATE BALANCE AFTER PAYMENT
-app.patch('/updateBalance/:id', auth, async (req, res) => {
-  try {
-    const id = req.params['id'];
-
-    const { new_balance } = req.body;
-
-    const updateLoan = await pool.query(
-      `UPDATE loans SET balance = ${new_balance} WHERE id = ${id} RETURNING *`
-    );
-
-    // If id is not the real user
-    // if (updateLoan.rows.length === 0) {
-    //   return res.json('This loan is not yours');
-    // }
-
-    console.log(updateLoan.rows);
-    res.json(updateLoan.rows);
   } catch (error) {
     console.log(error.message);
   }

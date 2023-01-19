@@ -4,7 +4,7 @@ const connectDatabase = () => {
   return new pg.Pool({
     user: 'postgres',
     password: '121397',
-    database: 'lending',
+    database: 'lendingapp',
     host: 'localhost',
   });
 };
