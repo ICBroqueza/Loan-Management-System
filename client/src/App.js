@@ -27,6 +27,7 @@ import Payments from './components/dashboard/pages/payments/AllPayments';
 import Message from './components/dashboard/pages/messages/Message';
 import EmailPage from './components/dashboard/pages/messages/EmailPage';
 import PaymentLoansInfo from './components/dashboard/pages/payments/PaymentLoanInfo';
+import AdminPage from './components/dashboard/admin/AdminPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,10 +50,10 @@ function App() {
                 exact
                 path='/register'
                 element={
-                  !isAuthenticated ? (
+                  isAuthenticated ? (
                     <Register setAuth={setAuth} />
                   ) : (
-                    <Navigate to='/login' />
+                    <Navigate to='/home' />
                   )
                 }
               ></Route>
@@ -64,6 +65,19 @@ function App() {
                 element={
                   !isAuthenticated ? (
                     <Login setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/home' />
+                  )
+                }
+              ></Route>
+
+              {/* LOGIN */}
+              <Route
+                exact
+                path='/admin'
+                element={
+                  isAuthenticated ? (
+                    <AdminPage setAuth={setAuth} />
                   ) : (
                     <Navigate to='/home' />
                   )

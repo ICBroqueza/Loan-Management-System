@@ -50,14 +50,14 @@ const Register = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      if (parseRes.token) {
-        localStorage.setItem('token', parseRes.token);
-        console.log(parseRes.token);
-        setAuth(true);
-      } else {
-        setAuth(false);
-        console.log('Something wrong');
-      }
+      // if (parseRes.token) {
+      //   localStorage.setItem('token', parseRes.token);
+      //   console.log(parseRes.token);
+      //   setAuth(true);
+      // } else {
+      //   setAuth(false);
+      //   console.log('Something wrong');
+      // }
     } catch (error) {
       console.log(error.message);
     }
@@ -77,7 +77,7 @@ const Register = ({ setAuth }) => {
 
           {/* BACK ARROW */}
           <div className=''>
-            <Link to='/'>
+            <Link to='/admin'>
               <ArrowBackIosNew />
             </Link>
           </div>

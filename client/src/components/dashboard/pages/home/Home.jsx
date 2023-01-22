@@ -6,7 +6,7 @@ import BotWidget from './bottom/BotWidget';
 import ClientsWidget from './top/ClientsWidget';
 import TopWidget from './top/TopWidget';
 import { Link } from 'react-router-dom';
-import { Logout } from '@mui/icons-material';
+import { Logout, PermIdentity } from '@mui/icons-material';
 
 export default function Home({ setAuth }) {
   const [name, setName] = useState();
@@ -47,8 +47,16 @@ export default function Home({ setAuth }) {
           <div>
             {/* LOGOUT BUTTON */}
             <div className='text-white float-right '>
+              {/* ADMIN PAGE */}
+              <button className='hover:-translate-y-0.5'>
+                <Link to='/admin'>
+                  <PermIdentity />
+                </Link>
+              </button>
+
+              {/* LOGOUT */}
               <button
-                className=''
+                className='ml-2 hover:-translate-y-0.5'
                 onClick={(e) => {
                   setAuth(false);
                 }}

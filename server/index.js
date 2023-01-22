@@ -83,6 +83,8 @@ app.post('/register', async (req, res) => {
   }
 });
 
+//! PRIVATE ROUTES
+//* ADMIN
 app.get('/profile', auth, async (req, res) => {
   try {
     res.json(req.user);
@@ -91,7 +93,16 @@ app.get('/profile', auth, async (req, res) => {
   }
 });
 
-//! PRIVATE ROUTES
+app.get('/allAdmins', auth, async (req, res) => {
+  try {
+    const getAdmin = await pool.query(`SELECT * FROM admins`);
+
+    res.json(getAdmin.rows);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 //* CLIENTS
 app.get('/allClients', auth, async (req, res) => {
   try {
