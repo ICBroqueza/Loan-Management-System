@@ -21,7 +21,6 @@ const AddLoan = ({ setAuth }) => {
   };
 
   const {
-    status,
     type,
     gross_loan,
     balance,
@@ -40,7 +39,6 @@ const AddLoan = ({ setAuth }) => {
     try {
       const body = {
         type,
-        status,
         gross_loan,
         balance,
         amort,
@@ -64,7 +62,6 @@ const AddLoan = ({ setAuth }) => {
 
       setInputs({
         type: '',
-        status: '',
         gross_loan: '',
         balance: '',
         amort: '',
@@ -136,21 +133,13 @@ const AddLoan = ({ setAuth }) => {
           {/* STATUS */}
           <div>
             <label htmlFor='maturity_date'>Status:</label>
-            <select
+            <input
               className='block border border-grey-500 w-10/12 p-3 rounded'
               name='status'
               id='status'
-              value={status}
-              onChange={(e) => {
-                onChange(e);
-              }}
-            >
-              <option value='Approved'>Approved</option>
-              <option value='Fully Paid'>Fully Paid</option>
-              <option value='Disbursed'>Disbursed</option>
-              <option value='Pending'>Pending</option>
-              <option value='Declined'>Declined</option>
-            </select>
+              value='Pending'
+              disabled
+            />
           </div>
 
           {/* GROSS LOAN */}

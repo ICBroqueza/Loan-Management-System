@@ -248,7 +248,6 @@ app.post('/loans/:id', auth, async (req, res) => {
 
     const {
       type,
-      status,
       gross_loan,
       balance,
       amort,
@@ -258,7 +257,7 @@ app.post('/loans/:id', auth, async (req, res) => {
     } = req.body;
 
     const newLoan = await pool.query(
-      `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${id}, '${type}', '${status}',${balance}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
+      `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${id}, '${type}', 'Pending', ${balance}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
     );
 
     res.json(newLoan.rows[0]);
