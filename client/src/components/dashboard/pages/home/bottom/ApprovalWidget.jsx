@@ -42,7 +42,7 @@ export default function ApprovalWidget() {
                 <tr className=''>
                   <th className='w-1/1 px-1 py-2'>Gross Loan</th>
                   <th className='w-1/1 px-1 py-2'>Status</th>
-                  <th className='w-1/6 px-1 py-2'>Actions</th>
+                  <th className='w-1/6 px-1 py-2'>View</th>
                 </tr>
               </thead>
               <tbody>
