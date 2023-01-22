@@ -30,7 +30,7 @@ export default function LoansWidget() {
   };
   useEffect(() => {
     getLoans();
-    setTotal(gross.reduce((acc, val) => acc + val, 0));
+    setTotal(gross.reduce((a, b) => a + b, 0));
   }, [gross]);
 
   // console.log(loans.length);

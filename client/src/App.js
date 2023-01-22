@@ -42,13 +42,7 @@ function App() {
           <Fragment>
             <Routes>
               {/* LANDING */}
-              <Route
-                exact
-                path='/'
-                element={
-                  !isAuthenticated ? <Landing /> : <Navigate to='/login' />
-                }
-              ></Route>
+              <Route exact path='/' element={<Landing />}></Route>
 
               {/* REGISTER */}
               <Route
@@ -58,7 +52,7 @@ function App() {
                   !isAuthenticated ? (
                     <Register setAuth={setAuth} />
                   ) : (
-                    <Navigate to='/home' />
+                    <Navigate to='/login' />
                   )
                 }
               ></Route>

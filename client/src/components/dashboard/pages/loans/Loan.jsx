@@ -12,7 +12,6 @@ import PaymentsInfo from '../payments/ListPayments';
 
 const LoanInfo = () => {
   const [loans, setLoans] = useState([]);
-  const [loanId, setLoanId] = useState();
 
   const location = useLocation();
 
@@ -28,13 +27,11 @@ const LoanInfo = () => {
       const parseRes = await response.json();
 
       setLoans(parseRes);
-      console.log(loans);
-      console.log(loanId);
+      // console.log(loans);
     } catch (error) {
       console.log(error.message);
     }
   };
-  console.log(loanId);
 
   // Delete loan Function
   async function deleteLoan(id) {
@@ -95,6 +92,7 @@ const LoanInfo = () => {
                   <td></td>
                   <td></td>
                   <td className='px-4 py-2 bg-red-50'>No Loan Data</td>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>

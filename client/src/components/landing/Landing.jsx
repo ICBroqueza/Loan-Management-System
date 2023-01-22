@@ -13,24 +13,6 @@ import {
 
 const Landing = () => {
   return (
-    // <div className='w-full mx-auto px-10 py-10 mb-4 mt-5 bg-white shadow-md rounded'>
-    //   <h1 className='text-2xl font-medium leading-6 text-red-500'>
-    //     Welcome To Maogma
-    //   </h1>
-    //   <h4>Lending App for Filipinoes</h4>
-    //   <br />
-    //   <p>Sign In and choose your loan</p>
-    //   <Link to='/login'>
-    //     <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto mr-2'>
-    //       Login
-    //     </button>
-    //   </Link>
-    //   <Link to='/register'>
-    //     <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'>
-    //       Register
-    //     </button>
-    //   </Link>
-    // </div>
     <div className=''>
       {/* NAVBAR */}
       <div className='sticky top-0 w-full bg-white'>
@@ -55,7 +37,7 @@ const Landing = () => {
               {/* ABOUT */}
               <li>
                 <a
-                  href='#'
+                  href='#about'
                   class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
                 >
                   About
@@ -65,7 +47,7 @@ const Landing = () => {
               {/* PRICING */}
               <li>
                 <a
-                  href='#'
+                  href='#pricing'
                   class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
                 >
                   Pricing
@@ -75,7 +57,7 @@ const Landing = () => {
               {/* CONTACT */}
               <li>
                 <a
-                  href='#'
+                  href='#contact'
                   class='block py-2 pl-3 pr-4   rounded text-gray-700    lg:hover:text-white lg:hover:bg-red-500 font-light lg:text-x '
                 >
                   Contact
@@ -190,7 +172,7 @@ const Landing = () => {
       </section>
 
       {/* ABOUT SECTION */}
-      <section>
+      <section id='about'>
         <div className='max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6'>
           {/* ITEM 1 */}
           <div className='items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16'>
@@ -374,7 +356,7 @@ const Landing = () => {
       </section>
 
       {/* PRICING SECTION */}
-      <section>
+      <section id='pricing'>
         <div className='max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6'>
           {/* TITLE */}
           <div class='max-w-screen-md mx-auto mb-8 text-center lg:mb-12'>
@@ -665,7 +647,7 @@ const Landing = () => {
       </section>
 
       {/* CONTACT */}
-      <section class=''>
+      <section id='contact'>
         <div class='py-8 lg:py-16 px-4 mx-auto max-w-screen-md'>
           <h2 class='mb-4 text-3xl tracking-tight font-extrabold text-center text-gray-900 '>
             Contact Us

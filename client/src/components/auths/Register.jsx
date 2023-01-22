@@ -63,15 +63,12 @@ const Register = ({ setAuth }) => {
     }
   };
   return (
-    <div className='flex flex-col h-[750px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
-      {/* BG */}
-      <div className='bg-red-500 h-full rounded-md w-1/2 py-20 px-20'></div>
-
+    <div className='flex flex-col h-[750px] w-[620px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap border-t-4 border-t-red-500 '>
       {/* FORM */}
-      <div className='w-1/2'>
-        <div className='flex justify-between px-8 pt-8 pb-2'>
+      <div className=''>
+        <div className='flex justify-between items-center  px-8 py-8'>
           {/* GREETINGS */}
-          <div className=''>
+          <div className='mt-5'>
             <h1 className='text-xl font-semibold '>
               Welcome to <span className='text-red-500'>Maogma</span>.
             </h1>
@@ -79,7 +76,7 @@ const Register = ({ setAuth }) => {
           </div>
 
           {/* BACK ARROW */}
-          <div className=' mb-2'>
+          <div className=''>
             <Link to='/'>
               <ArrowBackIosNew />
             </Link>
@@ -89,7 +86,7 @@ const Register = ({ setAuth }) => {
           onSubmit={(e) => {
             onSubmit(e);
           }}
-          className='bg-white px-8 pt-6 pb-8 mb-4'
+          className='bg-white px-8  pb-8 mb-4'
         >
           <div className='flex w-full gap-5'>
             {/* FIRSTNAME */}
@@ -228,7 +225,7 @@ const Register = ({ setAuth }) => {
               onChange={(e) => {
                 onChange(e);
               }}
-              placeholder='Password'
+              placeholder='*************'
             />
           </div>
           <button

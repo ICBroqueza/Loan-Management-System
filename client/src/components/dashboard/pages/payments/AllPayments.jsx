@@ -107,17 +107,18 @@ const Payments = ({ setAuth }) => {
                       <td className='border px-4 py-2'>
                         {payment.firstname + ' ' + payment.lastname}
                       </td>
-                      <td className='border px-4 py-2'> {payment.loan_id}</td>
-                      <td className='border px-4 py-2 bg-gray-50'>
-                        ₱ {payment.amount}
+                      <td className='border px-4 py-2  bg-gray-50'>
+                        {' '}
+                        {payment.loan_id}
                       </td>
-                      <td className='border px-4 py-2 '>
+                      <td className='border px-4 py-2 '>₱ {payment.amount}</td>
+                      <td className='border px-4 py-2  bg-gray-50'>
                         {new Date(payment.collection_date).toDateString()}
                       </td>
-                      <td className='border px-4 py-2 bg-gray-50'>
+                      <td className='border px-4 py-2 '>
                         {payment.collected_by}
                       </td>
-                      <td className='border px-4 py-2 '>
+                      <td className='border px-4 py-2  bg-gray-50'>
                         ₱ {payment.new_balance}
                       </td>
 

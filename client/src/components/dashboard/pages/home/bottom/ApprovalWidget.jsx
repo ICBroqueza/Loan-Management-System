@@ -74,12 +74,12 @@ export default function ApprovalWidget() {
                           <td className='border px-4 py-2 bg-gray-50'>
                             ₱ {loan.gross_loan}
                           </td>
-                          <td className='border px-4 py-2 bg-gray-50'>
+                          <td className='border px-4 py-2 '>
                             <span className=' bg-yellow-300 text-white px-4 py-1 rounded-md'>
                               {loan.status}
                             </span>
                           </td>
-                          <td className='border px-4 py-2'>
+                          <td className='border px-4 py-2  bg-gray-50'>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
                               <Link to={`/editLoan/${loan.id}`}>
                                 <VisibilityOutlined className='text-sm' />

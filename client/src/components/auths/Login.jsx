@@ -20,10 +20,8 @@ const Login = ({ setAuth }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      //making a body object from the values of username and password
       const body = { username, password };
 
-      //fetch api for POST method
       const response = await fetch('http://localhost:8000/login', {
         method: 'POST',
         headers: {
@@ -35,7 +33,6 @@ const Login = ({ setAuth }) => {
       const parseRes = await response.json();
 
       if (parseRes.token) {
-        //localstorage
         localStorage.setItem('token', parseRes.token);
         setAuth(true);
       } else {
@@ -47,9 +44,9 @@ const Login = ({ setAuth }) => {
   };
 
   return (
-    <div className='flex flex-col h-[750px] w-[1200px] border rounded-md shadow-md  mx-auto my-20 justify-center flex-wrap'>
-      <div className='w-1/2'>
-        <div className='flex justify-between px-8 pt-6 pb-2'>
+    <div className='flex flex-col h-auto w-[620px] border rounded-md shadow-md  mx-auto my-52 justify-center flex-wrap border-t-4 border-t-red-500 '>
+      <div className=''>
+        <div className='flex justify-between items-center px-8 pt-6 pb-2'>
           {/* GREETINGS */}
           <div>
             <h1 className='text-xl font-semibold '>Welcome back</h1>
@@ -68,7 +65,7 @@ const Login = ({ setAuth }) => {
 
         <form
           onSubmit={(e) => onSubmit(e)}
-          className='bg-white px-8 pt-6 pb-8 mb-4'
+          className='bg-white px-8 pt-6 pb-8 '
         >
           <div className='mb-4'>
             <label
@@ -95,7 +92,7 @@ const Login = ({ setAuth }) => {
               Password
             </label>
             <input
-              className='shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
               id='password'
               type='password'
               placeholder='******************'
@@ -103,9 +100,6 @@ const Login = ({ setAuth }) => {
               value={password}
               onChange={(e) => onChange(e)}
             />
-            <p className='text-red-500 text-xs italic'>
-              Please enter your password.
-            </p>
           </div>
           <div className='flex flex-col items-center justify-between gap-5'>
             <button
@@ -128,7 +122,6 @@ const Login = ({ setAuth }) => {
           </div>
         </form>
       </div>
-      <div className='bg-red-500 h-full rounded-md w-1/2 py-20 px-20'></div>
     </div>
   );
 };

@@ -130,23 +130,21 @@ const Loans = ({ setAuth }) => {
                         <td className='border px-4 py-2'>
                           {loan.firstname + ' ' + loan.lastname}
                         </td>
-                        <td className='border px-4 py-2'>{loan.type}</td>
-                        <td className='border px-4 py-2 bg-gray-50'>
-                          ₱ {loan.balance}
+                        <td className='border px-4 py-2  bg-gray-50'>
+                          {loan.type}
                         </td>
-                        <td className='border px-4 py-2 '>
+                        <td className='border px-4 py-2 '>₱ {loan.balance}</td>
+                        <td className='border px-4 py-2  bg-gray-50'>
                           ₱ {loan.gross_loan}
                         </td>
-                        <td className='border px-4 py-2 bg-gray-50'>
-                          ₱ {loan.amort}
-                        </td>
-                        <td className='border px-4 py-2 '>
+                        <td className='border px-4 py-2 '>₱ {loan.amort}</td>
+                        <td className='border px-4 py-2  bg-gray-50'>
                           {loan.terms} month/s
                         </td>
-                        <td className='border px-4 py-2 bg-gray-50'>
+                        <td className='border px-4 py-2 '>
                           {new Date(loan.date_released).toDateString()}
                         </td>
-                        <td className='border px-4 py-2 '>
+                        <td className='border px-4 py-2  bg-gray-50'>
                           {/* <span className='border bg-green-600 text-white px-5 py-1 rounded-md'>
                             {loan.status}
                           </span> */}

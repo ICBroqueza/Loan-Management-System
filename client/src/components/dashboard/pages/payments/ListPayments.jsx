@@ -65,7 +65,9 @@ const PaymentsInfo = () => {
             <tr className='border px-4 py-2 bg-red-50'>
               <td></td>
               <td></td>
+              <td></td>
               <td className='px-4 py-2 bg-red-50'>No Loan Data</td>
+              <td></td>
               <td></td>
               <td></td>
             </tr>

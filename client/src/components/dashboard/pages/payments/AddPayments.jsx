@@ -7,9 +7,9 @@ import UpdateBalance from './UpdateBalance';
 import PaymentLoansInfo from './PaymentLoanInfo';
 
 const AddPayments = ({ loanId, balance, clientId }) => {
-  console.log(loanId);
-  console.log(balance);
-  console.log(clientId);
+  // console.log(loanId);
+  // console.log(balance);
+  // console.log(clientId);
   const [inputs, setInputs] = useState({
     amount: '',
     collection_date: '',
@@ -64,10 +64,10 @@ const AddPayments = ({ loanId, balance, clientId }) => {
     }
   };
 
-  console.log(clientId);
-  console.log(client_id);
-  const n_balance = balance - amount;
-  console.log(n_balance);
+  // console.log(clientId);
+  // console.log(client_id);
+  // const n_balance = balance - amount;
+  // console.log(n_balance);
 
   return (
     <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md border-t-4 border-t-red-500 '>
@@ -156,7 +156,8 @@ const AddPayments = ({ loanId, balance, clientId }) => {
               type='number'
               className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
               name='new_balance'
-              value={balance - amount}
+              // value={balance - amount + 0.0}
+              value={new_balance}
               onChange={(e) => onChange(e)}
             />
           </div>

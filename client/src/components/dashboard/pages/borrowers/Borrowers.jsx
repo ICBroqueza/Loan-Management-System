@@ -90,7 +90,7 @@ const Borrowers = ({ setAuth }) => {
 
         {/* INFO */}
         <div className='w-full h-[640px] px-4   mt-5 overflow-auto hover:overflow-scroll border rounded shadow-md border-t-4 border-t-red-500 '>
-          <table className='table-fixed text-center'>
+          <table className='table-fixed text-center mb-2'>
             <thead className=' mt-5'>
               <tr className=' mt-10'>
                 <th className='w-1/1 px-1 py-2 text-gray-600'>ID</th>

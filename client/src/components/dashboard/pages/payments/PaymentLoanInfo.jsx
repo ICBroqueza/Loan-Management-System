@@ -30,17 +30,6 @@ const PaymentLoansInfo = ({ setAuth }) => {
       console.log(error.message);
     }
   };
-
-  async function updateLoan() {
-    try {
-      await fetch(`http://localhost:8000/loan/${loanId}`, {
-        method: 'PATCH',
-        headers: { Authorization: localStorage.getItem('token') },
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
   // console.log(loanId);
 
   // setBalance(loans[0].balance);
