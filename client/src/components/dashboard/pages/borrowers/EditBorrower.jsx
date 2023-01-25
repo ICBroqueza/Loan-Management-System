@@ -5,22 +5,40 @@ import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
 
 const EditBorrower = ({ setAuth }) => {
+  const [client, setClient] = useState(null);
+
+  const location = useLocation();
+
+  const clientId = location.pathname.split('/')[2];
+  const GetClient = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/client/${clientId}`, {
+        method: 'GET',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+
+      const parseRes = await response.json();
+
+      setClient(parseRes);
+      // console.log('Hi');
+      // console.log(client);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const [inputs, setInputs] = useState({
-    firstname: '',
+    firstname: client.firstname,
     lastname: '',
     email: '',
     address: '',
   });
 
+  console.log(client.firstname);
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
   const { firstname, lastname, contactNumber, address, email } = inputs;
-
-  const location = useLocation();
-
-  const clientId = location.pathname.split('/')[2];
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -60,6 +78,10 @@ const EditBorrower = ({ setAuth }) => {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    GetClient();
+  }, []);
 
   return (
     <div className='flex h-[900px]'>

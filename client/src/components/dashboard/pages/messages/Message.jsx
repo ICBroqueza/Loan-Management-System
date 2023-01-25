@@ -4,7 +4,7 @@ import Account from '../borrowers/Account';
 import GetBorrowers from './GetBorrowers';
 import emailjs from 'emailjs-com';
 
-export default function Message({ email }) {
+export default function Message({ email, fullname }) {
   function sendEmail(e) {
     e.preventDefault();
 
@@ -32,24 +32,43 @@ export default function Message({ email }) {
         <div class='w-full px-8  bg-white '>
           <div class=' py-2.5 '>
             <form onSubmit={sendEmail} class='space-y-8'>
-              <div>
-                <label
-                  for='email'
-                  class='block mb-2 text-sm font-medium text-gray-900 mt-5'
-                >
-                  Client Email
-                </label>
-                <input
-                  type='email'
-                  id='email'
-                  value={email}
-                  name='email'
-                  class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 '
-                  placeholder='Choose Email'
-                  required
-                  // disabled
-                />
+              {/* NAME EMAIL */}
+              <div className='flex w-full gap-5'>
+                {/* FIRSTNAME */}
+                <div className='w-full'>
+                  <label
+                    className='block text-gray-700 text-sm font-bold mb-2'
+                    htmlFor='fullname'
+                  >
+                    Full Name:
+                  </label>
+                  <input
+                    type='text'
+                    className='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
+                    name='fullname'
+                    value={fullname}
+                    placeholder='Choose a borrower'
+                  />
+                </div>
+
+                {/* EMAIL */}
+                <div className='w-full'>
+                  <label
+                    className='block text-gray-700 text-sm font-bold mb-2'
+                    htmlFor='email'
+                  >
+                    Email:
+                  </label>
+                  <input
+                    type='email'
+                    className='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
+                    name='email'
+                    value={email}
+                  />
+                </div>
               </div>
+
+              {/* SUBJECT */}
               <div>
                 <label
                   for='subject'
@@ -66,6 +85,8 @@ export default function Message({ email }) {
                   required
                 />
               </div>
+
+              {/* MESSAGE */}
               <div class='sm:col-span-2'>
                 <label
                   for='message'

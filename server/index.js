@@ -141,6 +141,20 @@ app.get('/email/:email', auth, async (req, res) => {
   }
 });
 
+// Client Name
+app.get('/email/:fullname', auth, async (req, res) => {
+  try {
+    const fullname = req.params['fullname'];
+    const getClient = await pool.query(
+      `SELECT * FROM clients WHERE email = '${email}';`
+    );
+
+    res.json(getClient.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 // New Client
 app.post('/addClient', async (req, res) => {
   try {
