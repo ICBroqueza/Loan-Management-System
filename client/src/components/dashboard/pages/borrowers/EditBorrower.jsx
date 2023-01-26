@@ -25,6 +25,7 @@ const EditBorrower = ({ setAuth }) => {
       setInputs({
         firstname: parseRes.firstname,
         lastname: parseRes.lastname,
+        contactNumber: parseRes.contactnumber,
         email: parseRes.email,
         address: parseRes.address,
       });
@@ -35,11 +36,11 @@ const EditBorrower = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     firstname: '',
     lastname: '',
+    contactNumber: '',
     email: '',
     address: '',
   });
 
-  console.log(client.firstname);
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
@@ -195,7 +196,7 @@ const EditBorrower = ({ setAuth }) => {
             </button>
             <button className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'>
               {/* <Navigate to='/borrowers'>Cancel</Navigate> */}
-              <Link to={`/borrower/${clientId}`}>Cancel</Link>
+              <Link to={`/borrower/${clientId}`}>Back</Link>
             </button>
           </form>
         </div>
