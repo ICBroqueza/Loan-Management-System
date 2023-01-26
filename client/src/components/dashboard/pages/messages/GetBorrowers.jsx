@@ -8,7 +8,7 @@ import Message from './Message';
 const GetBorrowers = ({ setAuth }) => {
   const [clients, setClients] = useState([]);
   const [emails, setEmail] = useState('');
-
+  const [fullname, setFullname] = useState('');
   const getClients = async () => {
     try {
       const response = await fetch('http://localhost:8000/allClients', {
@@ -37,6 +37,7 @@ const GetBorrowers = ({ setAuth }) => {
       });
 
       setEmail(clients.map((client) => email));
+
       console.log(emails[0]);
     } catch (error) {
       console.log(error.message);
@@ -118,7 +119,13 @@ const GetBorrowers = ({ setAuth }) => {
                             </button>
                             <button
                               className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '
-                              onClick={() => selectClient(client.email)}
+                              onClick={() =>
+                                selectClient(
+                                  client.email,
+                                  client.firstname,
+                                  client.lastname
+                                )
+                              }
                             >
                               <Check />
                             </button>

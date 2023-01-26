@@ -1,10 +1,31 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+
 import Sidebar from '../../../sidebar/Sidebar';
 import Account from '../borrowers/Account';
 import GetBorrowers from './GetBorrowers';
 import emailjs from 'emailjs-com';
 
-export default function Message({ email, fullname }) {
+export default function Message({ email }) {
+  console.log(email);
+  const [fullname, setFullname] = useState('');
+
+  const getClient = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/email/${email}`, {
+        method: 'GET',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+
+      const parseRes = await response.json();
+      console.log(parseRes);
+      setFullname(parseRes.firstname + parseRes.lastname);
+      // setClients(parseRes);
+      // setUser(parseRes.firstname);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   function sendEmail(e) {
     e.preventDefault();
 
@@ -25,6 +46,10 @@ export default function Message({ email, fullname }) {
       );
     e.target.reset();
   }
+
+  useEffect(() => {
+    getClient();
+  }, [fullname]);
 
   return (
     <div className='flex'>
@@ -76,14 +101,15 @@ export default function Message({ email, fullname }) {
                 >
                   Subject
                 </label>
-                <input
-                  type='text'
+                <select
+                  class='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
                   name='subject'
                   id='subject'
-                  class='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
-                  placeholder='Type your subject here...'
-                  required
-                />
+                >
+                  <option value='Loan Approval'>Loan Approval</option>
+                  <option value='Loan Denied'>Loan Denied</option>
+                  <option value='Loan Disbursed'>Loan Disbursed</option>
+                </select>
               </div>
 
               {/* MESSAGE */}
