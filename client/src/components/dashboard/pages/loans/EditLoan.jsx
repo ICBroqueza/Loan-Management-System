@@ -1,11 +1,43 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import OneLoan from './OneLoan';
 import { Logout } from '@mui/icons-material';
 
 const EditLoan = ({ setAuth }) => {
+  const location = useLocation();
+
+  const loanId = location.pathname.split('/')[2];
+
+  const GetLoan = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/loan/${loanId}`, {
+        method: 'GET',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+
+      const parseRes = await response.json();
+      // console.log(parseRes);
+      // setClient(parseRes);
+      // console.log('Hi');
+      // console.log(client);
+
+      let date = setInputs({
+        type: parseRes.type,
+        balance: parseRes.balance,
+        gross_loan: parseRes.gross_loan,
+        amort: parseRes.amort,
+        terms: parseRes.terms,
+        status: parseRes.status,
+        // date_released: new Date(parseRes.date_released).toLocaleDateString(
+        //   'fr-CA'
+        // ),
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const [inputs, setInputs] = useState({
     type: '',
     balance: '',
@@ -31,10 +63,6 @@ const EditLoan = ({ setAuth }) => {
     date_released,
     maturity_date,
   } = inputs;
-
-  const location = useLocation();
-
-  const loanId = location.pathname.split('/')[2];
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +107,15 @@ const EditLoan = ({ setAuth }) => {
       console.log(error.message);
     }
   };
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  useEffect(() => {
+    GetLoan();
+  }, []);
 
   return (
     <div className='flex h-[900px]'>
@@ -260,8 +297,12 @@ const EditLoan = ({ setAuth }) => {
               >
                 Update
               </button>
-              <button className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'>
-                <Link to='/loans'>Cancel</Link>
+              <button
+                onClick={goBack}
+                className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'
+              >
+                {/* <Link to='/loans'>Cancel</Link> */}
+                Back
               </button>
             </div>
           </form>
