@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
 import UpdateBalance from './UpdateBalance';
@@ -76,6 +76,11 @@ const AddPayments = ({ loanId, balance, clientId }) => {
   // console.log(client_id);
   // const n_balance = balance - amount;
   // console.log(n_balance);
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md border-t-4 border-t-red-500 '>
@@ -204,8 +209,11 @@ const AddPayments = ({ loanId, balance, clientId }) => {
               Add Payment
             </button>
             {/* <UpdateBalance balance={new_balance} loan_id={loan_id} /> */}
-            <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'>
-              <Link to={`/borrowers`}>Cancel</Link>
+            <button
+              onClick={goBack}
+              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
+            >
+              Back
             </button>
             {/* <button
               className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
