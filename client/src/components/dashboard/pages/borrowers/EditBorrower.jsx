@@ -5,7 +5,7 @@ import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
 
 const EditBorrower = ({ setAuth }) => {
-  const [client, setClient] = useState(null);
+  const [client, setClient] = useState({});
 
   const location = useLocation();
 
@@ -22,12 +22,18 @@ const EditBorrower = ({ setAuth }) => {
       setClient(parseRes);
       // console.log('Hi');
       // console.log(client);
+      setInputs({
+        firstname: parseRes.firstname,
+        lastname: parseRes.lastname,
+        email: parseRes.email,
+        address: parseRes.address,
+      });
     } catch (error) {
       console.log(error.message);
     }
   };
   const [inputs, setInputs] = useState({
-    firstname: client.firstname,
+    firstname: '',
     lastname: '',
     email: '',
     address: '',

@@ -64,6 +64,14 @@ const AddPayments = ({ loanId, balance, clientId }) => {
     }
   };
 
+  useEffect(() => {
+    const updatedBalance = balance - inputs.amount;
+    setInputs((prevState) => ({
+      ...prevState,
+      new_balance: updatedBalance,
+    }));
+  }, [inputs.amount, balance]);
+
   // console.log(clientId);
   // console.log(client_id);
   // const n_balance = balance - amount;
@@ -156,8 +164,8 @@ const AddPayments = ({ loanId, balance, clientId }) => {
               type='number'
               className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
               name='new_balance'
-              // value={balance - amount + 0.0}
-              value={new_balance}
+              value={inputs.new_balance}
+              // value={new_balance}
               onChange={(e) => onChange(e)}
             />
           </div>
