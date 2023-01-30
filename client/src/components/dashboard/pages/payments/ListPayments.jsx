@@ -2,9 +2,11 @@ import { DeleteForever, Edit, Update } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const PaymentsInfo = () => {
   const [payments, setPayments] = useState([]);
+  // const [payment, setPayment] = useState([]);
 
   const location = useLocation();
 
@@ -30,12 +32,47 @@ const PaymentsInfo = () => {
   };
   console.log(payments);
 
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Payment...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
+  // Delete loan Function
+  async function deletePayment(id) {
+    try {
+      await fetch(`http://localhost:8000/payment/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+      deleteNotif();
+      setTimeout(() => {
+        setPayments(payments.filter((payment) => payment.id !== id));
+      }, 2000);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     GetPayments();
   }, []);
 
   return (
     <div className='h-[350px] overflow-hidden hover:overflow-scroll border rounded shadow-md px-8 py-8 border-t-4 border-t-red-500'>
+      <ToastContainer />
+
       {/* Payment History */}
       <div className='flex items-center justify-between border-y-2 '>
         <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
@@ -52,6 +89,7 @@ const PaymentsInfo = () => {
             <th className='w-1/5 px-1 py-2 text-gray-600'>New Balance</th>
             <th className='w-1/5 px-4 py-2 text-gray-600'>Collected By:</th>
             <th className='w-1/5 px-4 py-2 text-gray-600'>Method</th>
+            <th className='w-1/5 px-4 py-2 text-gray-600'>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +98,7 @@ const PaymentsInfo = () => {
               <td></td>
               <td></td>
               <td></td>
-              <td className='px-4 py-2 bg-red-50'>No Loan Data</td>
+              <td className='px-4 py-2 bg-red-50'>No Payment Data</td>
               <td></td>
               <td></td>
               <td></td>
@@ -101,6 +139,15 @@ const PaymentsInfo = () => {
                         {payment.method}
                       </span>
                     )}
+                  </td>
+                  <td>
+                    {' '}
+                    <button
+                      className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 mb-2 rounded focus:outline-none focus:shadow-outline  text-sm'
+                      onClick={() => deletePayment(payment.id)}
+                    >
+                      <DeleteForever className='text-lg' />
+                    </button>
                   </td>
                 </tr>
               );

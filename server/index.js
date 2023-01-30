@@ -369,6 +369,27 @@ app.patch('/loan/:id', auth, async (req, res) => {
   }
 });
 
+// Delete payment
+app.delete('/payment/:id', auth, async (req, res) => {
+  try {
+    // const id = req.params['id'];
+    const { id } = req.params;
+    // console.log(id);
+    // console.log(req.user.id);
+    const deletePayment = await pool.query(
+      `DELETE FROM payments WHERE id = ${id} RETURNING * `
+    );
+
+    if (deletePayment.rows.length === 0) {
+      res.json('You are not authorize to delete loan');
+    }
+
+    res.json({ msg: `Deleted payment with an id of ${id}` });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 // Delete loan
 app.delete('/loans/:id', auth, async (req, res) => {
   try {
