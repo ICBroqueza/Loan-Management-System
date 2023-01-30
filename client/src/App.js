@@ -28,6 +28,7 @@ import Message from './components/dashboard/pages/messages/Message';
 import EmailPage from './components/dashboard/pages/messages/EmailPage';
 import PaymentLoansInfo from './components/dashboard/pages/payments/PaymentLoanInfo';
 import AdminPage from './components/dashboard/admin/AdminPage';
+import AddAdmin from './components/dashboard/admin/AddAdmin';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -54,6 +55,18 @@ function App() {
                     <Register setAuth={setAuth} />
                   ) : (
                     <Navigate to='/home' />
+                  )
+                }
+              ></Route>
+
+              <Route
+                exact
+                path='/addAdmin'
+                element={
+                  isAuthenticated ? (
+                    <AddAdmin setAuth={setAuth} />
+                  ) : (
+                    <Navigate to='/admin' />
                   )
                 }
               ></Route>

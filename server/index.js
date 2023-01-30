@@ -45,7 +45,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/register', async (req, res) => {
+app.post('/addAdmin', async (req, res) => {
   try {
     const {
       firstname,
@@ -85,6 +85,43 @@ app.post('/register', async (req, res) => {
 
 //! PRIVATE ROUTES
 //* ADMIN
+app.post('/register', async (req, res) => {
+  try {
+    const {
+      firstname,
+      lastname,
+      contactNumber,
+      address,
+      email,
+      username,
+      password,
+    } = req.body;
+
+    const admin = await pool.query(
+      `SELECT * FROM admins WHERE username = '${username}'`
+    );
+
+    if (admin.rows.length > 0) {
+      res.status(401).send('User already exist');
+    }
+
+    // bcrypt
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+
+    const bcryptPassword = await bcrypt.hash(password, salt);
+
+    const newAdmin = await pool.query(
+      `INSERT INTO admins (firstname, lastname, contactnumber, address, email, password, username) VALUES ('${firstname}', '${lastname}', ${contactNumber}, '${address}', '${email}', '${bcryptPassword}', '${username}') RETURNING *`
+    );
+
+    const token = generateJWT(newAdmin.rows[0]);
+
+    res.json({ token });
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.get('/profile', auth, async (req, res) => {
   try {
     res.json(req.user);

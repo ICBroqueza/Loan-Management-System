@@ -23,11 +23,6 @@ const AddBorrower = ({ setAuth }) => {
     inputs;
 
   const addSuccessful = () => {
-    // toast('New borrower added successfully!', {
-    //   className: 'success-toast',
-    //   draggable: true,
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {
