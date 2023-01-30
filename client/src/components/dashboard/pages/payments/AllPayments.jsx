@@ -120,6 +120,7 @@ const Payments = ({ setAuth }) => {
                 <th className='w-1/6 px-1 py-2 text-gray-600'>Collected By:</th>
                 <th className='w-1/6 px-1 py-2 text-gray-600'>New Balance</th>
                 <th className='w-1/6 px-4 py-2 text-gray-600'>Method</th>
+                <th className='w-1/6 px-4 py-2 text-gray-600'>Delete</th>
               </tr>
             </thead>
             <tbody>

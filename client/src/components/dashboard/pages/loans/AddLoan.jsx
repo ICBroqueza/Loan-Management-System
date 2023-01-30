@@ -38,11 +38,6 @@ const AddLoan = ({ setAuth }) => {
   const clientId = location.pathname.split('/')[2];
 
   const addSuccessful = () => {
-    // toast('New borrower added successfully!', {
-    //   className: 'success-toast',
-    //   draggable: true,
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {

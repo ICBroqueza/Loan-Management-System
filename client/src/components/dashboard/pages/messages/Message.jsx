@@ -1,10 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-import Sidebar from '../../../sidebar/Sidebar';
-import Account from '../borrowers/Account';
-import GetBorrowers from './GetBorrowers';
 import emailjs from 'emailjs-com';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Message({ email }) {
   console.log(email);
@@ -18,15 +16,31 @@ export default function Message({ email }) {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
       setFullname(parseRes.firstname + ' ' + parseRes.lastname);
-      // setClients(parseRes);
-      // setUser(parseRes.firstname);
     } catch (error) {
       console.log(error);
     }
   };
-  function sendEmail(e) {
+  const addSuccessful = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Sending your mail...',
+        success: 'Sent Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
+  const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
@@ -44,8 +58,10 @@ export default function Message({ email }) {
           console.log(error.text);
         }
       );
+    addSuccessful();
+
     e.target.reset();
-  }
+  };
 
   useEffect(() => {
     getClient();
@@ -53,6 +69,7 @@ export default function Message({ email }) {
 
   return (
     <div className='flex'>
+      <ToastContainer />
       <div className='w-full h-[650px] px-4 mt-5 border rounded shadow-md border-t-4 border-t-red-500 '>
         <div class='w-full px-8  bg-white '>
           <div class=' py-2.5 '>
