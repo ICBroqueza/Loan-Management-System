@@ -8,6 +8,7 @@ import {
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import PaymentsInfo from '../payments/ListPayments';
 
 const LoanInfo = () => {
@@ -33,6 +34,23 @@ const LoanInfo = () => {
     }
   };
 
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Loan...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
   // Delete loan Function
   async function deleteLoan(id) {
     try {
@@ -40,8 +58,10 @@ const LoanInfo = () => {
         method: 'DELETE',
         headers: { Authorization: localStorage.getItem('token') },
       });
-
-      setLoans(loans.filter((loan) => loan.id !== id));
+      deleteNotif();
+      setTimeout(() => {
+        setLoans(loans.filter((loan) => loan.id !== id));
+      }, 2000);
     } catch (error) {
       console.log(error.message);
     }
@@ -53,6 +73,7 @@ const LoanInfo = () => {
 
   return (
     <div className=''>
+      <ToastContainer />
       {/* Loans Information */}
       <div className='flex flex-col w-full mx-auto pl-8 py-4 mb-4 bg-white gap-5 '>
         {/* Active Loans */}
