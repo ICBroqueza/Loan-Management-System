@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DeleteForever, VisibilityOutlined, Logout } from '@mui/icons-material';
 import Sidebar from '../../../sidebar/Sidebar';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Borrowers = ({ setAuth }) => {
   const [clients, setClients] = useState([]);
@@ -26,14 +27,34 @@ const Borrowers = ({ setAuth }) => {
   console.log(clients);
 
   // Delete CLIENT Function
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Client...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
+
   async function deleteClient(id) {
     try {
       await fetch(`http://localhost:8000/clients/${id}`, {
         method: 'DELETE',
         headers: { Authorization: localStorage.getItem('token') },
       });
-
-      setClients(clients.filter((loan) => loan.id !== id));
+      deleteNotif();
+      setTimeout(() => {
+        setClients(clients.filter((loan) => loan.id !== id));
+      }, 2000);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,6 +67,7 @@ const Borrowers = ({ setAuth }) => {
   return (
     <div className='text-gray-900 h-[900px] flex'>
       <Sidebar />
+      <ToastContainer />
       {/* Clients */}
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded '>
         {/* HEADER */}
