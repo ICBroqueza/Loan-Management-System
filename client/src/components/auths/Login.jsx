@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { ArrowBackIosNew } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -14,7 +15,25 @@ const Login = ({ setAuth }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  //deconstructing the username and password variable from the inputs
+  const loginSuccessful = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Logging in...',
+        success: 'Logged in Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
   const { username, password } = inputs;
 
   const onSubmit = async (e) => {
@@ -34,7 +53,10 @@ const Login = ({ setAuth }) => {
 
       if (parseRes.token) {
         localStorage.setItem('token', parseRes.token);
-        setAuth(true);
+        loginSuccessful();
+        setTimeout(() => {
+          setAuth(true);
+        }, 3000);
       } else {
         console.log('Something wrong');
       }
@@ -45,6 +67,7 @@ const Login = ({ setAuth }) => {
 
   return (
     <div className='flex flex-col h-auto w-[620px] border rounded-md shadow-md  mx-auto my-52 justify-center flex-wrap border-t-4 border-t-red-500 '>
+      <ToastContainer />
       <div className=''>
         <div className='flex justify-between items-center px-8 pt-6 pb-2'>
           {/* GREETINGS */}
