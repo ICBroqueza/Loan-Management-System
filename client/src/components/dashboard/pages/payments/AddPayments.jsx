@@ -5,6 +5,7 @@ import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
 import UpdateBalance from './UpdateBalance';
 import PaymentLoansInfo from './PaymentLoanInfo';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddPayments = ({ loanId, balance, clientId }) => {
   // console.log(loanId);
@@ -34,6 +35,30 @@ const AddPayments = ({ loanId, balance, clientId }) => {
     loan_id,
   } = inputs;
 
+  const addSuccessful = () => {
+    // toast('New borrower added successfully!', {
+    //   className: 'success-toast',
+    //   draggable: true,
+    //   position: toast.POSITION.TOP_LEFT,
+    // });
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Adding Payment...',
+        success: 'Added Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -58,7 +83,12 @@ const AddPayments = ({ loanId, balance, clientId }) => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
+      // console.log(parseRes);
+      addSuccessful();
+
+      setTimeout(() => {
+        navigate(-1);
+      }, 3000);
     } catch (error) {
       console.log(error.message);
     }
@@ -84,6 +114,8 @@ const AddPayments = ({ loanId, balance, clientId }) => {
 
   return (
     <div className='flex mt-5 px-4 py-2 h-[530px] rounded border shadow-md border-t-4 border-t-red-500 '>
+      <ToastContainer />
+
       {/* Add Loan */}
       <div className='w-full '>
         <div className='flex w-full items-center justify-between border-y-2 mt-5'>

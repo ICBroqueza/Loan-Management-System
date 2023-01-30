@@ -41,12 +41,6 @@ const PaymentsInfo = () => {
         <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
           Payment History
         </h3>
-        {/* <button
-            className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2'
-            // onClick={() => deleteLoan(loan.id)}
-          >
-            <Link to={`/addPayments/${clientId}`}>Add Payments</Link>
-          </button> */}
       </div>
       <div>{/* {payments.map} */}</div>
       <table className='table-fixed text-center '>

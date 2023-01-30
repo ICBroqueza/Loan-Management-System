@@ -1,10 +1,11 @@
 import { DeleteForever, Edit, Update } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import AddPayments from './AddPayments';
 import { Logout } from '@mui/icons-material';
+import { ToastContainer, toast } from 'react-toastify';
 
 const PaymentLoansInfo = ({ setAuth }) => {
   const [loans, setLoans] = useState([]);
@@ -14,8 +15,8 @@ const PaymentLoansInfo = ({ setAuth }) => {
   const clientId = location.pathname.split('/')[2];
   const loanId = location.pathname.split('/')[3];
 
-  console.log(loanId);
-  console.log(clientId);
+  // console.log(loanId);
+  // console.log(clientId);
   const GetLoans = async () => {
     try {
       const response = await fetch(`http://localhost:8000/loan/${loanId}`, {
