@@ -5,6 +5,8 @@ import Sidebar from '../../../sidebar/Sidebar';
 import OneLoan from './OneLoan';
 import { Logout } from '@mui/icons-material';
 
+import { toast, ToastContainer } from 'react-toastify';
+
 const EditLoan = ({ setAuth }) => {
   const location = useLocation();
 
@@ -64,6 +66,30 @@ const EditLoan = ({ setAuth }) => {
     maturity_date,
   } = inputs;
 
+  const editSuccessful = () => {
+    // toast('New borrower added successfully!', {
+    //   className: 'success-toast',
+    //   draggable: true,
+    //   position: toast.POSITION.TOP_LEFT,
+    // });
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Updating Loan...',
+        success: 'Updated Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -103,6 +129,12 @@ const EditLoan = ({ setAuth }) => {
         date_released: '',
         maturity_date: '',
       });
+
+      editSuccessful();
+
+      setTimeout(() => {
+        navigate(-1);
+      }, 3000);
     } catch (error) {
       console.log(error.message);
     }
@@ -120,6 +152,7 @@ const EditLoan = ({ setAuth }) => {
   return (
     <div className='flex h-[900px]'>
       <Sidebar />
+      <ToastContainer />
 
       <div className='w-full  h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
         {/* HEADER */}
