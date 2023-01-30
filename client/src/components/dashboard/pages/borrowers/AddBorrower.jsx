@@ -1,10 +1,10 @@
 import { Logout } from '@mui/icons-material';
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddBorrower = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -22,13 +22,39 @@ const AddBorrower = ({ setAuth }) => {
   const { firstname, lastname, contactNumber, address, email, username } =
     inputs;
 
-  // const addSuccessful = () => {
-  //   toast('New borrower added successfully!', {
-  //     className: 'success-toast',
-  //     draggable: true,
-  //     position: toast.POSITION.TOP_RIGHT,
-  //   });
-  // };
+  const addSuccessful = () => {
+    // toast('New borrower added successfully!', {
+    //   className: 'success-toast',
+    //   draggable: true,
+    //   position: toast.POSITION.TOP_LEFT,
+    // });
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Adding Borrower...',
+        success: 'Added Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
+  const notSuccesful = () => {
+    toast('Something is wrong', {
+      className: 'error-toast',
+      draggable: true,
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -70,13 +96,15 @@ const AddBorrower = ({ setAuth }) => {
         email: '',
         username: '',
       });
+
+      addSuccessful();
+
+      setTimeout(() => {
+        navigate('/borrowers', { replace: true });
+      }, 3000);
     } catch (error) {
+      notSuccesful();
       console.log(error.message);
-      // toast('Something is wrong', {
-      //   className: 'error-toast',
-      //   draggable: true,
-      //   position: toast.POSITION.TOP_RIGHT,
-      // });
     }
   };
 
@@ -99,7 +127,7 @@ const AddBorrower = ({ setAuth }) => {
                 Register all the required fields.
               </p>
             </div>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
 
             {/* BUTTON */}
 
