@@ -46,14 +46,6 @@ const AddBorrower = ({ setAuth }) => {
     );
   };
 
-  const notSuccesful = () => {
-    toast('Something is wrong', {
-      className: 'error-toast',
-      draggable: true,
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
@@ -103,7 +95,6 @@ const AddBorrower = ({ setAuth }) => {
         navigate('/borrowers', { replace: true });
       }, 3000);
     } catch (error) {
-      notSuccesful();
       console.log(error.message);
     }
   };

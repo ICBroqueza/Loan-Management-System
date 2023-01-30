@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const EditBorrower = ({ setAuth }) => {
-  const [client, setClient] = useState({});
+  // const [client, setClient] = useState({});
 
   const location = useLocation();
 
@@ -19,7 +22,7 @@ const EditBorrower = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      setClient(parseRes);
+      // setClient(parseRes);
       // console.log('Hi');
       // console.log(client);
       setInputs({
@@ -46,6 +49,32 @@ const EditBorrower = ({ setAuth }) => {
   };
 
   const { firstname, lastname, contactNumber, address, email } = inputs;
+
+  const addSuccessful = () => {
+    // toast('New borrower added successfully!', {
+    //   className: 'success-toast',
+    //   draggable: true,
+    //   position: toast.POSITION.TOP_LEFT,
+    // });
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Updating Borrower...',
+        success: 'Updated Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
+  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -81,6 +110,12 @@ const EditBorrower = ({ setAuth }) => {
         address: '',
         email: '',
       });
+
+      addSuccessful();
+
+      setTimeout(() => {
+        navigate(`/borrower/${clientId}`, { replace: true });
+      }, 3000);
     } catch (error) {
       console.log(error.message);
     }
@@ -93,6 +128,7 @@ const EditBorrower = ({ setAuth }) => {
   return (
     <div className='flex h-[900px]'>
       <Sidebar />
+      <ToastContainer />
 
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
         <div className='w-full px-8 pt-6 pb-8 mb-4 bg-white  rounded'>
