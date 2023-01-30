@@ -71,24 +71,6 @@ const AddBorrower = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      // if (parseRes.token) {
-      //   localStorage.setItem('token', parseRes.token);
-      //   console.log(parseRes.token);
-      //   setAuth(true);
-      // } else {
-      //   setAuth(false);
-      //   console.log('Something wrong');
-      // }
-
-      setInputs({
-        firstname: '',
-        lastname: '',
-        contactNumber: '',
-        address: '',
-        email: '',
-        username: '',
-      });
-
       addSuccessful();
 
       setTimeout(() => {

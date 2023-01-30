@@ -117,19 +117,6 @@ const EditLoan = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
-
-      setInputs({
-        type: '',
-        balance: '',
-        gross_loan: '',
-        amort: '',
-        terms: '',
-        status: '',
-        date_released: '',
-        maturity_date: '',
-      });
-
       editSuccessful();
 
       setTimeout(() => {

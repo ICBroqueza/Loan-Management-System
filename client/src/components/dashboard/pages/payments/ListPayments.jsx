@@ -140,7 +140,7 @@ const PaymentsInfo = () => {
                       </span>
                     )}
                   </td>
-                  <td>
+                  <td className='border px-4 py-2 '>
                     {' '}
                     <button
                       className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 mb-2 rounded focus:outline-none focus:shadow-outline  text-sm'
