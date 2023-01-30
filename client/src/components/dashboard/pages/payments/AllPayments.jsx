@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 
 import { DeleteForever, Edit, Update, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+
 import Sidebar from '../../../sidebar/Sidebar';
 
 const Payments = ({ setAuth }) => {
@@ -24,6 +26,40 @@ const Payments = ({ setAuth }) => {
     }
   };
 
+  // Delete payment Function
+
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Payment...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
+  async function deletePayment(id) {
+    try {
+      await fetch(`http://localhost:8000/loans/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: localStorage.getItem('token') },
+      });
+      deleteNotif();
+      setTimeout(() => {
+        setPayments(payments.filter((payment) => payment.id !== id));
+      }, 2000);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     GetPayments();
   }, []);
@@ -31,6 +67,7 @@ const Payments = ({ setAuth }) => {
   return (
     <div className='flex  h-[900px]'>
       <Sidebar />
+      <ToastContainer />
       {/* PAYMENTS */}
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
         {/* HEADER */}
@@ -145,19 +182,14 @@ const Payments = ({ setAuth }) => {
                           </span>
                         )}
                       </td>
-                      {/* <td className='border px-4 py-2'>
+                      <td className='border px-4 py-2'>
                         <button
                           className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full text-sm'
-                          onClick={() => deleteLoan(loan.id)}
+                          onClick={() => deletePayment(payment.id)}
                         >
                           <DeleteForever className='text-lg' />
                         </button>
-                        <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
-                          <Link to={`/editLoan/${loan.id}`}>
-                            <Edit className='text-sm' />
-                          </Link>
-                        </button>
-                      </td> */}
+                      </td>
                     </tr>
                   );
                 })
