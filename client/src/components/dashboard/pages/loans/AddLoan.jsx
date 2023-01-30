@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddLoan = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -34,6 +37,31 @@ const AddLoan = ({ setAuth }) => {
 
   const clientId = location.pathname.split('/')[2];
 
+  const addSuccessful = () => {
+    // toast('New borrower added successfully!', {
+    //   className: 'success-toast',
+    //   draggable: true,
+    //   position: toast.POSITION.TOP_LEFT,
+    // });
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+          // navigate('/borrowers', { replace: true });
+        }, 1000);
+      }),
+      {
+        pending: 'Adding Loan...',
+        success: 'Added Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
+  const navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -69,6 +97,12 @@ const AddLoan = ({ setAuth }) => {
         date_released: '',
         maturity_date: '',
       });
+
+      addSuccessful();
+
+      setTimeout(() => {
+        navigate(`/borrower/${clientId}`, { replace: true });
+      }, 3000);
     } catch (error) {
       console.log(error.message);
     }
@@ -77,6 +111,8 @@ const AddLoan = ({ setAuth }) => {
   return (
     <div className='flex h-[900px]'>
       <Sidebar />
+      <ToastContainer />
+
       {/* Add Loan */}
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded'>
         {/* TITLE */}
