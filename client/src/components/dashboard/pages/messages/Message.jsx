@@ -8,7 +8,7 @@ import emailjs from 'emailjs-com';
 
 export default function Message({ email }) {
   console.log(email);
-  const [fullname, setFullname] = useState('');
+  const [fullname, setFullname] = useState([]);
 
   const getClient = async () => {
     try {
@@ -19,7 +19,7 @@ export default function Message({ email }) {
 
       const parseRes = await response.json();
       console.log(parseRes);
-      setFullname(parseRes.firstname + parseRes.lastname);
+      setFullname(parseRes.firstname + ' ' + parseRes.lastname);
       // setClients(parseRes);
       // setUser(parseRes.firstname);
     } catch (error) {
@@ -49,7 +49,7 @@ export default function Message({ email }) {
 
   useEffect(() => {
     getClient();
-  }, [fullname]);
+  });
 
   return (
     <div className='flex'>

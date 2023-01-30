@@ -108,17 +108,6 @@ const Login = ({ setAuth }) => {
             >
               Sign In
             </button>
-            <div className='text-center'>
-              <span className='text-xs text-gray-400 font-semibold'>
-                Don't have account?
-              </span>
-              <a
-                href='http://localhost:3000/register'
-                className='text-xs font-semibold text-red-700'
-              >
-                Sign up
-              </a>
-            </div>
           </div>
         </form>
       </div>
