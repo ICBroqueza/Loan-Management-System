@@ -60,18 +60,6 @@ const AddLoans = ({ setAuth }) => {
       const parseRes = await response.json();
 
       console.log(parseRes);
-
-      setInputs({
-        client_id: '',
-        type: '',
-        status: '',
-        gross_loan: '',
-        balance: '',
-        amort: '',
-        terms: '',
-        date_released: '',
-        maturity_date: '',
-      });
     } catch (error) {
       console.log(error.message);
     }

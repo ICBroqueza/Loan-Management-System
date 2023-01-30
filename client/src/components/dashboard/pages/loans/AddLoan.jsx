@@ -88,16 +88,6 @@ const AddLoan = ({ setAuth }) => {
 
       console.log(parseRes);
 
-      setInputs({
-        type: '',
-        gross_loan: '',
-        balance: '',
-        amort: '',
-        terms: '',
-        date_released: '',
-        maturity_date: '',
-      });
-
       addSuccessful();
 
       setTimeout(() => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Sidebar from '../../../sidebar/Sidebar';
-import GetAllLoans from './ClientsLoans.jsx.jsx';
 import { DeleteForever, Edit, Update, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Loans = ({ setAuth }) => {
   const [loans, setLoans] = useState([]);
@@ -24,6 +24,25 @@ const Loans = ({ setAuth }) => {
     }
   };
 
+  // DELETE LOAN FUNCTION
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Loan...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
+
   async function deleteLoan(id) {
     try {
       await fetch(`http://localhost:8000/loans/${id}`, {
@@ -31,7 +50,10 @@ const Loans = ({ setAuth }) => {
         headers: { Authorization: localStorage.getItem('token') },
       });
 
-      setLoans(loans.filter((loan) => loan.id !== id));
+      deleteNotif();
+      setTimeout(() => {
+        setLoans(loans.filter((loan) => loan.id !== id));
+      }, 2000);
     } catch (error) {
       console.log(error.message);
     }
@@ -43,6 +65,7 @@ const Loans = ({ setAuth }) => {
   return (
     <div className='flex  h-[900px] '>
       <Sidebar />
+      <ToastContainer />
       {/* <GetAllLoans /> */}
       <div className='flex w-full'>
         {/* Loans Information */}
