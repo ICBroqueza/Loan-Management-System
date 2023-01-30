@@ -103,6 +103,17 @@ app.get('/allAdmins', auth, async (req, res) => {
   }
 });
 
+app.delete('/admins/:id', async (req, res) => {
+  try {
+    const id = req.params['id'];
+    await pool.query(`DELETE FROM admins WHERE id = ${id}`);
+
+    res.json({ msg: `Deleted admin with an id of ${id}` });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 //* CLIENTS
 app.get('/allClients', auth, async (req, res) => {
   try {
@@ -140,20 +151,6 @@ app.get('/email/:email', auth, async (req, res) => {
     console.log(error.message);
   }
 });
-
-// Client Name
-// app.get('/email/:email', auth, async (req, res) => {
-//   try {
-//     // const firstname =
-//     const getClient = await pool.query(
-//       ` SELECT * FROM clients WHERE firstname = 'Ian' AND lastname = 'Broqueza';`
-//     );
-
-//     res.json(getClient.rows[0]);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// });
 
 // New Client
 app.post('/addClient', async (req, res) => {

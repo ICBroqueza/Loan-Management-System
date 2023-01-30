@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+
 import { DeleteForever, VisibilityOutlined, Logout } from '@mui/icons-material';
 
 const Admins = ({ setAuth }) => {
@@ -24,15 +26,35 @@ const Admins = ({ setAuth }) => {
   };
   console.log(admins);
 
-  // Delete CLIENT Function
-  async function deleteClient(id) {
+  // Delete ADMIN Function
+
+  const deleteNotif = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }),
+      {
+        pending: 'Deleting Admin...',
+        success: 'Deleted Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 2000,
+      }
+    );
+  };
+  async function deleteAdmin(id) {
     try {
       await fetch(`http://localhost:8000/admins/${id}`, {
         method: 'DELETE',
         headers: { Authorization: localStorage.getItem('token') },
       });
-
-      setAdmins(admins.filter((loan) => loan.id !== id));
+      deleteNotif();
+      setTimeout(() => {
+        setAdmins(admins.filter((admin) => admin.id !== id));
+      }, 2000);
     } catch (error) {
       console.log(error.message);
     }
@@ -44,6 +66,7 @@ const Admins = ({ setAuth }) => {
 
   return (
     <div className='w-full h-[720px] border bg-white shadow-md rounded mt-5  border-t-4 border-t-red-500'>
+      <ToastContainer />
       <div className='py-5 px-5'>
         {/* TITLE */}
         <div className='flex items-center justify-between border-b-2'>
@@ -77,40 +100,34 @@ const Admins = ({ setAuth }) => {
                 <tr className='border px-4 py-2 bg-red-50'>
                   <td></td>
                   <td></td>
-                  <td className='px-4 py-2 bg-red-50'>No Client Data</td>
+                  <td className='px-4 py-2 bg-red-50'>No Admin Data</td>
                   <td></td>
                   <td></td>
                 </tr>
               ) : (
-                admins.map((client, index) => {
+                admins.map((admin, index) => {
                   return (
                     <tr key={index}>
                       <td className='border px-4 py-2 bg-gray-50'>
-                        {client.id}
+                        {admin.id}
                       </td>
                       <td className='border px-4 py-2 '>
-                        {client.firstname + ' ' + client.lastname}{' '}
+                        {admin.firstname + ' ' + admin.lastname}{' '}
                       </td>
                       <td className='border px-4 py-2 bg-gray-50'>
-                        {client.contactnumber}
+                        {admin.contactnumber}
                       </td>
-                      <td className='border px-4 py-2'>{client.address}</td>
+                      <td className='border px-4 py-2'>{admin.address}</td>
                       <td className='border px-4 py-2 bg-gray-50'>
-                        {client.email}
+                        {admin.email}
                       </td>
                       <td className='border px-4 py-2'>
                         <button
                           className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full text-sm'
-                          onClick={() => deleteClient(client.id)}
+                          onClick={() => deleteAdmin(admin.id)}
                         >
                           <DeleteForever className='text-lg' />
                         </button>
-                        {/* <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
-                          <Link to={`/Borrower/${client.id}`}>
-                            <VisibilityOutlined className='text-sm' />
-                          </Link>
-                          <Borrower clientId={client.id} />
-                        </button> */}
                       </td>
                     </tr>
                   );
