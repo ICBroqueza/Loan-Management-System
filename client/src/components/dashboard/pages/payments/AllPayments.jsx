@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-
-import { DeleteForever, Edit, Update, Logout } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { DeleteForever, Logout } from '@mui/icons-material';
 import { toast, ToastContainer } from 'react-toastify';
 
 import Sidebar from '../../../sidebar/Sidebar';
@@ -159,11 +158,6 @@ const Payments = ({ setAuth }) => {
                       <td className='border px-4 py-2  bg-gray-50'>
                         ₱ {payment.new_balance}
                       </td>
-
-                      {/* <td className='border px-4 py-2 bg-gray-50'>
-                        {payment.method}
-                      </td> */}
-
                       <td className='border px-4 py-2 '>
                         {payment.method === 'ATM' ? (
                           <span className=' bg-green-500 text-white px-4 py-1 rounded-md'>
@@ -185,7 +179,7 @@ const Payments = ({ setAuth }) => {
                       </td>
                       <td className='border px-4 py-2'>
                         <button
-                          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full text-sm'
+                          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full text-sm'
                           onClick={() => deletePayment(payment.id)}
                         >
                           <DeleteForever className='text-lg' />

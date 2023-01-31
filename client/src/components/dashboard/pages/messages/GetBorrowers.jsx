@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, VisibilityOutlined, Logout } from '@mui/icons-material';
-import Sidebar from '../../../sidebar/Sidebar';
 import Message from './Message';
 
 const GetBorrowers = ({ setAuth }) => {
   const [clients, setClients] = useState([]);
   const [emails, setEmail] = useState('');
-  const [fullname, setFullname] = useState('');
   const getClients = async () => {
     try {
       const response = await fetch('http://localhost:8000/allClients', {
@@ -17,16 +15,12 @@ const GetBorrowers = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
 
       setClients(parseRes);
-      // setUser(parseRes.firstname);
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(clients[0].email);
-  // setEmail(clients.em)
 
   // Select EMAIL CLIENT Function
   async function selectClient(email) {
@@ -102,20 +96,11 @@ const GetBorrowers = ({ setAuth }) => {
                           {client.email}
                         </td>
                         <td className='border px-4 py-2'>
-                          {/* <button onClick={() => deleteClient(client.id)}>
-                              <DeleteOutlined />
-                            </button>
-                            <button className=''>
-                              <Link to={'/borrower/' + client.id}>
-                                <Create />
-                              </Link>
-                            </button> */}
                           <div className='flex'>
                             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mr-2 '>
                               <Link to={`/Borrower/${client.id}`}>
                                 <VisibilityOutlined className='text-sm' />
                               </Link>
-                              {/* <Borrower clientId={client.id} /> */}
                             </button>
                             <button
                               className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '

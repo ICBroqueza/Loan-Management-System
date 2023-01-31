@@ -37,9 +37,6 @@ export default function ClientsWidget() {
       >
         <div className='flex justify-between items-center'>
           <span className='text-xl'>Borrowers</span>
-          {/* <button className='text-sm font-medium  py-2 px-2  rounded-md cursor-pointer '>
-            <AddBox sx={{ color: 'rgba(239,68,68)' }} />
-          </button> */}
         </div>
         <div className='my-3 '>
           <span className='text-3xl'>

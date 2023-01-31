@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Logout } from '@mui/icons-material';
+import { toast, ToastContainer } from 'react-toastify';
+
 import Sidebar from '../../../sidebar/Sidebar';
 import OneLoan from './OneLoan';
-import { Logout } from '@mui/icons-material';
-
-import { toast, ToastContainer } from 'react-toastify';
 
 const EditLoan = ({ setAuth }) => {
   const location = useLocation();
@@ -20,10 +20,6 @@ const EditLoan = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
-      // setClient(parseRes);
-      // console.log('Hi');
-      // console.log(client);
 
       let date = setInputs({
         type: parseRes.type,
@@ -36,6 +32,7 @@ const EditLoan = ({ setAuth }) => {
         //   'fr-CA'
         // ),
       });
+      console.log(parseRes.date_released);
     } catch (error) {
       console.log(error.message);
     }
@@ -67,16 +64,10 @@ const EditLoan = ({ setAuth }) => {
   } = inputs;
 
   const editSuccessful = () => {
-    // toast('New borrower added successfully!', {
-    //   className: 'success-toast',
-    //   draggable: true,
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -103,8 +94,6 @@ const EditLoan = ({ setAuth }) => {
         status,
         maturity_date,
       };
-
-      console.log(body);
 
       const response = await fetch(`http://localhost:8000/loans/${loanId}`, {
         method: 'PATCH',
@@ -321,7 +310,6 @@ const EditLoan = ({ setAuth }) => {
                 onClick={goBack}
                 className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'
               >
-                {/* <Link to='/loans'>Cancel</Link> */}
                 Back
               </button>
             </div>

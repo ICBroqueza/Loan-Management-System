@@ -1,11 +1,10 @@
-import { DeleteForever, Edit, Update } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Logout } from '@mui/icons-material';
+
 import Sidebar from '../../../sidebar/Sidebar';
 import AddPayments from './AddPayments';
-import { Logout } from '@mui/icons-material';
-import { ToastContainer, toast } from 'react-toastify';
 
 const PaymentLoansInfo = ({ setAuth }) => {
   const [loans, setLoans] = useState([]);
@@ -15,8 +14,6 @@ const PaymentLoansInfo = ({ setAuth }) => {
   const clientId = location.pathname.split('/')[2];
   const loanId = location.pathname.split('/')[3];
 
-  // console.log(loanId);
-  // console.log(clientId);
   const GetLoans = async () => {
     try {
       const response = await fetch(`http://localhost:8000/loan/${loanId}`, {
@@ -31,10 +28,6 @@ const PaymentLoansInfo = ({ setAuth }) => {
       console.log(error.message);
     }
   };
-  // console.log(loanId);
-
-  // setBalance(loans[0].balance);
-  // console.log(loans.client_id);
 
   useEffect(() => {
     GetLoans();
@@ -57,10 +50,8 @@ const PaymentLoansInfo = ({ setAuth }) => {
               Add a payment for a client
             </p>
           </div>
-          {/* <ToastContainer /> */}
 
           {/* BUTTON */}
-
           <div className='text-white'>
             <button
               className=''

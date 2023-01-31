@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
-
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import Sidebar from '../../../sidebar/Sidebar';
 
 const EditBorrower = ({ setAuth }) => {
-  // const [client, setClient] = useState({});
-
   const location = useLocation();
 
   const clientId = location.pathname.split('/')[2];
@@ -22,9 +19,6 @@ const EditBorrower = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      // setClient(parseRes);
-      // console.log('Hi');
-      // console.log(client);
       setInputs({
         firstname: parseRes.firstname,
         lastname: parseRes.lastname,
@@ -51,16 +45,10 @@ const EditBorrower = ({ setAuth }) => {
   const { firstname, lastname, contactNumber, address, email } = inputs;
 
   const addSuccessful = () => {
-    // toast('New borrower added successfully!', {
-    //   className: 'success-toast',
-    //   draggable: true,
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -103,18 +91,10 @@ const EditBorrower = ({ setAuth }) => {
 
       console.log(parseRes);
 
-      setInputs({
-        firstname: '',
-        lastname: '',
-        contactNumber: '',
-        address: '',
-        email: '',
-      });
-
       addSuccessful();
 
       setTimeout(() => {
-        navigate(`/borrower/${clientId}`, { replace: true });
+        navigate(-1);
       }, 3000);
     } catch (error) {
       console.log(error.message);
@@ -144,7 +124,6 @@ const EditBorrower = ({ setAuth }) => {
                 Update all the required fields.
               </p>
             </div>
-            {/* <ToastContainer /> */}
 
             {/* BUTTON */}
 
@@ -231,7 +210,6 @@ const EditBorrower = ({ setAuth }) => {
               Update
             </button>
             <button className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'>
-              {/* <Navigate to='/borrowers'>Cancel</Navigate> */}
               <Link to={`/borrower/${clientId}`}>Back</Link>
             </button>
           </form>

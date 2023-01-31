@@ -48,7 +48,6 @@ export default function PaymentsWidget() {
           <span className='text-3xl'>
             <ReceiptLong className='mr-3' /> ₱
             {new Intl.NumberFormat().format(total)}
-            {/* {payments.length} */}
           </span>
         </div>
         <span className='text-base text-gray-500'>

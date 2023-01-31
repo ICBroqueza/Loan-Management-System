@@ -16,10 +16,8 @@ const Admins = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
 
       setAdmins(parseRes);
-      // setUser(parseRes.firstname);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +25,6 @@ const Admins = ({ setAuth }) => {
   console.log(admins);
 
   // Delete ADMIN Function
-
   const deleteNotif = () => {
     toast.promise(
       new Promise((resolve, reject) => {
@@ -45,6 +42,7 @@ const Admins = ({ setAuth }) => {
       }
     );
   };
+
   async function deleteAdmin(id) {
     try {
       await fetch(`http://localhost:8000/admins/${id}`, {
@@ -73,10 +71,7 @@ const Admins = ({ setAuth }) => {
           <h3 className='text-lg font-medium  text-gray   px-1 '>
             Manage Admins
           </h3>
-          <button
-            className='border hover:bg-red-700 bg-red-500 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline mr-5'
-            // onClick={() => deleteLoan(loan.id)}
-          >
+          <button className='border hover:bg-red-700 bg-red-500 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline mr-5'>
             <Link to='/addAdmin'>Add Admin</Link>
           </button>
         </div>

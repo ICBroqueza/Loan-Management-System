@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Sidebar from '../../../sidebar/Sidebar';
+import { Link, useNavigate } from 'react-router-dom';
 import { Logout } from '@mui/icons-material';
+import { ToastContainer, toast } from 'react-toastify';
+
+import Sidebar from '../../../sidebar/Sidebar';
 
 const AddLoans = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -33,6 +34,25 @@ const AddLoans = ({ setAuth }) => {
     maturity_date,
   } = inputs;
 
+  const navigate = useNavigate();
+  const addSuccessful = () => {
+    toast.promise(
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve();
+        }, 1000);
+      }),
+      {
+        pending: 'Adding Loan...',
+        success: 'Added Succesfully!',
+        error: 'Error!',
+      },
+      {
+        autoClose: 1000,
+      }
+    );
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -59,7 +79,11 @@ const AddLoans = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
+      addSuccessful();
+
+      setTimeout(() => {
+        navigate(`/Borrower/${client_id}`);
+      }, 3000);
     } catch (error) {
       console.log(error.message);
     }
@@ -68,6 +92,7 @@ const AddLoans = ({ setAuth }) => {
   return (
     <div className='h-[900px] flex'>
       <Sidebar />
+      <ToastContainer />
       <div className='w-full h-[900px] mx-auto px-8 py-8 mb-4 border bg-white shadow-md rounded '>
         {/* HEADER */}
         <div className='flex items-center justify-between px-4 py-5 sm:px-6 bg-red-500 rounded shadow-md  '>

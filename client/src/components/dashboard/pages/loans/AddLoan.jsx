@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Sidebar from '../../../sidebar/Sidebar';
 import { Logout } from '@mui/icons-material';
-
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
+import Sidebar from '../../../sidebar/Sidebar';
 
 const AddLoan = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -33,6 +31,7 @@ const AddLoan = ({ setAuth }) => {
     maturity_date,
   } = inputs;
 
+  const navigate = useNavigate();
   const location = useLocation();
 
   const clientId = location.pathname.split('/')[2];
@@ -42,7 +41,6 @@ const AddLoan = ({ setAuth }) => {
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -56,7 +54,6 @@ const AddLoan = ({ setAuth }) => {
     );
   };
 
-  const navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -81,12 +78,10 @@ const AddLoan = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
-
       addSuccessful();
 
       setTimeout(() => {
-        navigate(`/borrower/${clientId}`, { replace: true });
+        navigate(-1);
       }, 3000);
     } catch (error) {
       console.log(error.message);
@@ -110,7 +105,6 @@ const AddLoan = ({ setAuth }) => {
               Fill all the required fields.
             </p>
           </div>
-          {/* <ToastContainer /> */}
 
           {/* BUTTON */}
 

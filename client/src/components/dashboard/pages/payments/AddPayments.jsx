@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Sidebar from '../../../sidebar/Sidebar';
-import LoanInfo from '../loans/Loan';
-import UpdateBalance from './UpdateBalance';
-import PaymentLoansInfo from './PaymentLoanInfo';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AddPayments = ({ loanId, balance, clientId }) => {
-  // console.log(loanId);
-  // console.log(balance);
-  // console.log(clientId);
   const [inputs, setInputs] = useState({
     amount: '',
     collection_date: '',
@@ -36,16 +29,10 @@ const AddPayments = ({ loanId, balance, clientId }) => {
   } = inputs;
 
   const addSuccessful = () => {
-    // toast('New borrower added successfully!', {
-    //   className: 'success-toast',
-    //   draggable: true,
-    //   position: toast.POSITION.TOP_LEFT,
-    // });
     toast.promise(
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -83,7 +70,6 @@ const AddPayments = ({ loanId, balance, clientId }) => {
 
       const parseRes = await response.json();
 
-      // console.log(parseRes);
       addSuccessful();
 
       setTimeout(() => {
@@ -101,11 +87,6 @@ const AddPayments = ({ loanId, balance, clientId }) => {
       new_balance: updatedBalance,
     }));
   }, [inputs.amount, balance]);
-
-  // console.log(clientId);
-  // console.log(client_id);
-  // const n_balance = balance - amount;
-  // console.log(n_balance);
 
   const navigate = useNavigate();
   const goBack = () => {
@@ -207,12 +188,6 @@ const AddPayments = ({ loanId, balance, clientId }) => {
             />
           </div>
 
-          {/* <UpdateBalance
-            amount={1600 - amount}
-            loan_id={loan_id}
-            change={(e) => onChange(e)}
-          /> */}
-
           {/* METHOD */}
           <div>
             <label htmlFor='terms'>Method:</label>
@@ -240,19 +215,12 @@ const AddPayments = ({ loanId, balance, clientId }) => {
             >
               Add Payment
             </button>
-            {/* <UpdateBalance balance={new_balance} loan_id={loan_id} /> */}
             <button
               onClick={goBack}
               className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
             >
               Back
             </button>
-            {/* <button
-              className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/5 ml-10'
-              onClick={() => updateLoan(loan_id)}
-            >
-              Update Balance
-            </button> */}
           </div>
 
           {/*  */}

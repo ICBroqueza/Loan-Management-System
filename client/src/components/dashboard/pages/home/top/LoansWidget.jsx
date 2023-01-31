@@ -45,15 +45,14 @@ export default function LoansWidget() {
         <span className='text-xl'>Loans</span>
         <div className='my-3'>
           <span className='text-3xl'>
-            <CreditScore className='mr-3' />
-            {/* {loans.length} */}₱ {new Intl.NumberFormat().format(total)}
+            <CreditScore className='mr-3' />₱{' '}
+            {new Intl.NumberFormat().format(total)}
           </span>
         </div>
         <span className='text-base text-gray-500'>
           Total Loans Transactions
         </span>
       </div>
-      {/*  */}
     </div>
   );
 }

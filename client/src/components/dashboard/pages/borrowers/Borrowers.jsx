@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DeleteForever, VisibilityOutlined, Logout } from '@mui/icons-material';
-import Sidebar from '../../../sidebar/Sidebar';
 import { toast, ToastContainer } from 'react-toastify';
+
+import Sidebar from '../../../sidebar/Sidebar';
 
 const Borrowers = ({ setAuth }) => {
   const [clients, setClients] = useState([]);
@@ -16,10 +17,8 @@ const Borrowers = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
 
       setClients(parseRes);
-      // setUser(parseRes.firstname);
     } catch (error) {
       console.log(error);
     }
@@ -102,10 +101,7 @@ const Borrowers = ({ setAuth }) => {
           <h3 className='text-lg font-medium leading-6 text-gray my-2  px-1 py-2 '>
             Borrowers' List
           </h3>
-          <button
-            className='border hover:bg-red-700 bg-red-500 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2 mr-5'
-            // onClick={() => deleteLoan(loan.id)}
-          >
+          <button className='border hover:bg-red-700 bg-red-500 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-auto mt-2 mr-5'>
             <Link to='/addBorrower'>Add Borrower</Link>
           </button>
         </div>
@@ -162,7 +158,6 @@ const Borrowers = ({ setAuth }) => {
                           <Link to={`/Borrower/${client.id}`}>
                             <VisibilityOutlined className='text-sm' />
                           </Link>
-                          {/* <Borrower clientId={client.id} /> */}
                         </button>
                       </td>
                     </tr>

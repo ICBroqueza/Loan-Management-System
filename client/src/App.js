@@ -110,9 +110,6 @@ function App() {
                 }
               ></Route>
 
-              {/* BORROWERS */}
-              {/* <Route exact path='/borrowers' element={<Borrowers />}></Route> */}
-
               <Route
                 exact
                 path='/borrowers'
@@ -269,9 +266,6 @@ function App() {
                   )
                 }
               ></Route>
-
-              {/* BORROWERS */}
-              {/* <Route exact path='/modal' element={<Modal />}></Route> */}
             </Routes>
           </Fragment>
         </div>

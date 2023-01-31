@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../../../sidebar/Sidebar';
 import GetBorrowers from './GetBorrowers';
 import { Link } from 'react-router-dom';
-import { DeleteForever, Edit, Update, Logout } from '@mui/icons-material';
+import { Logout } from '@mui/icons-material';
 
 export default function EmailPage({ setAuth }) {
   return (

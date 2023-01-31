@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 import {
   LocationOnOutlined,
   MailOutline,
@@ -10,17 +9,15 @@ import {
   Publish,
   Logout,
 } from '@mui/icons-material';
+
 import Sidebar from '../../sidebar/Sidebar';
 import Admins from './AllAdmins';
+
 export default function AdminPage({ setAuth }) {
-  const [id, setId] = useState();
   const [name, setName] = useState('');
   const [contactnumber, setContactNumber] = useState();
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-
-  // const [clientInfo, setClientInfo] = useState([]);
 
   const getAdmin = async () => {
     try {
@@ -32,23 +29,19 @@ export default function AdminPage({ setAuth }) {
       const parseRes = await response.json();
       console.log(parseRes);
 
-      // setAdminInfo(parseRes[0]);
-      // setId(parseRes);
       setName(parseRes.firstname + ' ' + parseRes.lastname);
       setContactNumber(parseRes.contactnumber);
       setAddress(parseRes.address);
-      setUsername(parseRes.username);
       setEmail(parseRes.email);
-      // console.log(name);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // console.log(fullname);
   useEffect(() => {
     getAdmin();
   }, []);
+
   return (
     <div className='flex h-[900px]'>
       <Sidebar />
@@ -126,11 +119,7 @@ export default function AdminPage({ setAuth }) {
                     <PhoneAndroid className='text-lg ' />
                     <span className='ml-2.5'>{contactnumber}</span>
                   </div>
-                  <div className='flex items-center my-5'>
-                    {/* <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full '>
-                      <Link to={`/editBorrower/${clientId}`}>UPDATE CLIENT</Link>
-                    </button> */}
-                  </div>
+                  <div className='flex items-center my-5'></div>
                 </div>
               </div>
             </div>

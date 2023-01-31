@@ -1,11 +1,9 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-
 import emailjs from 'emailjs-com';
 import { toast, ToastContainer } from 'react-toastify';
 
 export default function Message({ email }) {
-  console.log(email);
   const [fullname, setFullname] = useState([]);
 
   const getClient = async () => {
@@ -26,7 +24,6 @@ export default function Message({ email }) {
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -60,7 +57,7 @@ export default function Message({ email }) {
       );
     addSuccessful();
 
-    e.target.reset();
+    // e.target.reset();
   };
 
   useEffect(() => {

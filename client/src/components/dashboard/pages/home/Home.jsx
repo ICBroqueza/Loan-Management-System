@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 import Sidebar from '../../../sidebar/Sidebar';
 import BotWidget from './bottom/BotWidget';
-import ClientsWidget from './top/ClientsWidget';
 import TopWidget from './top/TopWidget';
 import { Link } from 'react-router-dom';
 import { Logout, PermIdentity } from '@mui/icons-material';
@@ -18,7 +17,6 @@ export default function Home({ setAuth }) {
       });
 
       const parseRes = await response.json();
-      // console.log(parseRes);
 
       setName(parseRes.firstname + ' ' + parseRes.lastname);
     } catch (error) {

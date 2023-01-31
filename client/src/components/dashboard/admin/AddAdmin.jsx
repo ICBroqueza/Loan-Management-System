@@ -35,7 +35,6 @@ const AddAdmin = ({ setAuth }) => {
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve();
-          // navigate('/borrowers', { replace: true });
         }, 1000);
       }),
       {
@@ -218,7 +217,6 @@ const AddAdmin = ({ setAuth }) => {
 
             {/* BUTTONS */}
             <button
-              // onClick={addSuccessful}
               type='submit'
               className=' bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/6'
             >
@@ -226,7 +224,6 @@ const AddAdmin = ({ setAuth }) => {
             </button>
 
             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-1/6 ml-10'>
-              {/* <Navigate to='/borrowers'>Cancel</Navigate> */}
               <Link to='/admin'>Cancel</Link>
             </button>
           </form>

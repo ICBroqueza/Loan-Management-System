@@ -12,17 +12,12 @@ import {
 } from '@mui/icons-material';
 import Sidebar from '../../../sidebar/Sidebar';
 import LoanInfo from '../loans/Loan';
-import Account from './Account';
 
 export default function Borrower({ setAuth }) {
-  const [id, setId] = useState();
   const [name, setName] = useState('');
   const [contactnumber, setContactNumber] = useState();
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-
-  // const [clientInfo, setClientInfo] = useState([]);
 
   const location = useLocation();
 
@@ -38,20 +33,15 @@ export default function Borrower({ setAuth }) {
       const parseRes = await response.json();
       console.log(parseRes);
 
-      // setClientInfo(parseRes[0]);
-      // setId(parseRes);
       setName(parseRes.firstname + ' ' + parseRes.lastname);
       setContactNumber(parseRes.contactnumber);
       setAddress(parseRes.address);
-      setUsername(parseRes.username);
       setEmail(parseRes.email);
-      // console.log(name);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // console.log(fullname);
   useEffect(() => {
     getClient();
   }, []);
