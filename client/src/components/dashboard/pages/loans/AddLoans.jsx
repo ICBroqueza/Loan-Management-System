@@ -53,8 +53,30 @@ const AddLoans = ({ setAuth }) => {
     );
   };
 
+  // const timenow = new Date();
+  // const formatTime = (t) => {
+  //   const x = new Date(t);
+  //   let hour = x.getHours();
+
+  //   if (hour < 10) {
+  //     hour = '0' + hour;
+  //   }
+  //   let min = x.getMinutes();
+  //   if (min < 10) {
+  //     min = '0' + min;
+  //   }
+
+  //   let sec = x.getSeconds();
+  //   if (sec < 10) {
+  //     sec = '0' + sec;
+  //   }
+
+  //   return hour + ':' + min + ':' + sec;
+  // };
+
   const onSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const body = {
         client_id,

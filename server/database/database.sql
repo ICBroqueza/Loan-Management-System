@@ -28,7 +28,7 @@ CREATE TABLE loans (
   gross_loan NUMERIC(12,2),
   amort NUMERIC(12,2),
   terms INT,
-  date_released DATE,
+  date_released TIMESTAMP WITHOUT TIME ZONE,
   maturity_date DATE,
   type VARCHAR(255),
   status VARCHAR(255),
@@ -41,7 +41,7 @@ CREATE TABLE payments(
   loan_id INT,
   amount NUMERIC(12,2),
   new_balance NUMERIC(12,2),
-  collection_date DATE,
+  collection_date TIMESTAMP WITHOUT TIME ZONE,
   collected_by VARCHAR(255),
   method VARCHAR(255),
   FOREIGN KEY (client_id) REFERENCES clients(client_id),
@@ -70,7 +70,7 @@ UPDATE clients SET firstname = 'Ian Czar', lastname = 'Dino', contactNumber = 11
 
 -- LOANS
 INSERT INTO loans(client_id, balance, gross_loan, amort, terms, date_released, maturity_date, type, status) 
-VALUES (1, 5000, 5000, 2500, 1, '2023-02-04', '2023-03-04', 'Personal Loan', 'Pending');
+VALUES (1, 5000, 5000, 2500, 1, '2023-02-04 05:30:01', '2023-03-04', 'Personal Loan', 'Pending');
 
 UPDATE loans SET type = 'Salary Loan', balance = 0, gross_loan = 5000, amort = 2500, terms = 2500, date_released = '2023-02-04', maturity_date = '2023-03-04', status = 'Disbursed' WHERE loan_id = 9 RETURNING *;
 

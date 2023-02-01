@@ -21,18 +21,39 @@ const EditLoan = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      let date = setInputs({
+      const formatDate = (d) => {
+        const x = new Date(d);
+        x.setHours(x.getHours() + 8);
+        let month = x.getMonth() + 1;
+        if (month < 10) {
+          month = '0' + month;
+        }
+        let day = x.getDate();
+        if (day < 10) {
+          day = '0' + day;
+        }
+        return x.getFullYear() + '-' + month + '-' + day;
+      };
+
+      console.log(parseRes.date_released);
+      const start_date = formatDate(parseRes.date_released);
+      console.log(start_date);
+
+      const end_date = formatDate(parseRes.maturity_date);
+      console.log(end_date);
+
+      setInputs({
         type: parseRes.type,
         balance: parseRes.balance,
         gross_loan: parseRes.gross_loan,
         amort: parseRes.amort,
         terms: parseRes.terms,
         status: parseRes.status,
-        // date_released: new Date(parseRes.date_released).toLocaleDateString(
-        //   'fr-CA'
-        // ),
+        date_released: start_date,
+        maturity_date: end_date,
       });
-      console.log(parseRes.date_released);
+
+      console.log('Date Released:', parseRes.date_released);
     } catch (error) {
       console.log(error.message);
     }
@@ -52,6 +73,30 @@ const EditLoan = ({ setAuth }) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
+  // const timenow = new Date();
+  // const formatTime = (t) => {
+  //   const x = new Date(t);
+  //   let hour = x.getHours();
+
+  //   if (hour < 10) {
+  //     hour = '0' + hour;
+  //   }
+  //   let min = x.getMinutes();
+  //   if (min < 10) {
+  //     min = '0' + min;
+  //   }
+
+  //   let sec = x.getSeconds();
+  //   if (sec < 10) {
+  //     sec = '0' + sec;
+  //   }
+
+  //   return hour + ':' + min + ':' + sec;
+  // };
+
+  // console.log(formatTime(timenow));
+
+  // const timestamp = date_released + formatTime(timenow);
   const {
     type,
     balance,

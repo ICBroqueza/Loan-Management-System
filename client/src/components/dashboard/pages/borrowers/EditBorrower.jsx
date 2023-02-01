@@ -89,7 +89,7 @@ const EditBorrower = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      console.log(parseRes);
+      // console.log(parseRes);
 
       addSuccessful();
 

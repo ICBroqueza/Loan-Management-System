@@ -327,6 +327,28 @@ app.post('/loans/:id', auth, async (req, res) => {
 
 // Create loan for loans page
 app.post('/loans/', auth, async (req, res) => {
+  const timenow = new Date();
+  const formatTime = (t) => {
+    const x = new Date(t);
+    let hour = x.getHours();
+
+    if (hour < 10) {
+      hour = '0' + hour;
+    }
+    let min = x.getMinutes();
+    if (min < 10) {
+      min = '0' + min;
+    }
+
+    let sec = x.getSeconds();
+    if (sec < 10) {
+      sec = '0' + sec;
+    }
+
+    return hour + ':' + min + ':' + sec;
+  };
+
+  console.log(formatTime(timenow));
   try {
     const {
       client_id,
@@ -340,8 +362,10 @@ app.post('/loans/', auth, async (req, res) => {
       maturity_date,
     } = req.body;
 
+    const timestamp = date_released + ' ' + formatTime(timenow);
+
     const newLoan = await pool.query(
-      `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${client_id}, '${type}', '${status}',${balance}, ${gross_loan}, ${amort}, ${terms}, '${date_released}', '${maturity_date}') RETURNING *`
+      `INSERT INTO loans(client_id, type, status, balance, gross_loan, amort, terms, date_released, maturity_date) VALUES (${client_id}, '${type}', '${status}',${balance}, ${gross_loan}, ${amort}, ${terms}, '${timestamp}', '${maturity_date}') RETURNING *`
     );
 
     res.json(newLoan.rows[0]);
