@@ -348,7 +348,7 @@ app.post('/loans/', auth, async (req, res) => {
     return hour + ':' + min + ':' + sec;
   };
 
-  console.log(formatTime(timenow));
+  // console.log(formatTime(timenow));
   try {
     const {
       client_id,
