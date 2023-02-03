@@ -12,6 +12,7 @@ const EditLoan = ({ setAuth }) => {
 
   const loanId = location.pathname.split('/')[2];
 
+  const [clientId, setClientId] = useState('');
   const GetLoan = async () => {
     try {
       const response = await fetch(`http://localhost:8000/loan/${loanId}`, {
@@ -53,6 +54,8 @@ const EditLoan = ({ setAuth }) => {
         maturity_date: end_date,
       });
 
+      setClientId(parseRes.client_id);
+      console.log(clientId);
       console.log('Date Released:', parseRes.date_released);
     } catch (error) {
       console.log(error.message);
@@ -162,10 +165,6 @@ const EditLoan = ({ setAuth }) => {
   };
 
   const navigate = useNavigate();
-  const goBack = () => {
-    navigate(-1);
-  };
-
   useEffect(() => {
     GetLoan();
   }, []);
@@ -351,12 +350,12 @@ const EditLoan = ({ setAuth }) => {
               >
                 Update
               </button>
-              <button
-                onClick={goBack}
-                className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5'
+              <Link
+                className=' ml-5 text-center py-3 rounded bg-red-500 text-white hover:bg-red-700 focus:outline-none my-1 w-1/5 inline-block'
+                to={`/borrower/${clientId}`}
               >
                 Back
-              </button>
+              </Link>
             </div>
           </form>
         </div>
