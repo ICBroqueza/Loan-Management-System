@@ -30,7 +30,7 @@ This Project is built with:
 2) Client Management - Managers can now contact clients through the app.
 3) Payments Management - Avoid payment delays by notifying managers about client's loan.
 
-## Instalation
+## Installation
 1) Clone using the following repo link
 
 git clone https://github.com/ICBroqueza/Loan-Management-System.git
