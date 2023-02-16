@@ -53,31 +53,34 @@ const AddLoans = ({ setAuth }) => {
     );
   };
 
-  // const timenow = new Date();
-  // const formatTime = (t) => {
-  //   const x = new Date(t);
-  //   let hour = x.getHours();
-
-  //   if (hour < 10) {
-  //     hour = '0' + hour;
-  //   }
-  //   let min = x.getMinutes();
-  //   if (min < 10) {
-  //     min = '0' + min;
-  //   }
-
-  //   let sec = x.getSeconds();
-  //   if (sec < 10) {
-  //     sec = '0' + sec;
-  //   }
-
-  //   return hour + ':' + min + ':' + sec;
-  // };
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const timenow = new Date();
+      const formatTime = (t) => {
+        const x = new Date(t);
+        let hour = x.getHours();
+
+        if (hour < 10) {
+          hour = '0' + hour;
+        }
+        let min = x.getMinutes();
+        if (min < 10) {
+          min = '0' + min;
+        }
+
+        let sec = x.getSeconds();
+        if (sec < 10) {
+          sec = '0' + sec;
+        }
+
+        return hour + ':' + min + ':' + sec;
+      };
+
+      console.log(formatTime(timenow));
+      const timestamp = date_released + ' ' + formatTime(timenow);
+
       const body = {
         client_id,
         type,
@@ -265,7 +268,7 @@ const AddLoans = ({ setAuth }) => {
           <div>
             <label htmlFor='date_released'>Date Released:</label>
             <input
-              type='date'
+              type='datetime-local'
               className='block border border-grey-500 w-10/12 p-3 rounded mb-4'
               placeholder='Date Released'
               name='date_released'

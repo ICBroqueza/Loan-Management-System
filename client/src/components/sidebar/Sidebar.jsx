@@ -11,7 +11,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <div className='md:block px-5 py-5 md:w-60 lg:w-60  transition-transform duration-300 ease-in-out border shadow-lg rounded-md'>
+    <div className='md:block px-5 py-5 md:w-60 lg:w-60  transition-transform duration-300 ease-in-out border shadow-lg rounded-md '>
       {/* LOGO */}
       <div className='my-10'>
         <h3 className='text-center text-2xl'>Maogma</h3>

@@ -222,7 +222,7 @@ const AddLoan = ({ setAuth }) => {
           <div>
             <label htmlFor='date_released'>Date Released:</label>
             <input
-              type='date'
+              type='datetime-local'
               className='block border border-grey-500 w-10/12 p-3 rounded '
               placeholder='Date Released'
               name='date_released'
